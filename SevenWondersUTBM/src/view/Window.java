@@ -14,9 +14,9 @@ public class Window extends Application {
 	public static final int WIDTH = 1600;
 	public static final int HEIGHT = 890;
 	
-	ManageurDeTour mdt;
-	BoardView bv;
-	HandView hv;
+	public ManageurDeTour mdt;
+	public BoardView bv;
+	public HandView hv;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -29,7 +29,7 @@ public class Window extends Application {
 		bv = new BoardView();
 		hv = new HandView();
 		
-		mdt = new ManageurDeTour();
+		mdt = new ManageurDeTour(this);
 		mdt.remplirPile(2);
 		
 		hv.setCarteListe(mdt.getJoueurs().get(0).getMain());

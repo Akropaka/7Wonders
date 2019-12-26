@@ -6,17 +6,19 @@ import java.util.List;
 import java.util.Scanner;
 
 import model.carte.Carte;
+import view.Window;
 
 public class ManageurDeTour 
 {
 	private List<Joueur> joueurs;
 	private Bibliotheque bibliotheque;
-	
+	private Window w;
 	private List<Carte> pile;
 	private List<Carte> defausse;
 	
-	public ManageurDeTour() 
+	public ManageurDeTour(Window w) 
 	{
+		this.w = w;
 		joueurs = new ArrayList<Joueur>();
 		joueurs.add(new Joueur("Thomas"));
 		joueurs.add(new Joueur("Louis"));
@@ -27,10 +29,12 @@ public class ManageurDeTour
 		defausse = new ArrayList<Carte>();
 		
 		this.bibliotheque = new Bibliotheque();
+
 	}
 	
 	public void remplirPile(int age) 
 	{
+
 		for(Carte c : bibliotheque.getListeCarte()) 
 		{
 			if(c.getAge() == age) 
@@ -116,6 +120,8 @@ public class ManageurDeTour
 	public void afficherMain(Joueur j)
 	{
 		System.out.print("Main : ");
+		//w.hv.setCarteListe(j.getMain());
+
 		for(Carte c : j.getMain())
 		{
 			System.out.print(c);
@@ -128,6 +134,7 @@ public class ManageurDeTour
 		System.out.print("Terrain : ");
 		for(Carte c : j.getTerrain()) 
 		{
+			//w.cv.set
 			System.out.print(c);
 		}
 		System.out.println();
@@ -150,5 +157,9 @@ public class ManageurDeTour
 		{
 			j2.donneCarte(c);
 		}
+	}
+
+	public List<Joueur> getJoueurs() {
+		return joueurs;
 	}
 }
