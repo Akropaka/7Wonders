@@ -11,12 +11,13 @@ import model.ManageurDeTour;
 
 public class Window extends Application {
 
-	public static final int WIDTH = 1600;
+	public static final int WIDTH = 1800;
 	public static final int HEIGHT = 890;
 	
 	public ManageurDeTour mdt;
 	public BoardView bv;
 	public HandView hv;
+	public CarteJouerView cjv;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -28,12 +29,21 @@ public class Window extends Application {
 		Images.buildImageList();
 		bv = new BoardView();
 		hv = new HandView();
+		cjv = new CarteJouerView();
 		
+		StackPane root = new StackPane();
+
+		primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));
+		primaryStage.show();
+		primaryStage.setTitle("7 Wonders - UTBM");
+		
+        root.getChildren().add(cjv);
+        root.getChildren().add(hv);
+        root.getChildren().add(bv);
+
 		mdt = new ManageurDeTour(this);
 		mdt.remplirPile(2);
 		
-		hv.setCarteListe(mdt.getJoueurs().get(0).getMain());
-		primaryStage.setTitle("7 Wonders - UTBM");
 		/*Button btn = new Button();
 		btn.setText("Say 'Hello World'");
 		btn.setOnAction(new EventHandler<ActionEvent>() {
@@ -44,12 +54,7 @@ public class Window extends Application {
 			}
 		});*/
 
-		StackPane root = new StackPane();
-		//root.getChildren().add(btn);
-		primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));
-		primaryStage.show();
-        root.getChildren().add(hv);
-        root.getChildren().add(bv);
+
 
 	}
 	

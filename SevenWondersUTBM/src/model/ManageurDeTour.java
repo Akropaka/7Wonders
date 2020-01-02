@@ -120,7 +120,8 @@ public class ManageurDeTour
 	public void afficherMain(Joueur j)
 	{
 		System.out.print("Main : ");
-		//w.hv.setCarteListe(j.getMain());
+		w.hv.setCarteListe(j.getMain());
+		w.cjv.setCarteListe(j.getMain());
 
 		for(Carte c : j.getMain())
 		{
