@@ -16,81 +16,41 @@ public class ManageurDeTour
 	private List<Carte> pile;
 	private List<Carte> defausse;
 	private List<Plateau> plateaux;
+	private int tour = 0;
+	private Joueur joueur;
 	
 	public ManageurDeTour(Window w) 
 	{
 		this.w = w;
 		
-		this.bibliotheque = new Bibliotheque();
+		bibliotheque = new Bibliotheque();
 		plateaux = new ArrayList<Plateau>(bibliotheque.getListePlateaux());
 
 		joueurs = new ArrayList<Joueur>();
 		pile = new ArrayList<Carte>();
 		defausse = new ArrayList<Carte>();
-		
-		demandeJoueurs(3);
-		attribuePlateauAleatoirement();
-		remplirPile(1);
-		
-		for(Joueur j : joueurs) 
-		{
-			donnerOr(j, 2);
-		}
 	}
 	
-	public void update(Joueur j,int tour) 
-	{
-		doitJouer(j);
+	
+	public void aJoue(Joueur j){
 		if(j.getJoueurDroit().equals(joueurs.get(0)))
 		{
 			for(int i = 0; i<joueurs.size() ;++i)
 			{
 				echangerMain(joueurs.get(i),joueurs.get(i).getJoueurDroit());
 			}
-			update(j.getJoueurDroit(),tour+1);
+			doitJouer(j.getJoueurDroit());
+			tour++;
 		}
 		else
 		{
-			update(j.getJoueurDroit(),tour);
+			doitJouer(j.getJoueurDroit());
 		}
 	}
 	
-	public void demandeJoueurs(int number) 
+	public void ordreJoueur() 
 	{
-		for(int i=0; i<number ;++i) 
-		{
-			String nom;
-			boolean continuer = false;
-			Scanner sc = new Scanner(System.in);
-			while(continuer == false)
-			{
-				continuer = true;
-				int numero = i+1;
-				System.out.println("Entrez le nom du Joueur n∞ : "+numero);
-				nom = sc.nextLine();
-				if(nom.isEmpty()) 
-				{
-					continuer = false;
-					System.out.println("Erreur dans la saisie, votre nom est vide");
-				}
-				else
-				{
-					for(Joueur j : joueurs) 
-					{
-						if(nom.equals(j.getNom()))
-						{
-							continuer = false;
-							System.out.println("Erreur dans la saisie, ce nom est dÈj‡ prit !");
-							break;
-						}
-					}
-				}
-				if(continuer) 
-				{
-					ajoutJoueur(nom);
-				}
-			}
-		}
+		
 		for(int i=0; i<joueurs.size();++i) // Set les joueurs droits & gauches
 		{
 			if(i==0) 
@@ -161,15 +121,55 @@ public class ManageurDeTour
 			}
 		}
 	}
+	public void jouer(String carte) {
+		for(Carte c : new ArrayList<Carte>(joueur.getMain())) 
+		{
+
+			if(carte.equals(c.getNom())) 
+			{
+				if(joueur.peutJouer(c))
+				{
+					joueur.joue(c);
+					System.out.println("J'ai jou√© "+c);
+					aJoue(joueur);
+				}
+				else if(joueur.peutAcheter(c)) 
+				{
+					//TODO : proposeAchat()
+				}
+				else
+				{
+					w.setInfo("Cette carte n'est pas jouable !");
+				}
+			}
+		}
+
+	}
+	
+	public void etape() {} //TODO
+	
+	public void vendre(String carte) {
+		for(Carte c : new ArrayList<Carte>(joueur.getMain())) 
+		{
+
+			if(carte.equals(c.getNom())) 
+			{
+				joueur.vend(c);
+				aJoue(joueur);
+			}
+		}
+	}
 	
 	public void doitJouer(Joueur j) 
 	{
-		System.out.println("C'est √† votre tour "+j.getNom());
+		w.setNom(j.getNom());
+		System.out.println("C'est √† votre tour " + j.getNom());
 		afficherPlateau(j);
 		afficherTerrain(j);
 		afficherMain(j);
 		j.calculJouabilite();
-		Scanner sc = new Scanner(System.in);
+		joueur = j;
+		/*Scanner sc = new Scanner(System.in);
 		
 		boolean aJouer = false;
 		
@@ -179,36 +179,7 @@ public class ManageurDeTour
 			String arguments[] = commande.split("\\s+");
 			if(arguments[0].equals("jouer")) 
 			{
-				for(Carte c : new ArrayList<Carte>(j.getMain())) 
-				{
-					String nom = "";
-					for(int i=1;i<arguments.length;++i)
-					{
-						nom += arguments[i];
-						if(i!=arguments.length-1) 
-						{
-							nom += " ";
-						}
-					}
-					
-					if(nom.equals(c.getNom())) 
-					{
-						if(j.peutJouer(c))
-						{
-							j.joue(c);
-							System.out.println("J'ai jouÈ "+c);
-							aJouer = true;
-						}
-						else if(j.peutAcheter(c)) 
-						{
-							//TO DO : proposeAchat()
-						}
-						else
-						{
-							System.out.println("Cette carte n'est pas jouable !");
-						}
-					}
-				}
+				
 			}
 			if(arguments[0].equals("info")) 
 			{
@@ -240,7 +211,7 @@ public class ManageurDeTour
 					}
 				}
 			}
-		}
+		}*/
 	}
 	
 	public void donnerOr(Joueur j, int montant)
@@ -250,14 +221,23 @@ public class ManageurDeTour
 	
 	public void lancerJeu()
 	{
-		update(joueurs.get(0),0);
+		
+		ordreJoueur();
+		attribuePlateauAleatoirement();
+		remplirPile(1);
+		
+		for(Joueur j : joueurs) 
+		{
+			donnerOr(j, 2);
+		}
+		doitJouer(joueurs.get(0));
 	}
 	
 	public void afficherMain(Joueur j)
 	{
 		System.out.print("Main : ");
-		w.hv.setCarteListe(j.getMain());
-		w.cjv.setCarteListe(j.getMain());
+		w.hand.setCarteListe(j.getMain());
+		//w.cjv.setCarteListe(j.getMain());
 
 		for(Carte c : j.getMain())
 		{
@@ -269,9 +249,9 @@ public class ManageurDeTour
 	public void afficherTerrain(Joueur j)
 	{
 		System.out.print("Terrain : ");
+		w.terrain.setCarteListe(j.getTerrain());
 		for(Carte c : j.getTerrain()) 
 		{
-			//w.cv.set
 			System.out.print(c);
 		}
 		System.out.println();

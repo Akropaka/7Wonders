@@ -20,7 +20,7 @@ public class ChoiceView extends FlowPane {
 		setAlignment(Pos.CENTER);
 		
 		poser.setOnMouseClicked(event -> {
-			//TODO w.mdt.jouer(w.hv.getSelected());
+			 w.manager.jouer(w.hand.getSelected());
 			;});
 		constuire_etape.setOnMouseClicked(event -> {
 			//TODO w.mdt.etape(w.hv.getSelected());
