@@ -286,7 +286,9 @@ public class ManageurDeTour
 			j2.donneCarte(c);
 		}
 	}
-
+	public Joueur getJoueur() {
+		return joueur;
+	}
 	public List<Joueur> getJoueurs() {
 		return joueurs;
 	}

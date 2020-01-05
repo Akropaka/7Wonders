@@ -4,11 +4,13 @@ import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.Joueur;
 import model.ManageurDeTour;
 
 public class Window extends Application {
@@ -24,6 +26,8 @@ public class Window extends Application {
 	private MainMenu menu;
 	private Label nomJoueur;
 	private Label info;
+	private ImageView next;
+	private Joueur voir;
 	
 	StackPane root;
 	
@@ -64,13 +68,32 @@ public class Window extends Application {
 		info.setTranslateY(-410);
 	    info.setTextFill(Color.web("#e67e22"));
 	    
+		next = new ImageView(Images.get("next").getImage());
+		next.setTranslateX(800);
+		next.setTranslateY(0);
+		
+
         root.getChildren().add(info);
         root.getChildren().add(nomJoueur);
         root.getChildren().add(terrain);
         root.getChildren().add(hand);
         root.getChildren().add(board);
+        root.getChildren().add(next);
+
         root.getChildren().add(choice);	
 		manager.lancerJeu();
+		voir = manager.getJoueur();
+		next.setOnMouseClicked(e -> {
+			voir = voir.getJoueurDroit();
+			changerVue();
+		});
+		
+	}
+	
+	public void changerVue() {
+		terrain.setCarteListe(voir.getTerrain());
+		setNom(voir.getNom());
+		//TODO CHANGE BOARD
 	}
 	
 	public void setNom(String s) {

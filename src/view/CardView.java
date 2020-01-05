@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import model.Ressource;
@@ -70,24 +71,20 @@ public class CardView extends Pane{
 		setCouleur(carte);
 		setImage("prof0");
 		setNom(carte.getNom());
-		setNbrJoueur(carte.getAjoutParNbrJoueur());
-		
-		System.out.println(carte.getNom());
-		
+		setNbrJoueur(carte.getAjoutParNbrJoueur());		
 		addCoutList(carte.getCoutsRessource());
 		addGainList(carte.getGainsRessource());
-		
-		/*gc.setFont(new Font("Arial", 16));
-        gc.setFill(Color.web("#452205"));
-        gc.fillText("Coût ", 30, 47);
-        gc.fillText("Gain ", 142, 75);
-        gc.drawImage(Images.get("carte_base").getImage(), 0, 0,WIDTH,HEIGHT);*/
 
 	}
 	
 	void setNbrJoueur(List<Integer> list) {
-       /* gc.setFill(Color.web("#FFF"));
-        gc.fillText(String.valueOf(list) + "+", WIDTH/2, HEIGHT -20);*/
+		Label label_nom = new Label(String.valueOf(list));
+		label_nom.setFont(Font.font("Arial",FontWeight.BOLD,17));
+		label_nom.setAlignment(Pos.CENTER);
+		label_nom.setTextFill(Color.web("#fff"));
+		label_nom.setTranslateY(HEIGHT -40);
+		label_nom.layoutXProperty().bind(widthProperty().subtract(label_nom.widthProperty()).divide(2));
+		getChildren().add(label_nom);
 	}
 	
 	void setImage(String nom) {
@@ -108,7 +105,6 @@ public class CardView extends Pane{
 	
 	void addGainList(List<Ressource> lst) {
 		for(Ressource r: lst) {
-			System.out.println(r.getNom().name());
 			for(int i=0;i<r.getNumber();i++) {
 				addGain(r.getNom().name());
 			}
