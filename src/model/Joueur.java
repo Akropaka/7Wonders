@@ -396,11 +396,20 @@ public class Joueur
 								
 								for(int i=0;i<toutCombinaison.size();++i)
 								{
-									//for(int j=0;j<factorielle(toutCombinaison.size())/(factorielle(i+1)*)
-									ArrayList<Triplet<Ressource,Joueur,Integer>> temp = new ArrayList<Triplet<Ressource,Joueur,Integer>>();
-									for(Triplet<Ressource,Joueur,Integer> triplet : toutCombinaison)
+									for(int j=0;j<factorielle(toutCombinaison.size())/((factorielle(i+1)*(factorielle(toutCombinaison.size()-i+1))));++j) 
 									{
-										
+										ArrayList<Triplet<Ressource,Joueur,Integer>> temp = new ArrayList<Triplet<Ressource,Joueur,Integer>>();
+										choixAchat.add(temp);
+									}
+									for(ArrayList<Triplet<Ressource,Joueur,Integer>> arrayTriplet : choixAchat)
+									{
+										for(Triplet<Ressource,Joueur,Integer> tripletChoix : arrayTriplet)
+										{
+											for(Triplet<Ressource,Joueur,Integer> tripletCombi : toutCombinaison)
+											{
+												
+											}
+										}
 									}
 								}
 							}
