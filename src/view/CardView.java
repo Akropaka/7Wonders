@@ -3,12 +3,13 @@ package view;
 
 import java.util.List;
 
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.TextAlignment;
 import model.Ressource;
 import model.carte.Carte;
 import model.carte.CarteBleue;
@@ -19,51 +20,52 @@ import model.carte.CarteRouge;
 import model.carte.CarteVerte;
 import model.carte.CarteViolette;
 
-public class CardView extends Canvas{
+public class CardView extends Pane{
 
-	public static final int WIDTH = (int) (335*0.5);
-	public static final int HEIGHT = (int) (515*0.5)+30;
-	public static final int COUT_SIZE = 25;
+	public static final int WIDTH = (int) (360*0.5);
+	public static final int HEIGHT = (int) (540*0.5)+30;
+	public static final int COUT_SIZE = 24;
+	
+	private FlowPane cout_panel;
+	private FlowPane gain_panel;
+	private String style;
+	private String name;
+	private int x=0;
+	private int y=0;
 
-	String name;
-	int x=0;
-	int y=0;
-	int cout_nbr=0;
-	int gain_nbr=0;
 	
-	GraphicsContext gc;
-	
-	CardView(Carte c, int x, int y, boolean main) {
-		super(WIDTH, HEIGHT);
-		this.x = x;
-		this.y = y;
+	CardView(Carte c, boolean main) {
+		setMaxSize(WIDTH,HEIGHT);
 		setTranslateX(x);
 		setTranslateY(y);
+		cout_panel = new FlowPane();
+		gain_panel = new FlowPane();
+		cout_panel.setMaxHeight(COUT_SIZE);
+		gain_panel.setMaxHeight(COUT_SIZE);
+		getChildren().add(cout_panel);
+		getChildren().add(gain_panel);
 
-		gc = getGraphicsContext2D();
-		gc.setFont(Font.font("Arial",FontWeight.BOLD, 17));
-		gc.setTextAlign(TextAlignment.CENTER);
-        gc.drawImage(Images.get("carte_base").getImage(), 0, 0,WIDTH,HEIGHT);
-        
         if(main == true) {
             setOnMouseClicked(event -> {((HandView) getParent()).setSelected(this);drawSelected();});
         }
         setOnMouseEntered(event -> {setTranslateY(y-20);});
         setOnMouseExited(event -> {setTranslateY(y);});
         addCarte(c);
-    }
-	
-	CardView(Carte c,boolean main) {
-		this(c,0,0,main);
-		
+        
+		ImageView rect = new ImageView(Images.get("carte_base").getImage());
+		rect.setFitHeight( HEIGHT);
+		rect.setFitWidth(WIDTH);
+		getChildren().add(rect);
     }
 	
 	void drawSelected() {
-		setStyle("-fx-effect: dropshadow( one-pass-box , #2c3e50 , 80 , 0.5 , 0.5 , 0.5 );");
+		setStyle(style + "-fx-effect: dropshadow( one-pass-box , #2c3e50 , 80 , 0.5 , 0.5 , 0.5 );");
 	}
+	
 	void drawUnSelected() {
-		setStyle("-fx-effect: dropshadow( one-pass-box , black , 0 , 0.0 , 0 , 0 );;");
+		setStyle(style + "-fx-effect: dropshadow( one-pass-box , black , 0 , 0.0 , 0 , 0 );;");
 	}
+	
 	void addCarte(Carte carte) {
 		setCouleur(carte);
 		setImage("prof0");
@@ -75,27 +77,30 @@ public class CardView extends Canvas{
 		addCoutList(carte.getCoutsRessource());
 		addGainList(carte.getGainsRessource());
 		
-		gc.setFont(new Font("Arial", 16));
+		/*gc.setFont(new Font("Arial", 16));
         gc.setFill(Color.web("#452205"));
         gc.fillText("Coût ", 30, 47);
         gc.fillText("Gain ", 142, 75);
-        gc.drawImage(Images.get("carte_base").getImage(), 0, 0,WIDTH,HEIGHT);
+        gc.drawImage(Images.get("carte_base").getImage(), 0, 0,WIDTH,HEIGHT);*/
 
 	}
 	
 	void setNbrJoueur(List<Integer> list) {
-        gc.setFill(Color.web("#FFF"));
-        gc.fillText(String.valueOf(list) + "+", WIDTH/2, HEIGHT -20);
+       /* gc.setFill(Color.web("#FFF"));
+        gc.fillText(String.valueOf(list) + "+", WIDTH/2, HEIGHT -20);*/
 	}
 	
 	void setImage(String nom) {
-        gc.drawImage(Images.get(nom).getImage(), 0, HEIGHT-WIDTH,WIDTH,WIDTH);
-
+		ImageView rect = new ImageView(Images.get(nom).getImage());
+		rect.setLayoutY(HEIGHT-WIDTH);
+		rect.setFitHeight(WIDTH);
+		rect.setFitWidth(WIDTH);
+		getChildren().add(rect);
 	}
 	
 	void addCoutList(List<Ressource> lst) {
 		for(Ressource r: lst) {
-			for(int i=0;i<=r.getNumber();i++) {
+			for(int i=0;i<r.getNumber();i++) {
 				addCout(r.getNom().name());
 			}
 		}
@@ -104,46 +109,59 @@ public class CardView extends Canvas{
 	void addGainList(List<Ressource> lst) {
 		for(Ressource r: lst) {
 			System.out.println(r.getNom().name());
-			for(int i=0;i<=r.getNumber();i++) {
+			for(int i=0;i<r.getNumber();i++) {
 				addGain(r.getNom().name());
 			}
 		}
 	}
 	
 	void addCout(String nom) {
-		cout_nbr ++;
-	    gc.drawImage(Images.get(nom).getImage(), (WIDTH -10 - (cout_nbr)*(COUT_SIZE)), 4+COUT_SIZE,COUT_SIZE,COUT_SIZE);
+		ImageView rect = new ImageView(Images.get(nom).getImage());
+		rect.setTranslateX(10);
+		rect.setTranslateY(30);
+		rect.setFitHeight(COUT_SIZE);
+		rect.setFitWidth(COUT_SIZE);
+		cout_panel.getChildren().add(rect);
 	}
 	
 	void addGain(String nom) {
-		gain_nbr ++;
-	    gc.drawImage(Images.get(nom).getImage(), (gain_nbr)*(COUT_SIZE)-18 , 57,COUT_SIZE,COUT_SIZE);
+		ImageView rect = new ImageView(Images.get(nom).getImage());
+		rect.setTranslateX(10);
+		rect.setTranslateY(60);
+		rect.setFitHeight(COUT_SIZE);
+		rect.setFitWidth(COUT_SIZE);
+		gain_panel.getChildren().add(rect);
 	}
 	
 	void setCouleur(Carte c) {
-		Color couleur = null;
+		String couleur = "#f1c40f";
 		if(c instanceof CarteJaune) {
-			couleur = Color.web("#f1c40f");
+			couleur = "#f1c40f";
 		}else if(c instanceof CarteBleue) {
-			couleur = Color.web("#3498db");
+			couleur = "#3498db";
 		}else if(c instanceof CarteRouge) {
-			couleur = Color.web("#e74c3c");
+			couleur = "#e74c3c";
 		}else if(c instanceof CarteGrise) {
-			couleur = Color.web("#95a5a6");
+			couleur = "#95a5a6";
 		}else if(c instanceof CarteMarron) {
-			couleur = Color.web("#6D4C41");
+			couleur = "#6D4C41";
 		}else if(c instanceof CarteVerte) {
-			couleur = Color.web("#2ecc71");
+			couleur = "#2ecc71";
 		}else if(c instanceof CarteViolette) {
-			couleur = Color.web("#9b59b6");
+			couleur = "#9b59b6";
 		}
-		gc.setFill(couleur);
-        gc.fillRect(0, 0, getWidth(), getHeight());
+		setStyle("-fx-background-color: "+couleur.toString()+";");
+		style = getStyle();
 	}
+	
 	void setNom(String nom) {
 		name = nom;
-        gc.setFill(Color.web("#452205"));
-        gc.fillText(nom, WIDTH/2, 25);
+		Label label_nom = new Label(nom);
+		label_nom.setFont(Font.font("Arial",FontWeight.BOLD,17));
+		label_nom.setAlignment(Pos.CENTER);
+		label_nom.setTranslateY(10);
+		label_nom.layoutXProperty().bind(widthProperty().subtract(label_nom.widthProperty()).divide(2));
+		getChildren().add(label_nom);
 	}
 	
 	public String getName(){
