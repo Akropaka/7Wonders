@@ -36,8 +36,6 @@ public class ManageurDeTour
 		{
 			donnerOr(j, 2);
 		}
-		
-		update(joueurs.get(0),0);
 	}
 	
 	public void update(Joueur j,int tour) 
@@ -248,6 +246,11 @@ public class ManageurDeTour
 	public void donnerOr(Joueur j, int montant)
 	{
 		j.setOr(j.getOr()+montant);
+	}
+	
+	public void lancerJeu()
+	{
+		update(joueurs.get(0),0);
 	}
 	
 	public void afficherMain(Joueur j)
