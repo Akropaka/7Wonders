@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import model.carte.Carte;
+import model.carte.CarteGrise;
 import model.carte.CarteMarron;
 import model.carte.CarteViolette;
 
@@ -289,29 +290,87 @@ public class Joueur
 							for(ArrayList<Ressource> lr : restes) 
 							{
 								// ArrayList<ArrayList<Ressource>> copieRestes = new ArrayList<ArrayList<Ressource>>(restes);
-								ArrayList<Ressource> achatsDroite = new ArrayList<Ressource>(); 
-								ArrayList<Ressource> achatsGauche = new ArrayList<Ressource>(); 
-								// Pour chaque lr -> Si monOr >= OrDemander -> ( y associé une MAP d'achat droit (ressource+orDemander) et une MAP d'achat (ressource+orDemander) gauche )
-								for(Ressource rBesoin : new ArrayList<Ressource>(lr)) 
+								ArrayList<Ressource> achatsPossibleDroite = new ArrayList<Ressource>();
+								ArrayList<Ressource> achatsPossibleGauche = new ArrayList<Ressource>();
+								
+								ArrayList<Ressource> copieLr = new ArrayList<Ressource>(lr);
+								
+								for(Ressource rBesoin : lr)
 								{
 									for(Carte cTerrainDroite : this.getJoueurDroit().getTerrain())
 									{
-										for(Ressource r : cTerrainDroite.getGainsRessource()) 
+										if(cTerrainDroite instanceof CarteMarron || cTerrainDroite instanceof CarteGrise)
 										{
-											if(r.getNom().equals(rBesoin.getNom())) 
+											for(Ressource r : cTerrainDroite.getGainsRessource()) 
 											{
-												if(rBesoin.getNumber()-r.getNumber() > 0)
+												if(r.getNom().equals(rBesoin.getNom())) 
 												{
-													rBesoin.setNumber(rBesoin.getNumber()-r.getNumber());
-												}
-												else
-												{
-													lr.remove(rBesoin);
+													if(rBesoin.getNumber()-r.getNumber() > 0)
+													{
+														rBesoin.setNumber(rBesoin.getNumber()-r.getNumber());
+													}
+													else
+													{
+														copieLr.remove(rBesoin);
+													}
 												}
 											}
 										}
 									}
+									boolean exist = false;
+									for(Ressource r : copieLr)
+									{
+										if(r.getNom().equals(rBesoin.getNom()))
+										{
+											exist = true;
+											achatsPossibleDroite.add(new Ressource(r.getNom(),rBesoin.getNumber() - r.getNumber()));
+										}
+									}
+									if(!exist)
+									{
+										achatsPossibleDroite.add(rBesoin);
+									}
 								}
+								
+								copieLr = new ArrayList<Ressource>(lr);
+								
+								for(Ressource rBesoin : lr)
+								{
+									for(Carte cTerrainGauche : this.getJoueurGauche().getTerrain())
+									{
+										if(cTerrainGauche instanceof CarteMarron || cTerrainGauche instanceof CarteGrise)
+										{
+											for(Ressource r : cTerrainGauche.getGainsRessource()) 
+											{
+												if(r.getNom().equals(rBesoin.getNom())) 
+												{
+													if(rBesoin.getNumber()-r.getNumber() > 0)
+													{
+														rBesoin.setNumber(rBesoin.getNumber()-r.getNumber());
+													}
+													else
+													{
+														copieLr.remove(rBesoin);
+													}
+												}
+											}
+										}
+									}
+									boolean exist = false;
+									for(Ressource r : copieLr)
+									{
+										if(r.getNom().equals(rBesoin.getNom()))
+										{
+											exist = true;
+											achatsPossibleGauche.add(new Ressource(r.getNom(),rBesoin.getNumber() - r.getNumber()));
+										}
+									}
+									if(!exist)
+									{
+										achatsPossibleGauche.add(rBesoin);
+									}
+								}
+								//
 							}
 						}
 					}
