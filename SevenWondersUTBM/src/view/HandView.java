@@ -14,8 +14,8 @@ public class HandView extends FlowPane {
 	
 	public static final int WIDTH = (CardView.WIDTH+10)*7+20;
 	public static final int HEIGHT = CardView.HEIGHT + 20;
-	
-	ArrayList<CardView> lstCarte;
+	String selected;
+	CardView previous;
 	
 	public HandView() {
 
@@ -26,14 +26,26 @@ public class HandView extends FlowPane {
 	}
 	
 	public void setCarteListe(List<Carte> list) {
+		getChildren().clear();
 		for(Carte c:list) {
 			CardView cv = new CardView(c);
 			setMargin(cv,new Insets(0,5,0,5));
-
+			previous = cv;
 			getChildren().add(cv);
 		}
 		setWidth((CardView.WIDTH+10)*list.size()+20);
 
 	}
-
+	
+	public void setSelected(CardView s) {
+		selected = s.getName();
+		s.drawSelected();
+		previous.drawUnSelected();
+		previous = s;
+	}
+	
+	public String getSelected() {
+		return selected;
+	}
+	
 }

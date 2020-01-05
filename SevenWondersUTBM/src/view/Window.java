@@ -11,45 +11,40 @@ import model.ManageurDeTour;
 
 public class Window extends Application {
 
-	public static final int WIDTH = 1600;
+	public static final int WIDTH = 1800;
 	public static final int HEIGHT = 890;
 	
 	public ManageurDeTour mdt;
 	public BoardView bv;
 	public HandView hv;
+	public CarteJouerView cjv;
+	public ChoiceView cv;
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
-
 	
 	@Override
 	public void start(Stage primaryStage) {
 		Images.buildImageList();
-		bv = new BoardView();
-		hv = new HandView();
 		
 		mdt = new ManageurDeTour(this);
-		
-		hv.setCarteListe(mdt.getJoueurs().get(0).getMain());
-		primaryStage.setTitle("7 Wonders - UTBM");
-		/*Button btn = new Button();
-		btn.setText("Say 'Hello World'");
-		btn.setOnAction(new EventHandler<ActionEvent>() {
 
-			@Override
-			public void handle(ActionEvent event) {
-				System.out.println("Hello World!");
-			}
-		});*/
-
+		bv = new BoardView();
+		hv = new HandView();
+		cjv = new CarteJouerView();
+		cv = new ChoiceView(this);
 		StackPane root = new StackPane();
-		//root.getChildren().add(btn);
+
 		primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));
 		primaryStage.show();
+		primaryStage.setTitle("7 Wonders - UTBM");
+		primaryStage.setResizable(false);
+		
+        root.getChildren().add(cjv);
         root.getChildren().add(hv);
         root.getChildren().add(bv);
-
+        root.getChildren().add(cv);	
 	}
 	
 }
