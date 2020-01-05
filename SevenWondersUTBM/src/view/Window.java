@@ -60,7 +60,7 @@ public class Window extends Application {
 		nomJoueur.setFont(new Font("Arial", 25));
 		nomJoueur.setTranslateY(-360);
 		
-		info = new Label("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		info = new Label("");
 		info.setFont(new Font("Arial", 25));
 		info.setTranslateY(-410);
 	    info.setTextFill(Color.web("#e67e22"));
@@ -79,7 +79,7 @@ public class Window extends Application {
 	}
 	
 	public void setInfo(String s) {
-		info.setText("Joueur: " + s);
+		info.setText(s);
 	}
 	
 }
