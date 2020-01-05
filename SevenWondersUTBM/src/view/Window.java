@@ -45,6 +45,8 @@ public class Window extends Application {
         root.getChildren().add(hv);
         root.getChildren().add(bv);
         root.getChildren().add(cv);	
+        
+        mdt.lancerJeu();
 	}
 	
 }
