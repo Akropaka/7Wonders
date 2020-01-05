@@ -1,5 +1,6 @@
 package view;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.ManageurDeTour;
 
 public class Window extends Application {
@@ -80,6 +82,9 @@ public class Window extends Application {
 	
 	public void setInfo(String s) {
 		info.setText(s);
+		PauseTransition delay = new PauseTransition(Duration.seconds(2));
+		delay.setOnFinished( event -> info.setText("") );
+		delay.play();
 	}
 	
 }

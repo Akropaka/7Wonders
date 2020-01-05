@@ -21,7 +21,6 @@ public class CardView extends Canvas{
 
 	public static final int WIDTH = (int) (335*0.5);
 	public static final int HEIGHT = (int) (515*0.5);
-	
 	public static final int COUT_SIZE = 25;
 
 	String name;
@@ -32,7 +31,7 @@ public class CardView extends Canvas{
 	
 	GraphicsContext gc;
 	
-	CardView(Carte c, int x, int y) {
+	CardView(Carte c, int x, int y, boolean main) {
 		super(WIDTH, HEIGHT);
 		this.x = x;
 		this.y = y;
@@ -44,14 +43,16 @@ public class CardView extends Canvas{
 		gc.setTextAlign(TextAlignment.CENTER);
         gc.drawImage(Images.get("carte_base").getImage(), 0, 0,WIDTH,HEIGHT);
         
-        setOnMouseClicked(event -> {((HandView) getParent()).setSelected(this);drawSelected();});
+        if(main == true) {
+            setOnMouseClicked(event -> {((HandView) getParent()).setSelected(this);drawSelected();});
+        }
         setOnMouseEntered(event -> {setTranslateY(y-20);});
         setOnMouseExited(event -> {setTranslateY(y);});
         addCarte(c);
     }
 	
-	CardView(Carte c) {
-		this(c,0,0);
+	CardView(Carte c,boolean main) {
+		this(c,0,0,main);
 		
     }
 	

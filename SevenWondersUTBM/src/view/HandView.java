@@ -28,7 +28,7 @@ public class HandView extends FlowPane {
 	public void setCarteListe(List<Carte> list) {
 		getChildren().clear();
 		for(Carte c:list) {
-			CardView cv = new CardView(c);
+			CardView cv = new CardView(c,true);
 			setMargin(cv,new Insets(0,5,0,5));
 			previous = cv;
 			getChildren().add(cv);
