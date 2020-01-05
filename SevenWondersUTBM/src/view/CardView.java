@@ -7,7 +7,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
+import model.Ressource;
 import model.carte.Carte;
 import model.carte.CarteBleue;
 import model.carte.CarteGrise;
@@ -20,7 +22,7 @@ import model.carte.CarteViolette;
 public class CardView extends Canvas{
 
 	public static final int WIDTH = (int) (335*0.5);
-	public static final int HEIGHT = (int) (515*0.5);
+	public static final int HEIGHT = (int) (515*0.5)+30;
 	public static final int COUT_SIZE = 25;
 
 	String name;
@@ -39,7 +41,7 @@ public class CardView extends Canvas{
 		setTranslateY(y);
 
 		gc = getGraphicsContext2D();
-		gc.setFont(new Font("Arial", 19));
+		gc.setFont(Font.font("Arial",FontWeight.BOLD, 17));
 		gc.setTextAlign(TextAlignment.CENTER);
         gc.drawImage(Images.get("carte_base").getImage(), 0, 0,WIDTH,HEIGHT);
         
@@ -67,18 +69,16 @@ public class CardView extends Canvas{
 		setImage("prof0");
 		setNom(carte.getNom());
 		setNbrJoueur(carte.getAjoutParNbrJoueur());
-		addCout("maths");
-		addCout("informatique");
-		addCout("physique");
-		addCout("physique");
-		addGain("informatique");
-		addGain("physique");
-		addGain("physique");
+		
+		System.out.println(carte.getNom());
+		
+		addCoutList(carte.getCoutsRessource());
+		addGainList(carte.getGainsRessource());
 		
 		gc.setFont(new Font("Arial", 16));
         gc.setFill(Color.web("#452205"));
         gc.fillText("Coût ", 30, 47);
-        gc.fillText("Gain ", 145, 75);
+        gc.fillText("Gain ", 142, 75);
         gc.drawImage(Images.get("carte_base").getImage(), 0, 0,WIDTH,HEIGHT);
 
 	}
@@ -92,6 +92,24 @@ public class CardView extends Canvas{
         gc.drawImage(Images.get(nom).getImage(), 0, HEIGHT-WIDTH,WIDTH,WIDTH);
 
 	}
+	
+	void addCoutList(List<Ressource> lst) {
+		for(Ressource r: lst) {
+			for(int i=0;i<=r.getNumber();i++) {
+				addCout(r.getNom().name());
+			}
+		}
+	}
+	
+	void addGainList(List<Ressource> lst) {
+		for(Ressource r: lst) {
+			System.out.println(r.getNom().name());
+			for(int i=0;i<=r.getNumber();i++) {
+				addGain(r.getNom().name());
+			}
+		}
+	}
+	
 	void addCout(String nom) {
 		cout_nbr ++;
 	    gc.drawImage(Images.get(nom).getImage(), (WIDTH -10 - (cout_nbr)*(COUT_SIZE)), 4+COUT_SIZE,COUT_SIZE,COUT_SIZE);
@@ -125,7 +143,7 @@ public class CardView extends Canvas{
 	void setNom(String nom) {
 		name = nom;
         gc.setFill(Color.web("#452205"));
-        gc.fillText(nom, WIDTH/2, 23);
+        gc.fillText(nom, WIDTH/2, 25);
 	}
 	
 	public String getName(){
