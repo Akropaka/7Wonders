@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import model.carte.*;
 
@@ -63,7 +62,7 @@ public class Bibliotheque {
 		 * ! Cartes Marrons !
 		*/
 		
-		gainsRessource.add(new Ressource(ressourceType.BOIS,1));
+		gainsRessource.add(new Ressource(RessourceEnum.BOIS,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
 		
@@ -76,7 +75,7 @@ public class Bibliotheque {
 											,false);
 		resetAll();
 		
-		gainsRessource.add(new Ressource(ressourceType.PIERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
 		
@@ -89,7 +88,7 @@ public class Bibliotheque {
 											,false);
 		resetAll();
 		
-		gainsRessource.add(new Ressource(ressourceType.ARGILE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.ARGILE,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
 		
@@ -102,7 +101,7 @@ public class Bibliotheque {
 											,false);
 		resetAll();
 		
-		gainsRessource.add(new Ressource(ressourceType.FER,1));
+		gainsRessource.add(new Ressource(RessourceEnum.FER,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
 		
@@ -115,9 +114,9 @@ public class Bibliotheque {
 											,false);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.OR,1));
-		gainsRessource.add(new Ressource(ressourceType.BOIS,1));
-		gainsRessource.add(new Ressource(ressourceType.ARGILE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.OR,1));
+		gainsRessource.add(new Ressource(RessourceEnum.BOIS,1));
+		gainsRessource.add(new Ressource(RessourceEnum.ARGILE,1));
 		ajoutParNbrJoueur.add(6);
 		
 		CarteMarron friche = new CarteMarron("Friche"
@@ -129,9 +128,9 @@ public class Bibliotheque {
 											,true);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.OR,1));
-		gainsRessource.add(new Ressource(ressourceType.PIERRE,1));
-		gainsRessource.add(new Ressource(ressourceType.ARGILE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.OR,1));
+		gainsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.ARGILE,1));
 		ajoutParNbrJoueur.add(4);
 		
 		CarteMarron excavation = new CarteMarron("Excavation"
@@ -143,9 +142,9 @@ public class Bibliotheque {
 											,true);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.OR,1));
-		gainsRessource.add(new Ressource(ressourceType.ARGILE,1));
-		gainsRessource.add(new Ressource(ressourceType.FER,1));
+		coutsRessource.add(new Ressource(RessourceEnum.OR,1));
+		gainsRessource.add(new Ressource(RessourceEnum.ARGILE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.FER,1));
 		ajoutParNbrJoueur.add(3);
 		
 		CarteMarron fosseArgileuse = new CarteMarron("Fosse Argileuse"
@@ -157,9 +156,9 @@ public class Bibliotheque {
 											,true);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.OR,1));
-		gainsRessource.add(new Ressource(ressourceType.PIERRE,1));
-		gainsRessource.add(new Ressource(ressourceType.BOIS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.OR,1));
+		gainsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.BOIS,1));
 		ajoutParNbrJoueur.add(3);
 		
 		CarteMarron exploitationForestiere = new CarteMarron("Exploitation Forestière"
@@ -171,9 +170,9 @@ public class Bibliotheque {
 											,true);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.OR,1));
-		gainsRessource.add(new Ressource(ressourceType.BOIS,1));
-		gainsRessource.add(new Ressource(ressourceType.FER,1));
+		coutsRessource.add(new Ressource(RessourceEnum.OR,1));
+		gainsRessource.add(new Ressource(RessourceEnum.BOIS,1));
+		gainsRessource.add(new Ressource(RessourceEnum.FER,1));
 		ajoutParNbrJoueur.add(5);
 		
 		CarteMarron gisement = new CarteMarron("Gisement"
@@ -185,9 +184,9 @@ public class Bibliotheque {
 											,true);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.OR,1));
-		gainsRessource.add(new Ressource(ressourceType.FER,1));
-		gainsRessource.add(new Ressource(ressourceType.PIERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.OR,1));
+		gainsRessource.add(new Ressource(RessourceEnum.FER,1));
+		gainsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
 		ajoutParNbrJoueur.add(6);
 		
 		CarteMarron mine = new CarteMarron("Mine"
@@ -199,8 +198,8 @@ public class Bibliotheque {
 											,true);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.OR,1));
-		gainsRessource.add(new Ressource(ressourceType.BOIS,2));
+		coutsRessource.add(new Ressource(RessourceEnum.OR,1));
+		gainsRessource.add(new Ressource(RessourceEnum.BOIS,2));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
 		
@@ -213,8 +212,8 @@ public class Bibliotheque {
 											,false);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.OR,1));
-		gainsRessource.add(new Ressource(ressourceType.PIERRE,2));
+		coutsRessource.add(new Ressource(RessourceEnum.OR,1));
+		gainsRessource.add(new Ressource(RessourceEnum.PIERRE,2));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
 		
@@ -227,8 +226,8 @@ public class Bibliotheque {
 											,false);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.OR,1));
-		gainsRessource.add(new Ressource(ressourceType.ARGILE,2));
+		coutsRessource.add(new Ressource(RessourceEnum.OR,1));
+		gainsRessource.add(new Ressource(RessourceEnum.ARGILE,2));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
 		
@@ -241,8 +240,8 @@ public class Bibliotheque {
 											,false);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.OR,1));
-		gainsRessource.add(new Ressource(ressourceType.FER,2));
+		coutsRessource.add(new Ressource(RessourceEnum.OR,1));
+		gainsRessource.add(new Ressource(RessourceEnum.FER,2));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
 		
@@ -259,7 +258,7 @@ public class Bibliotheque {
 		 * ! Cartes Grises !
 		*/
 		
-		gainsRessource.add(new Ressource(ressourceType.TISSU,1));
+		gainsRessource.add(new Ressource(RessourceEnum.TISSU,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(6);
 		
@@ -271,7 +270,7 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		gainsRessource.add(new Ressource(ressourceType.VERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.VERRE,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(6);
 		
@@ -283,7 +282,7 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		gainsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
+		gainsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(6);
 		
@@ -295,7 +294,7 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		gainsRessource.add(new Ressource(ressourceType.TISSU,1));
+		gainsRessource.add(new Ressource(RessourceEnum.TISSU,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
 		
@@ -308,7 +307,7 @@ public class Bibliotheque {
 		resetAll();
 		
 		
-		gainsRessource.add(new Ressource(ressourceType.VERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.VERRE,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
 		
@@ -320,7 +319,7 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		gainsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
+		gainsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
 		
@@ -336,8 +335,8 @@ public class Bibliotheque {
 		 * ! Cartes Vertes !
 		*/
 		
-		coutsRessource.add(new Ressource(ressourceType.TISSU,1));
-		gainsRessource.add(new Ressource(ressourceType.COMPAS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.TISSU,1));
+		gainsRessource.add(new Ressource(RessourceEnum.COMPAS,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
 		
@@ -349,8 +348,8 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
-		gainsRessource.add(new Ressource(ressourceType.ENGRENAGE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.ENGRENAGE,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
 		
@@ -362,8 +361,8 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
-		gainsRessource.add(new Ressource(ressourceType.TABLETTE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
+		gainsRessource.add(new Ressource(RessourceEnum.TABLETTE,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
 		
@@ -375,9 +374,9 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.FER,2));
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
-		gainsRessource.add(new Ressource(ressourceType.COMPAS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,2));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.COMPAS,1));
 		coutsCarte.add(officine);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
@@ -390,9 +389,9 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,2));
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
-		gainsRessource.add(new Ressource(ressourceType.ENGRENAGE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,2));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
+		gainsRessource.add(new Ressource(RessourceEnum.ENGRENAGE,1));
 		coutsCarte.add(atelier);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
@@ -405,9 +404,9 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,2));
-		coutsRessource.add(new Ressource(ressourceType.TISSU,1));
-		gainsRessource.add(new Ressource(ressourceType.TABLETTE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,2));
+		coutsRessource.add(new Ressource(RessourceEnum.TISSU,1));
+		gainsRessource.add(new Ressource(RessourceEnum.TABLETTE,1));
 		coutsCarte.add(scriptorium);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(6);
@@ -420,9 +419,9 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,1));
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
-		gainsRessource.add(new Ressource(ressourceType.TABLETTE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
+		gainsRessource.add(new Ressource(RessourceEnum.TABLETTE,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
 		
@@ -434,10 +433,10 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,2));
-		coutsRessource.add(new Ressource(ressourceType.TISSU,1));
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
-		gainsRessource.add(new Ressource(ressourceType.COMPAS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,2));
+		coutsRessource.add(new Ressource(RessourceEnum.TISSU,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
+		gainsRessource.add(new Ressource(RessourceEnum.COMPAS,1));
 		coutsCarte.add(dispensaire);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(6);
@@ -450,10 +449,10 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.FER,2));
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
-		coutsRessource.add(new Ressource(ressourceType.TISSU,1));
-		gainsRessource.add(new Ressource(ressourceType.ENGRENAGE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,2));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.TISSU,1));
+		gainsRessource.add(new Ressource(RessourceEnum.ENGRENAGE,1));
 		coutsCarte.add(laboratoire);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
@@ -466,10 +465,10 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,2));
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
-		gainsRessource.add(new Ressource(ressourceType.TABLETTE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,2));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.TABLETTE,1));
 		coutsCarte.add(bibliotheque);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
@@ -482,9 +481,9 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,3));
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
-		gainsRessource.add(new Ressource(ressourceType.COMPAS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,3));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.COMPAS,1));
 		coutsCarte.add(ecole);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
@@ -497,10 +496,10 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,1));
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
-		coutsRessource.add(new Ressource(ressourceType.TISSU,1));
-		gainsRessource.add(new Ressource(ressourceType.ENGRENAGE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
+		coutsRessource.add(new Ressource(RessourceEnum.TISSU,1));
+		gainsRessource.add(new Ressource(RessourceEnum.ENGRENAGE,1));
 		coutsCarte.add(ecole);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
@@ -517,7 +516,7 @@ public class Bibliotheque {
 		 * ! Cartes Bleues !
 		*/
 		
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,3));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,3));
 		ajoutParNbrJoueur.add(4);
 		ajoutParNbrJoueur.add(7);
 		
@@ -529,8 +528,8 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,1));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,3));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,3));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
 		
@@ -542,7 +541,7 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,2));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
 		
@@ -554,7 +553,7 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,2));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(6);
 		
@@ -566,8 +565,8 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,3));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,5));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,3));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,5));
 		coutsCarte.add(bains);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
@@ -580,10 +579,10 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,1));
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,1));
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,3));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,3));
 		coutsCarte.add(autel);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(6);
@@ -596,9 +595,9 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,1));
-		coutsRessource.add(new Ressource(ressourceType.FER,2));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,4));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,4));
 		coutsCarte.add(theatre);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
@@ -611,9 +610,9 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,2));
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,4));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,2));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,4));
 		coutsCarte.add(scriptorium);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
@@ -626,12 +625,12 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,2));
-		coutsRessource.add(new Ressource(ressourceType.FER,1));
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
-		coutsRessource.add(new Ressource(ressourceType.TISSU,1));
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,7));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,2));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
+		coutsRessource.add(new Ressource(RessourceEnum.TISSU,1));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,7));
 		coutsCarte.add(temple);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(6);
@@ -644,9 +643,9 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,1));
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,2));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,5));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,5));
 		coutsCarte.add(statue);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
@@ -659,10 +658,10 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
-		coutsRessource.add(new Ressource(ressourceType.FER,1));
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,2));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,6));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,6));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
 		ajoutParNbrJoueur.add(6);
@@ -675,14 +674,14 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
-		coutsRessource.add(new Ressource(ressourceType.TISSU,1));
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,1));
-		coutsRessource.add(new Ressource(ressourceType.BOIS,1));
-		coutsRessource.add(new Ressource(ressourceType.FER,1));
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,1));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,8));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
+		coutsRessource.add(new Ressource(RessourceEnum.TISSU,1));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,8));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
 		
@@ -694,10 +693,10 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.FER,1));
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,1));
-		coutsRessource.add(new Ressource(ressourceType.BOIS,2));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,6));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,6));
 		coutsCarte.add(bibliotheque);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
@@ -714,8 +713,8 @@ public class Bibliotheque {
 		 * ! Cartes Rouges !
 		*/
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,1));
-		gainsRessource.add(new Ressource(ressourceType.JETONCOMBAT,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,1));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
 		
@@ -727,8 +726,8 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.FER,1));
-		gainsRessource.add(new Ressource(ressourceType.JETONCOMBAT,1));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,1));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
 		
@@ -740,8 +739,8 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,1));
-		gainsRessource.add(new Ressource(ressourceType.JETONCOMBAT,1));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,1));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
 		
@@ -753,8 +752,8 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,3));
-		gainsRessource.add(new Ressource(ressourceType.JETONCOMBAT,2));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,3));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,2));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
 		
@@ -766,9 +765,9 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,1));
-		coutsRessource.add(new Ressource(ressourceType.FER,2));
-		gainsRessource.add(new Ressource(ressourceType.JETONCOMBAT,2));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,2));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,2));
 		ajoutParNbrJoueur.add(4);
 		ajoutParNbrJoueur.add(6);
 		ajoutParNbrJoueur.add(7);
@@ -780,10 +779,10 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.FER,1));
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,1));
-		coutsRessource.add(new Ressource(ressourceType.BOIS,1));
-		gainsRessource.add(new Ressource(ressourceType.JETONCOMBAT,2));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,1));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,1));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,2));
 		coutsCarte.add(officine);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
@@ -795,9 +794,9 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,2));
-		coutsRessource.add(new Ressource(ressourceType.FER,1));
-		gainsRessource.add(new Ressource(ressourceType.JETONCOMBAT,2));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,2));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,1));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,2));
 		coutsCarte.add(atelier);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(6);
@@ -809,9 +808,9 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,1));
-		coutsRessource.add(new Ressource(ressourceType.FER,2));
-		gainsRessource.add(new Ressource(ressourceType.JETONCOMBAT,3));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,2));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,3));
 		coutsCarte.add(muraille);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
@@ -823,9 +822,9 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,3));
-		coutsRessource.add(new Ressource(ressourceType.FER,1));
-		gainsRessource.add(new Ressource(ressourceType.JETONCOMBAT,3));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,3));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,1));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,3));
 		coutsCarte.add(placeDarmes);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
@@ -838,10 +837,10 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.FER,1));
-		coutsRessource.add(new Ressource(ressourceType.BOIS,2));
-		coutsRessource.add(new Ressource(ressourceType.TISSU,1));
-		gainsRessource.add(new Ressource(ressourceType.JETONCOMBAT,3));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,2));
+		coutsRessource.add(new Ressource(RessourceEnum.TISSU,1));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,3));
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
 		ajoutParNbrJoueur.add(7);
@@ -853,9 +852,9 @@ public class Bibliotheque {
 											,ajoutParNbrJoueur);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,1));
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,3));
-		gainsRessource.add(new Ressource(ressourceType.JETONCOMBAT,3));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,3));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,3));
 		coutsCarte.add(laboratoire);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
@@ -884,7 +883,7 @@ public class Bibliotheque {
 		
 		et = EffetType.DONNEOR;
 		joueurAffecter.add(JoueurAffecter.MOI);
-		ressourceBonus.add(new Ressource(ressourceType.OR,5));
+		ressourceBonus.add(new Ressource(RessourceEnum.OR,5));
 		taverne.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
@@ -901,10 +900,10 @@ public class Bibliotheque {
 		
 		et = EffetType.REDUCTIONPRIX;
 		joueurAffecter.add(JoueurAffecter.DROITE);
-		ressourceBonus.add(new Ressource(ressourceType.ARGILE,1));
-		ressourceBonus.add(new Ressource(ressourceType.PIERRE,1));
-		ressourceBonus.add(new Ressource(ressourceType.FER,1));
-		ressourceBonus.add(new Ressource(ressourceType.BOIS,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.ARGILE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.PIERRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.FER,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.BOIS,1));
 		comptoirEst.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
@@ -921,10 +920,10 @@ public class Bibliotheque {
 		
 		et = EffetType.REDUCTIONPRIX;
 		joueurAffecter.add(JoueurAffecter.GAUCHE);
-		ressourceBonus.add(new Ressource(ressourceType.ARGILE,1));
-		ressourceBonus.add(new Ressource(ressourceType.PIERRE,1));
-		ressourceBonus.add(new Ressource(ressourceType.FER,1));
-		ressourceBonus.add(new Ressource(ressourceType.BOIS,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.ARGILE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.PIERRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.FER,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.BOIS,1));
 		comptoirOuest.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
@@ -942,17 +941,17 @@ public class Bibliotheque {
 		et = EffetType.REDUCTIONPRIX;
 		joueurAffecter.add(JoueurAffecter.GAUCHE);
 		joueurAffecter.add(JoueurAffecter.DROITE);
-		ressourceBonus.add(new Ressource(ressourceType.TISSU,1));
-		ressourceBonus.add(new Ressource(ressourceType.VERRE,1));
-		ressourceBonus.add(new Ressource(ressourceType.PARCHEMIN,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.TISSU,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.VERRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.PARCHEMIN,1));
 		marche.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,2));
-		gainsRessource.add(new Ressource(ressourceType.TISSU,1));
-		gainsRessource.add(new Ressource(ressourceType.VERRE,1));
-		gainsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,2));
+		gainsRessource.add(new Ressource(RessourceEnum.TISSU,1));
+		gainsRessource.add(new Ressource(RessourceEnum.VERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
 		coutsCarte.add(comptoirEst);
 		coutsCarte.add(comptoirOuest);
 		ajoutParNbrJoueur.add(3);
@@ -967,11 +966,11 @@ public class Bibliotheque {
 											,true);
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,2));
-		gainsRessource.add(new Ressource(ressourceType.ARGILE,1));
-		gainsRessource.add(new Ressource(ressourceType.PIERRE,1));
-		gainsRessource.add(new Ressource(ressourceType.FER,1));
-		gainsRessource.add(new Ressource(ressourceType.BOIS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,2));
+		gainsRessource.add(new Ressource(RessourceEnum.ARGILE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.FER,1));
+		gainsRessource.add(new Ressource(RessourceEnum.BOIS,1));
 		coutsCarte.add(marche);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
@@ -1000,7 +999,7 @@ public class Bibliotheque {
 		joueurAffecter.add(JoueurAffecter.GAUCHE);
 		joueurAffecter.add(JoueurAffecter.DROITE);
 		carteAffecter.add(CarteMarron.class);
-		ressourceBonus.add(new Ressource(ressourceType.OR,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.OR,1));
 		vignoble.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
@@ -1020,14 +1019,14 @@ public class Bibliotheque {
 		joueurAffecter.add(JoueurAffecter.GAUCHE);
 		joueurAffecter.add(JoueurAffecter.DROITE);
 		carteAffecter.add(CarteGrise.class);
-		ressourceBonus.add(new Ressource(ressourceType.OR,2));
+		ressourceBonus.add(new Ressource(RessourceEnum.OR,2));
 		bazar.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.TISSU,1));
-		coutsRessource.add(new Ressource(ressourceType.FER,1));
-		coutsRessource.add(new Ressource(ressourceType.BOIS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.TISSU,1));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,1));
 		coutsCarte.add(forum);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
@@ -1042,19 +1041,19 @@ public class Bibliotheque {
 		et = EffetType.ORPARCARTE;
 		joueurAffecter.add(JoueurAffecter.MOI);
 		carteAffecter.add(CarteMarron.class);
-		ressourceBonus.add(new Ressource(ressourceType.OR,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.OR,1));
 		port.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		resetAll();
 		et = EffetType.POINTSPARCARTE;
 		joueurAffecter.add(JoueurAffecter.MOI);
 		carteAffecter.add(CarteMarron.class);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,1));
 		port.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
 		coutsCarte.add(caravanserail);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(6);
@@ -1069,19 +1068,19 @@ public class Bibliotheque {
 		et = EffetType.ORPARCARTE;
 		joueurAffecter.add(JoueurAffecter.MOI);
 		carteAffecter.add(CarteJaune.class);
-		ressourceBonus.add(new Ressource(ressourceType.OR,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.OR,1));
 		phare.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		resetAll();
 		et = EffetType.POINTSPARCARTE;
 		joueurAffecter.add(JoueurAffecter.MOI);
 		carteAffecter.add(CarteJaune.class);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,1));
 		phare.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,2));
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,2));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
 		ajoutParNbrJoueur.add(4);
 		ajoutParNbrJoueur.add(6);
 		CarteJaune chambreDeCommerce = new CarteJaune("Chambre de Commerce"
@@ -1095,19 +1094,19 @@ public class Bibliotheque {
 		et = EffetType.ORPARCARTE;
 		joueurAffecter.add(JoueurAffecter.MOI);
 		carteAffecter.add(CarteGrise.class);
-		ressourceBonus.add(new Ressource(ressourceType.OR,2));
+		ressourceBonus.add(new Ressource(RessourceEnum.OR,2));
 		chambreDeCommerce.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		resetAll();
 		et = EffetType.POINTSPARCARTE;
 		joueurAffecter.add(JoueurAffecter.MOI);
 		carteAffecter.add(CarteGrise.class);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,2));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,2));
 		chambreDeCommerce.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.FER,1));
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,2));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,2));
 		coutsCarte.add(dispensaire);
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
@@ -1122,12 +1121,12 @@ public class Bibliotheque {
 		
 		et = EffetType.ORPARETAPE;
 		joueurAffecter.add(JoueurAffecter.MOI);
-		ressourceBonus.add(new Ressource(ressourceType.OR,3));
+		ressourceBonus.add(new Ressource(RessourceEnum.OR,3));
 		arene.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		resetAll();
 		et = EffetType.POINTSPARETAPE;
 		joueurAffecter.add(JoueurAffecter.MOI);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,1));
 		arene.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
@@ -1136,10 +1135,10 @@ public class Bibliotheque {
 		 * ! Cartes Violettes !
 		*/
 		
-		coutsRessource.add(new Ressource(ressourceType.FER,2));
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,1));
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,1));
-		coutsRessource.add(new Ressource(ressourceType.BOIS,1));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,2));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,1));
 		CarteViolette guildeDesTravailleurs = new CarteViolette("Guilde des Travailleurs"
 											,3
 											,coutsRessource
@@ -1152,13 +1151,13 @@ public class Bibliotheque {
 		joueurAffecter.add(JoueurAffecter.DROITE);
 		joueurAffecter.add(JoueurAffecter.GAUCHE);
 		carteAffecter.add(CarteMarron.class);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,1));
 		guildeDesTravailleurs.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.FER,2));
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,2));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,2));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,2));
 		CarteViolette guildeDesArtisans = new CarteViolette("Guilde des Artisans"
 											,3
 											,coutsRessource
@@ -1171,14 +1170,14 @@ public class Bibliotheque {
 		joueurAffecter.add(JoueurAffecter.DROITE);
 		joueurAffecter.add(JoueurAffecter.GAUCHE);
 		carteAffecter.add(CarteGrise.class);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,2));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,2));
 		guildeDesArtisans.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.TISSU,1));
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.TISSU,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
 		CarteViolette guildeDesCommercants = new CarteViolette("Guilde des Commerçants"
 											,3
 											,coutsRessource
@@ -1191,14 +1190,14 @@ public class Bibliotheque {
 		joueurAffecter.add(JoueurAffecter.DROITE);
 		joueurAffecter.add(JoueurAffecter.GAUCHE);
 		carteAffecter.add(CarteJaune.class);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,1));
 		guildeDesCommercants.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,3));
-		coutsRessource.add(new Ressource(ressourceType.TISSU,1));
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,3));
+		coutsRessource.add(new Ressource(RessourceEnum.TISSU,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
 		CarteViolette guildeDesPhilosophes = new CarteViolette("Guilde des Philosophes"
 											,3
 											,coutsRessource
@@ -1211,13 +1210,13 @@ public class Bibliotheque {
 		joueurAffecter.add(JoueurAffecter.DROITE);
 		joueurAffecter.add(JoueurAffecter.GAUCHE);
 		carteAffecter.add(CarteVerte.class);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,1));
 		guildeDesPhilosophes.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,3));
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,3));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
 		CarteViolette guildeDesEspions = new CarteViolette("Guilde des Espions"
 											,3
 											,coutsRessource
@@ -1230,14 +1229,14 @@ public class Bibliotheque {
 		joueurAffecter.add(JoueurAffecter.DROITE);
 		joueurAffecter.add(JoueurAffecter.GAUCHE);
 		carteAffecter.add(CarteRouge.class);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,1));
 		guildeDesEspions.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.FER,2));
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,1));
-		coutsRessource.add(new Ressource(ressourceType.TISSU,1));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,2));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.TISSU,1));
 		CarteViolette guildeDesStrateges = new CarteViolette("Guilde des Stratèges"
 											,3
 											,coutsRessource
@@ -1249,14 +1248,14 @@ public class Bibliotheque {
 		et = EffetType.POINTSPARJETONDEFAITE;
 		joueurAffecter.add(JoueurAffecter.DROITE);
 		joueurAffecter.add(JoueurAffecter.GAUCHE);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,1));
 		guildeDesStrateges.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,3));
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,3));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
 		CarteViolette guildeDesArmateurs= new CarteViolette("Guilde des Armateurs"
 											,3
 											,coutsRessource
@@ -1268,29 +1267,29 @@ public class Bibliotheque {
 		et = EffetType.POINTSPARCARTE;
 		joueurAffecter.add(JoueurAffecter.MOI);
 		carteAffecter.add(CarteMarron.class);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,1));
 		guildeDesArmateurs.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		resetAll();
 		et = EffetType.POINTSPARCARTE;
 		joueurAffecter.add(JoueurAffecter.MOI);
 		carteAffecter.add(CarteGrise.class);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,1));
 		guildeDesArmateurs.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		resetAll();
 		et = EffetType.POINTSPARCARTE;
 		joueurAffecter.add(JoueurAffecter.MOI);
 		carteAffecter.add(CarteViolette.class);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,1));
 		guildeDesArmateurs.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,2));
-		coutsRessource.add(new Ressource(ressourceType.FER,2));
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,1));
-		gainsRessource.add(new Ressource(ressourceType.COMPAS,1));
-		gainsRessource.add(new Ressource(ressourceType.ENGRENAGE,1));
-		gainsRessource.add(new Ressource(ressourceType.TABLETTE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,2));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,2));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,1));
+		gainsRessource.add(new Ressource(RessourceEnum.COMPAS,1));
+		gainsRessource.add(new Ressource(RessourceEnum.ENGRENAGE,1));
+		gainsRessource.add(new Ressource(RessourceEnum.TABLETTE,1));
 		CarteViolette guildeDesScientifiques= new CarteViolette("Guilde des Scientifiques"
 											,3
 											,coutsRessource
@@ -1301,9 +1300,9 @@ public class Bibliotheque {
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,3));
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,1));
-		coutsRessource.add(new Ressource(ressourceType.TISSU,1));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,3));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.TISSU,1));
 		CarteViolette guildeDesMagistrats = new CarteViolette("Guilde des Magistrats"
 											,3
 											,coutsRessource
@@ -1316,14 +1315,14 @@ public class Bibliotheque {
 		joueurAffecter.add(JoueurAffecter.DROITE);
 		joueurAffecter.add(JoueurAffecter.GAUCHE);
 		carteAffecter.add(CarteBleue.class);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,1));
 		guildeDesMagistrats.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
 		
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,2));
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,2));
-		coutsRessource.add(new Ressource(ressourceType.VERRE,1));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,2));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,2));
+		coutsRessource.add(new Ressource(RessourceEnum.VERRE,1));
 		CarteViolette guildeDesBatisseurs = new CarteViolette("Guilde des Bâtisseurs"
 											,3
 											,coutsRessource
@@ -1336,7 +1335,7 @@ public class Bibliotheque {
 		joueurAffecter.add(JoueurAffecter.MOI);
 		joueurAffecter.add(JoueurAffecter.DROITE);
 		joueurAffecter.add(JoueurAffecter.GAUCHE);
-		ressourceBonus.add(new Ressource(ressourceType.POINTVICTOIRE,1));
+		ressourceBonus.add(new Ressource(RessourceEnum.POINTVICTOIRE,1));
 		guildeDesBatisseurs.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		
 		resetAll();
@@ -1422,95 +1421,95 @@ public class Bibliotheque {
 		
 		// ! Plateaux !
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,2));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,3));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,3));
 		Etape etape1 = new Etape(1,coutsRessource,gainsRessource);
 		resetAll();
 		etapes.add(etape1);
 		
-		coutsRessource.add(new Ressource(ressourceType.ARGILE,3));
-		gainsRessource.add(new Ressource(ressourceType.JETONCOMBAT,2));
+		coutsRessource.add(new Ressource(RessourceEnum.ARGILE,3));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,2));
 		Etape etape2 = new Etape(2,coutsRessource,gainsRessource);
 		resetAll();
 		etapes.add(etape2);
 		
-		coutsRessource.add(new Ressource(ressourceType.FER,4));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,7));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,4));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,7));
 		Etape etape3 = new Etape(3,coutsRessource,gainsRessource);
 		resetAll();
 		etapes.add(etape3);
 		
 		Plateau leColosseDeRhodes = new Plateau("Le Colosse de Rhodes"
-											,new Ressource(ressourceType.FER,1)
+											,new Ressource(RessourceEnum.FER,1)
 											,etapes);
 		etapes.clear();
 		
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,2));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,3));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,3));
 		etape1 = new Etape(1,coutsRessource,gainsRessource);
 		resetAll();
 		etapes.add(etape1);
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,3));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,5));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,3));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,5));
 		etape2 = new Etape(2,coutsRessource,gainsRessource);
 		resetAll();
 		etapes.add(etape2);
 		
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,4));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,7));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,4));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,7));
 		etape3 = new Etape(3,coutsRessource,gainsRessource);
 		resetAll();
 		etapes.add(etape3);
 		
 		Plateau laGrandePyramideDeGizeh = new Plateau("La Grande Pyramide De Gizeh"
-											,new Ressource(ressourceType.PIERRE,1)
+											,new Ressource(RessourceEnum.PIERRE,1)
 											,etapes);
 		etapes.clear();
 		
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,2));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,3));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,3));
 		etape1 = new Etape(1,coutsRessource,gainsRessource);
 		resetAll();
 		etapes.add(etape1);
 		
-		coutsRessource.add(new Ressource(ressourceType.BOIS,2));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,5));
+		coutsRessource.add(new Ressource(RessourceEnum.BOIS,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,5));
 		etape2 = new Etape(2,coutsRessource,gainsRessource);
 		resetAll();
 		etapes.add(etape2);
 		
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,2));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,7));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,7));
 		etape3 = new Etape(3,coutsRessource,gainsRessource);
 		resetAll();
 		etapes.add(etape3);
 		
-		Plateau leTempleDartemis = new Plateau("Le Temple d'Art�mis"
-											,new Ressource(ressourceType.PARCHEMIN,1)
+		Plateau leTempleDartemis = new Plateau("Le Temple d'Art�mis"
+											,new Ressource(RessourceEnum.PARCHEMIN,1)
 											,etapes);
 		etapes.clear();
 		
-		coutsRessource.add(new Ressource(ressourceType.PIERRE,2));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,3));
+		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,3));
 		etape1 = new Etape(1,coutsRessource,gainsRessource);
 		resetAll();
 		etapes.add(etape1);
 		
-		coutsRessource.add(new Ressource(ressourceType.FER,2));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,5));
+		coutsRessource.add(new Ressource(RessourceEnum.FER,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,5));
 		etape2 = new Etape(2,coutsRessource,gainsRessource);
 		resetAll();
 		etapes.add(etape2);
 		
-		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,2));
-		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,7));
+		coutsRessource.add(new Ressource(RessourceEnum.PARCHEMIN,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,7));
 		etape3 = new Etape(3,coutsRessource,gainsRessource);
 		resetAll();
 		etapes.add(etape3);
 		
 		Plateau lePhareDalexandrie = new Plateau("Le Phare d'Alexandrie"
-											,new Ressource(ressourceType.VERRE,1)
+											,new Ressource(RessourceEnum.VERRE,1)
 											,etapes);
 		etapes.clear();
 		

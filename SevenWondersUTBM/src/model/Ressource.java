@@ -1,36 +1,15 @@
 package model;
 
-enum ressourceType
-{
-	BOIS,
-	PIERRE,
-	ARGILE,
-	FER,
-	TISSU,
-	VERRE,
-	PARCHEMIN,
-	
-	OR,
-	
-	POINTVICTOIRE,
-	
-	JETONCOMBAT,
-	
-	ENGRENAGE,
-	COMPAS,
-	TABLETTE;
-}
-
 public class Ressource 
 {
-	private ressourceType nom;
+	private RessourceEnum nom;
 	private int number;
 	
 	public void setNumber(int number) {
 		this.number = number;
 	}
 
-	public ressourceType getNom() {
+	public RessourceEnum getNom() {
 		return nom;
 	}
 
@@ -38,7 +17,7 @@ public class Ressource
 		return number;
 	}
 
-	public Ressource(ressourceType nom, int number) 
+	public Ressource(RessourceEnum nom, int number) 
 	{
 		this.nom = nom;
 		this.number = number;

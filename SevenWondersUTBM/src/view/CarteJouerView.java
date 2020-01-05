@@ -7,7 +7,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.FlowPane;
 import model.carte.Carte;
-import model.carte.CarteJaune;
 
 
 public class CarteJouerView extends FlowPane {

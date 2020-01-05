@@ -141,11 +141,11 @@ public class Joueur
 				if(constructible) 
 				{
 					constructible = true;
-					ArrayList<Ressource> coutsRessource = new ArrayList<Ressource>(c.getCoutsRessource()); // La liste des couts à remplir | Le but réussir à la vider ! Le reste permettra de vérifier l'achat.
+					ArrayList<Ressource> coutsRessource = new ArrayList<Ressource>(c.getCoutsRessource()); // La liste des couts ï¿½ remplir | Le but rï¿½ussir ï¿½ la vider ! Le reste permettra de vï¿½rifier l'achat.
 					int tempOr = or;
 					for(Ressource r : new ArrayList<Ressource>(coutsRessource)) 
 					{
-						if(r.getNom().equals(ressourceType.OR))
+						if(r.getNom().equals(RessourceEnum.OR))
 						{
 							tempOr -= r.getNumber();
 							if(tempOr < 0) 
@@ -280,22 +280,29 @@ public class Joueur
 						}
 						if(coutsRessource.isEmpty()) 
 						{
-							jouable.add(c);	// Possède les ressources
-							System.out.println("Je possède les ressources pour "+c);
+							jouable.add(c);	// Possï¿½de les ressources
+							System.out.println("Je possï¿½de les ressources pour "+c);
 						}
 						else
 						{
 							nonjouable.add(c);	// Pas les ressources
-							System.out.println("Je NE possède PAS les ressources pour "+c);
+							System.out.println("Je NE possï¿½de PAS les ressources pour "+c);
 							for(ArrayList<Ressource> lr : restes) 
 							{
 								// ArrayList<ArrayList<Ressource>> copieRestes = new ArrayList<ArrayList<Ressource>>(restes);
+<<<<<<< HEAD
 								ArrayList<Ressource> achatsPossibleDroite = new ArrayList<Ressource>();
 								ArrayList<Ressource> achatsPossibleGauche = new ArrayList<Ressource>();
 								
 								ArrayList<Ressource> copieLr = new ArrayList<Ressource>(lr);
 								
 								for(Ressource rBesoin : lr)
+=======
+								ArrayList<Ressource> achatsDroite = new ArrayList<Ressource>(); 
+								ArrayList<Ressource> achatsGauche = new ArrayList<Ressource>(); 
+								// Pour chaque lr -> Si monOr >= OrDemander -> ( y associï¿½ une MAP d'achat droit (ressource+orDemander) et une MAP d'achat (ressource+orDemander) gauche )
+								for(Ressource rBesoin : new ArrayList<Ressource>(lr)) 
+>>>>>>> branch 'master' of https://github.com/Akropaka/7Wonders.git
 								{
 									for(Carte cTerrainDroite : this.getJoueurDroit().getTerrain())
 									{
@@ -376,20 +383,20 @@ public class Joueur
 					}
 					else
 					{
-						System.out.println("Je NE possède PAS assez d'or pour "+c);
+						System.out.println("Je NE possï¿½de PAS assez d'or pour "+c);
 						nonjouable.add(c);	// Pas assez d'or
 					}
 				}
 				else
 				{
-					jouable.add(c);	// Possède les cartes précédentes
-					System.out.println("Je possède la carte précédente pour "+c);
+					jouable.add(c);	// Possï¿½de les cartes prï¿½cï¿½dentes
+					System.out.println("Je possï¿½de la carte prï¿½cï¿½dente pour "+c);
 				}
 			}
 			else
 			{
-				nonjouable.add(c);	// Carte déjà sur le Terrain
-				System.out.println("Cette carte est déjà sur le terrain "+c);
+				nonjouable.add(c);	// Carte dï¿½jï¿½ sur le Terrain
+				System.out.println("Cette carte est dï¿½jï¿½ sur le terrain "+c);
 			}
 		}
 	}
@@ -419,7 +426,7 @@ public class Joueur
 	{
 		for(Ressource r : c.getCoutsRessource())
 		{
-			if(r.getNom().equals(ressourceType.OR)) 
+			if(r.getNom().equals(RessourceEnum.OR)) 
 			{
 				or-=r.getNumber();
 			}

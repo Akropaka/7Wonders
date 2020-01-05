@@ -26,7 +26,7 @@ public class ChoiceView extends FlowPane {
 			//TODO w.mdt.etape(w.hv.getSelected());
 			;});
 		vendre.setOnMouseClicked(event -> {
-			//TODO w.mdt.vendre(w.hv.getSelected());
+			 w.manager.vendre(w.hand.getSelected());
 			;});
 
 		setTranslateY(50);
