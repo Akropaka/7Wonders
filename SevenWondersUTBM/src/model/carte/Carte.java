@@ -15,21 +15,29 @@ public abstract class Carte implements Cloneable
 	}
 
 	private int age;
-	private List<Ressource> coutsRessource;
-	private List<Ressource> gainsRessource;
-	private List<Carte> coutsCarte;
+	private ArrayList<Ressource> coutsRessource;
+	private ArrayList<Ressource> gainsRessource;
+	private ArrayList<Carte> coutsCarte;
+	
+	public ArrayList<Ressource> getCoutsRessource() 
+	{
+		return coutsRessource;
+	}
+
 	private List<Integer> ajoutParNbrJoueur;
 	
-	public List<Integer> getAjoutParNbrJoueur() {
+	public List<Integer> getAjoutParNbrJoueur() 
+	{
 		return ajoutParNbrJoueur;
 	}
 
-	public int getAge() {
+	public int getAge() 
+	{
 		return age;
 	}
 
-	public Carte(String nom, int age, List<Ressource> coutsRessource, List<Ressource> gainsRessource,
-			List<Carte> coutsCarte, List<Integer> ajoutParNbrJoueur) 
+	public Carte(String nom, int age, List<Ressource> coutsRessource, ArrayList<Ressource> gainsRessource,
+			ArrayList<Carte> coutsCarte, List<Integer> ajoutParNbrJoueur) 
 	{
 		this.nom = nom;
 		this.age = age;
@@ -52,5 +60,10 @@ public abstract class Carte implements Cloneable
 	public Object clone()throws CloneNotSupportedException
 	{  
 		return super.clone();
+	}
+
+	public List<Carte> getCoutsCarte() 
+	{
+		return coutsCarte;
 	}
 }

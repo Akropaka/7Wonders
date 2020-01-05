@@ -5,18 +5,19 @@ import java.util.List;
 import java.util.Set;
 
 import model.Bonus;
+import model.Choisisable;
 import model.Effectable;
 import model.EffetType;
 import model.JoueurAffecter;
 import model.Ressource;
 
-public class CarteJaune extends Carte implements Effectable {
+public class CarteJaune extends Carte implements Effectable,Choisisable {
 
 	private List<Bonus> bonus;
 	boolean possedeChoix = false;
 	
-	public CarteJaune(String nom, int age, List<Ressource> coutsRessource, List<Ressource> gainsRessource,
-			List<Carte> coutsCarte, List<Integer> ajoutParNbrJoueur, boolean possedeChoix) 
+	public CarteJaune(String nom, int age, ArrayList<Ressource> coutsRessource, ArrayList<Ressource> gainsRessource,
+			ArrayList<Carte> coutsCarte, List<Integer> ajoutParNbrJoueur, boolean possedeChoix) 
 	{
 		super(nom, age, coutsRessource, gainsRessource, coutsCarte, ajoutParNbrJoueur);
 		this.possedeChoix = possedeChoix;
@@ -36,5 +37,11 @@ public class CarteJaune extends Carte implements Effectable {
 	public Object clone()throws CloneNotSupportedException
 	{  
 		return super.clone();
+	}
+
+	@Override
+	public boolean possedeChoix() 
+	{
+		return possedeChoix;
 	}
 }

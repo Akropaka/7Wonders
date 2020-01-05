@@ -30,7 +30,6 @@ public class Window extends Application {
 		hv = new HandView();
 		
 		mdt = new ManageurDeTour(this);
-		mdt.remplirPile(2);
 		
 		hv.setCarteListe(mdt.getJoueurs().get(0).getMain());
 		primaryStage.setTitle("7 Wonders - UTBM");

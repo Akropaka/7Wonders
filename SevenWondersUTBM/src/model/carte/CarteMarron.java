@@ -1,16 +1,23 @@
 package model.carte;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import model.Choisisable;
 import model.Ressource;
 
-public class CarteMarron extends Carte{
+public class CarteMarron extends Carte implements Choisisable{
 	
 	boolean possedeChoix = false;
 	
-	public CarteMarron(String nom, int age, List<Ressource> coutsRessource, List<Ressource> gainsRessource,
-			List<Carte> coutsCarte, List<Integer> ajoutParNbrJoueur, boolean possedeChoix) 
+	public boolean possedeChoix() 
+	{
+		return possedeChoix;
+	}
+
+	public CarteMarron(String nom, int age, ArrayList<Ressource> coutsRessource, ArrayList<Ressource> gainsRessource,
+			ArrayList<Carte> coutsCarte, List<Integer> ajoutParNbrJoueur, boolean possedeChoix) 
 	{
 		super(nom, age, coutsRessource, gainsRessource, coutsCarte, ajoutParNbrJoueur);
 		this.possedeChoix = possedeChoix;

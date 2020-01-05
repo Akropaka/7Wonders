@@ -6,24 +6,32 @@ import java.util.List;
 import model.carte.*;
 
 public class Bibliotheque {
-	private List<Carte> listeCarte;
+	private ArrayList<Carte> listeCarte;
 	private int nbrJoueur;
 	
-	List<Ressource> coutsRessource;
-	List<Ressource> gainsRessource;
-	List<Carte> coutsCarte;
-	List<Integer> ajoutParNbrJoueur;
+	ArrayList<Ressource> coutsRessource;
+	ArrayList<Ressource> gainsRessource;
+	ArrayList<Carte> coutsCarte;
+	ArrayList<Integer> ajoutParNbrJoueur;
 	
 	private EffetType et = EffetType.AUCUN;
-	private List<JoueurAffecter> joueurAffecter;
-	private List<Class<? extends Carte>> carteAffecter;
-	private List<Ressource> ressourceBonus;
+	private ArrayList<JoueurAffecter> joueurAffecter;
+	private ArrayList<Class<? extends Carte>> carteAffecter;
+	private ArrayList<Ressource> ressourceBonus;
 	
+	private ArrayList<Plateau> plateaux;
+	private ArrayList<Etape> etapes;
 	
-	public List<Carte> getListeCarte() {
+	public ArrayList<Carte> getListeCarte() 
+	{
 		return listeCarte;
 	}
 
+	public ArrayList<Plateau> getListePlateaux()
+	{
+		return plateaux;
+	}
+	
 	public void resetAll() 
 	{
 		coutsRessource.clear();
@@ -45,6 +53,9 @@ public class Bibliotheque {
 		joueurAffecter = new ArrayList<JoueurAffecter>();
 		carteAffecter = new ArrayList<Class<? extends Carte>>();
 		ressourceBonus = new ArrayList<Ressource>();
+		
+		plateaux = new ArrayList<Plateau>();
+		etapes = new ArrayList<Etape>();
 		
 		listeCarte = new ArrayList<Carte>();
 		
@@ -1408,5 +1419,104 @@ public class Bibliotheque {
 		listeCarte.add(cavite);
 		listeCarte.add(chantier);
 		listeCarte.add(filon);
+		
+		// ! Plateaux !
+		
+		coutsRessource.add(new Ressource(ressourceType.BOIS,2));
+		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,3));
+		Etape etape1 = new Etape(1,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape1);
+		
+		coutsRessource.add(new Ressource(ressourceType.ARGILE,3));
+		gainsRessource.add(new Ressource(ressourceType.JETONCOMBAT,2));
+		Etape etape2 = new Etape(2,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape2);
+		
+		coutsRessource.add(new Ressource(ressourceType.FER,4));
+		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,7));
+		Etape etape3 = new Etape(3,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape3);
+		
+		Plateau leColosseDeRhodes = new Plateau("Le Colosse de Rhodes"
+											,new Ressource(ressourceType.FER,1)
+											,etapes);
+		etapes.clear();
+		
+		coutsRessource.add(new Ressource(ressourceType.PIERRE,2));
+		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,3));
+		etape1 = new Etape(1,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape1);
+		
+		coutsRessource.add(new Ressource(ressourceType.BOIS,3));
+		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,5));
+		etape2 = new Etape(2,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape2);
+		
+		coutsRessource.add(new Ressource(ressourceType.PIERRE,4));
+		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,7));
+		etape3 = new Etape(3,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape3);
+		
+		Plateau laGrandePyramideDeGizeh = new Plateau("La Grande Pyramide De Gizeh"
+											,new Ressource(ressourceType.PIERRE,1)
+											,etapes);
+		etapes.clear();
+		
+		coutsRessource.add(new Ressource(ressourceType.PIERRE,2));
+		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,3));
+		etape1 = new Etape(1,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape1);
+		
+		coutsRessource.add(new Ressource(ressourceType.BOIS,2));
+		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,5));
+		etape2 = new Etape(2,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape2);
+		
+		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,2));
+		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,7));
+		etape3 = new Etape(3,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape3);
+		
+		Plateau leTempleDartemis = new Plateau("Le Temple d'Artémis"
+											,new Ressource(ressourceType.PARCHEMIN,1)
+											,etapes);
+		etapes.clear();
+		
+		coutsRessource.add(new Ressource(ressourceType.PIERRE,2));
+		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,3));
+		etape1 = new Etape(1,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape1);
+		
+		coutsRessource.add(new Ressource(ressourceType.FER,2));
+		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,5));
+		etape2 = new Etape(2,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape2);
+		
+		coutsRessource.add(new Ressource(ressourceType.PARCHEMIN,2));
+		gainsRessource.add(new Ressource(ressourceType.POINTVICTOIRE,7));
+		etape3 = new Etape(3,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape3);
+		
+		Plateau lePhareDalexandrie = new Plateau("Le Phare d'Alexandrie"
+											,new Ressource(ressourceType.VERRE,1)
+											,etapes);
+		etapes.clear();
+		
+		plateaux.add(leColosseDeRhodes);
+		plateaux.add(laGrandePyramideDeGizeh);
+		plateaux.add(leTempleDartemis);
+		plateaux.add(lePhareDalexandrie);
 	}
 }

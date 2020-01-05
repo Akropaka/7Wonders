@@ -15,21 +15,120 @@ public class ManageurDeTour
 	private Window w;
 	private List<Carte> pile;
 	private List<Carte> defausse;
+	private List<Plateau> plateaux;
 	
 	public ManageurDeTour(Window w) 
 	{
 		this.w = w;
-		joueurs = new ArrayList<Joueur>();
-		joueurs.add(new Joueur("Thomas"));
-		joueurs.add(new Joueur("Louis"));
-		joueurs.add(new Joueur("Ryan"));
-		joueurs.add(new Joueur("Olivier"));
+		
+		this.bibliotheque = new Bibliotheque();
+		plateaux = new ArrayList<Plateau>(bibliotheque.getListePlateaux());
 
+		joueurs = new ArrayList<Joueur>();
 		pile = new ArrayList<Carte>();
 		defausse = new ArrayList<Carte>();
 		
-		this.bibliotheque = new Bibliotheque();
-
+		demandeJoueurs(3);
+		attribuePlateauAleatoirement();
+		remplirPile(1);
+		
+		for(Joueur j : joueurs) 
+		{
+			donnerOr(j, 2);
+		}
+		
+		update(joueurs.get(0),0);
+	}
+	
+	public void update(Joueur j,int tour) 
+	{
+		doitJouer(j);
+		if(j.getJoueurDroit().equals(joueurs.get(0)))
+		{
+			for(int i = 0; i<joueurs.size() ;++i)
+			{
+				echangerMain(joueurs.get(i),joueurs.get(i).getJoueurDroit());
+			}
+			update(j.getJoueurDroit(),tour+1);
+		}
+		else
+		{
+			update(j.getJoueurDroit(),tour);
+		}
+	}
+	
+	public void demandeJoueurs(int number) 
+	{
+		for(int i=0; i<number ;++i) 
+		{
+			String nom;
+			boolean continuer = false;
+			Scanner sc = new Scanner(System.in);
+			while(continuer == false)
+			{
+				continuer = true;
+				int numero = i+1;
+				System.out.println("Entrez le nom du Joueur n° : "+numero);
+				nom = sc.nextLine();
+				if(nom.isEmpty()) 
+				{
+					continuer = false;
+					System.out.println("Erreur dans la saisie, votre nom est vide");
+				}
+				else
+				{
+					for(Joueur j : joueurs) 
+					{
+						if(nom.equals(j.getNom()))
+						{
+							continuer = false;
+							System.out.println("Erreur dans la saisie, ce nom est déjà prit !");
+							break;
+						}
+					}
+				}
+				if(continuer) 
+				{
+					ajoutJoueur(nom);
+				}
+			}
+		}
+		for(int i=0; i<joueurs.size();++i) // Set les joueurs droits & gauches
+		{
+			if(i==0) 
+			{
+				joueurs.get(i).setJoueurGauche(joueurs.get(joueurs.size()-1));
+			}
+			else
+			{
+				joueurs.get(i).setJoueurGauche(joueurs.get(i-1));
+			}
+			
+			if(i==joueurs.size()-1) 
+			{
+				joueurs.get(i).setJoueurDroit(joueurs.get(0));
+			}
+			else
+			{
+				joueurs.get(i).setJoueurDroit(joueurs.get(i+1));
+			}
+		}
+	}
+	
+	public void attribuePlateauAleatoirement() 
+	{
+		Collections.shuffle(plateaux);
+		int i = 0;
+		for(Joueur j : joueurs) 
+		{
+			j.ajoutPlateau(plateaux.get(i));
+			++i;
+		}
+	}
+	
+	public void ajoutJoueur(String name) 
+	{
+		joueurs.add(new Joueur(name));
 	}
 	
 	public void remplirPile(int age) 
@@ -50,10 +149,6 @@ public class ManageurDeTour
 		}
 		Collections.shuffle(pile);
 		distribuer();
-		for(Joueur j : joueurs)
-		{
-			afficherMain(j);
-		}
 	}
 	
 	public void distribuer() 
@@ -72,6 +167,7 @@ public class ManageurDeTour
 	public void doitJouer(Joueur j) 
 	{
 		System.out.println("C'est Ã  votre tour "+j.getNom());
+		afficherPlateau(j);
 		afficherTerrain(j);
 		afficherMain(j);
 		j.calculJouabilite();
@@ -85,13 +181,25 @@ public class ManageurDeTour
 			String arguments[] = commande.split("\\s+");
 			if(arguments[0].equals("jouer")) 
 			{
-				for(Carte c : j.getMain()) 
+				for(Carte c : new ArrayList<Carte>(j.getMain())) 
 				{
-					if(arguments[1].equals(c.getNom())) 
+					String nom = "";
+					for(int i=1;i<arguments.length;++i)
+					{
+						nom += arguments[i];
+						if(i!=arguments.length-1) 
+						{
+							nom += " ";
+						}
+					}
+					
+					if(nom.equals(c.getNom())) 
 					{
 						if(j.peutJouer(c))
 						{
 							j.joue(c);
+							System.out.println("J'ai joué "+c);
+							aJouer = true;
 						}
 						else if(j.peutAcheter(c)) 
 						{
@@ -114,7 +222,32 @@ public class ManageurDeTour
 					}
 				}
 			}
+			if(arguments[0].equals("vendre")) 
+			{
+				for(Carte c : new ArrayList<Carte>(j.getMain())) 
+				{
+					String nom = "";
+					for(int i=1;i<arguments.length;++i)
+					{
+						nom += arguments[i];
+						if(i!=arguments.length-1) 
+						{
+							nom += " ";
+						}
+					}
+					if(nom.equals(c.getNom())) 
+					{
+						j.vend(c);
+						aJouer = true;
+					}
+				}
+			}
 		}
+	}
+	
+	public void donnerOr(Joueur j, int montant)
+	{
+		j.setOr(j.getOr()+montant);
 	}
 	
 	public void afficherMain(Joueur j)
@@ -136,6 +269,17 @@ public class ManageurDeTour
 		{
 			//w.cv.set
 			System.out.print(c);
+		}
+		System.out.println();
+	}
+	
+	public void afficherPlateau(Joueur j) 
+	{
+		System.out.print("Plateau : "+j.getPlateau());
+		System.out.println();
+		for(Etape e : j.getPlateau().getEtapes()) 
+		{
+			System.out.println(e);
 		}
 		System.out.println();
 	}
