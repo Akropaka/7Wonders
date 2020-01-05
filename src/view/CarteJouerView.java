@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.layout.FlowPane;
 import model.carte.Carte;
@@ -17,6 +18,7 @@ public class CarteJouerView extends FlowPane {
 	ArrayList<CardView> lstCarte;
 	
 	public CarteJouerView() {
+		super(Orientation.VERTICAL);
 		setPadding(new Insets(150,0,0,0));
 		setMaxSize(WIDTH,HEIGHT);
 		setTranslateX(-Window.WIDTH/2+WIDTH/2);
@@ -29,7 +31,6 @@ public class CarteJouerView extends FlowPane {
 		for(Carte c:list) {
 			CardView cv = new CardView(c,false);
 			setMargin(cv,new Insets(-200,0,0,0));
-
 			getChildren().add(cv);
 		}
 		setWidth((CardView.WIDTH+10)*list.size()+20);
