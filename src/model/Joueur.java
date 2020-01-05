@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -26,7 +27,7 @@ public class Joueur
 		return joueurGauche;
 	}
 	
-	private Map<Ressource,Integer> prixRessource;
+	private Map<RessourceEnum,Integer> prixRessource;
 	
 	public void setJoueurDroit(Joueur joueurDroit) 
 	{
@@ -95,6 +96,16 @@ public class Joueur
 		achetable = new ArrayList<Carte>();
 		nonjouable = new ArrayList<Carte>();
 		this.nom = nom;
+		
+		prixRessource = new HashMap<RessourceEnum,Integer>();
+		
+		prixRessource.put(RessourceEnum.ARGILE,2);
+		prixRessource.put(RessourceEnum.BOIS,2);
+		prixRessource.put(RessourceEnum.FER,2);
+		prixRessource.put(RessourceEnum.PIERRE,2);
+		prixRessource.put(RessourceEnum.PARCHEMIN,2);
+		prixRessource.put(RessourceEnum.VERRE,2);
+		prixRessource.put(RessourceEnum.TISSU,2);
 	}
 	
 	public void prixDefaut() 
@@ -290,19 +301,12 @@ public class Joueur
 							for(ArrayList<Ressource> lr : restes) 
 							{
 								// ArrayList<ArrayList<Ressource>> copieRestes = new ArrayList<ArrayList<Ressource>>(restes);
-<<<<<<< HEAD
 								ArrayList<Ressource> achatsPossibleDroite = new ArrayList<Ressource>();
 								ArrayList<Ressource> achatsPossibleGauche = new ArrayList<Ressource>();
 								
 								ArrayList<Ressource> copieLr = new ArrayList<Ressource>(lr);
 								
 								for(Ressource rBesoin : lr)
-=======
-								ArrayList<Ressource> achatsDroite = new ArrayList<Ressource>(); 
-								ArrayList<Ressource> achatsGauche = new ArrayList<Ressource>(); 
-								// Pour chaque lr -> Si monOr >= OrDemander -> ( y associ� une MAP d'achat droit (ressource+orDemander) et une MAP d'achat (ressource+orDemander) gauche )
-								for(Ressource rBesoin : new ArrayList<Ressource>(lr)) 
->>>>>>> branch 'master' of https://github.com/Akropaka/7Wonders.git
 								{
 									for(Carte cTerrainDroite : this.getJoueurDroit().getTerrain())
 									{
@@ -377,7 +381,28 @@ public class Joueur
 										achatsPossibleGauche.add(rBesoin);
 									}
 								}
-								//
+								ArrayList<Triplet<Ressource,Joueur,Integer>> toutCombinaison = new ArrayList<Triplet<Ressource,Joueur,Integer>>();
+								
+								for(Ressource r : achatsPossibleDroite)
+								{
+									toutCombinaison.add(new Triplet<Ressource,Joueur,Integer>(r,this.getJoueurDroit(),prixRessource.get(r.getNom())));
+								}
+								for(Ressource r : achatsPossibleGauche)
+								{
+									toutCombinaison.add(new Triplet<Ressource,Joueur,Integer>(r,this.getJoueurGauche(),prixRessource.get(r.getNom())));
+								}
+								
+								ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>> choixAchat = new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>();
+								
+								for(int i=0;i<toutCombinaison.size();++i)
+								{
+									//for(int j=0;j<factorielle(toutCombinaison.size())/(factorielle(i+1)*)
+									ArrayList<Triplet<Ressource,Joueur,Integer>> temp = new ArrayList<Triplet<Ressource,Joueur,Integer>>();
+									for(Triplet<Ressource,Joueur,Integer> triplet : toutCombinaison)
+									{
+										
+									}
+								}
 							}
 						}
 					}
@@ -399,6 +424,11 @@ public class Joueur
 				System.out.println("Cette carte est d�j� sur le terrain "+c);
 			}
 		}
+	}
+	
+	public int factorielle(int n)
+	{
+		return  n <= 1 ? 1 : n * factorielle(n - 1);
 	}
 	
 	public boolean peutJouer(Carte c) 

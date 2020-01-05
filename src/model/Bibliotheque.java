@@ -520,7 +520,7 @@ public class Bibliotheque {
 		ajoutParNbrJoueur.add(4);
 		ajoutParNbrJoueur.add(7);
 		
-		CarteVerte preteurSurGages = new CarteVerte("Prêteur sur Gages"
+		CarteBleue preteurSurGages = new CarteBleue("Prêteur sur Gages"
 											,1
 											,coutsRessource
 											,gainsRessource
@@ -533,7 +533,7 @@ public class Bibliotheque {
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
 		
-		CarteVerte bains = new CarteVerte("Bains"
+		CarteBleue bains = new CarteBleue("Bains"
 											,1
 											,coutsRessource
 											,gainsRessource
@@ -545,7 +545,7 @@ public class Bibliotheque {
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
 		
-		CarteVerte autel = new CarteVerte("Autel"
+		CarteBleue autel = new CarteBleue("Autel"
 											,1
 											,coutsRessource
 											,gainsRessource
@@ -557,7 +557,7 @@ public class Bibliotheque {
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(6);
 		
-		CarteVerte theatre = new CarteVerte("Théâtre"
+		CarteBleue theatre = new CarteBleue("Théâtre"
 											,1
 											,coutsRessource
 											,gainsRessource
@@ -571,7 +571,7 @@ public class Bibliotheque {
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
 		
-		CarteVerte aqueduc = new CarteVerte("Aqueduc"
+		CarteBleue aqueduc = new CarteBleue("Aqueduc"
 											,2
 											,coutsRessource
 											,gainsRessource
@@ -587,7 +587,7 @@ public class Bibliotheque {
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(6);
 		
-		CarteVerte temple = new CarteVerte("Temple"
+		CarteBleue temple = new CarteBleue("Temple"
 											,2
 											,coutsRessource
 											,gainsRessource
@@ -602,7 +602,7 @@ public class Bibliotheque {
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
 		
-		CarteVerte statue = new CarteVerte("Statue"
+		CarteBleue statue = new CarteBleue("Statue"
 											,2
 											,coutsRessource
 											,gainsRessource
@@ -617,7 +617,7 @@ public class Bibliotheque {
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
 		
-		CarteVerte tribunal = new CarteVerte("Tribunal"
+		CarteBleue tribunal = new CarteBleue("Tribunal"
 											,2
 											,coutsRessource
 											,gainsRessource
@@ -635,7 +635,7 @@ public class Bibliotheque {
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(6);
 		
-		CarteVerte pantheon = new CarteVerte("Panthéon"
+		CarteBleue pantheon = new CarteBleue("Panthéon"
 											,3
 											,coutsRessource
 											,gainsRessource
@@ -650,7 +650,7 @@ public class Bibliotheque {
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(4);
 		
-		CarteVerte jardins = new CarteVerte("Jardins"
+		CarteBleue jardins = new CarteBleue("Jardins"
 											,3
 											,coutsRessource
 											,gainsRessource
@@ -666,7 +666,7 @@ public class Bibliotheque {
 		ajoutParNbrJoueur.add(5);
 		ajoutParNbrJoueur.add(6);
 		
-		CarteVerte hotelDeVille = new CarteVerte("Hôtel de Ville"
+		CarteBleue hotelDeVille = new CarteBleue("Hôtel de Ville"
 											,3
 											,coutsRessource
 											,gainsRessource
@@ -685,7 +685,7 @@ public class Bibliotheque {
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(7);
 		
-		CarteVerte palace = new CarteVerte("Palace"
+		CarteBleue palace = new CarteBleue("Palace"
 											,3
 											,coutsRessource
 											,gainsRessource
@@ -701,7 +701,7 @@ public class Bibliotheque {
 		ajoutParNbrJoueur.add(3);
 		ajoutParNbrJoueur.add(5);
 		
-		CarteVerte senat = new CarteVerte("Sénat"
+		CarteBleue senat = new CarteBleue("Sénat"
 											,3
 											,coutsRessource
 											,gainsRessource
