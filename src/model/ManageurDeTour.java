@@ -243,7 +243,6 @@ public class ManageurDeTour
 	{
 		System.out.print("Main : ");
 		w.hand.setCarteListe(j);
-		//w.cjv.setCarteListe(j.getMain());
 
 		for(Carte c : j.getMain())
 		{

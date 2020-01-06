@@ -54,9 +54,7 @@ public class TradeView extends FlowPane{
 			
 		}
 	}
-	/*public void addTrade(ArrayList<ArrayList<Triplet<Ressource, Joueur, Integer>>> trade) {
-		
-	}*/
+
 	
 	
 }
