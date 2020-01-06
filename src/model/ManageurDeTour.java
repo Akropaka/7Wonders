@@ -92,6 +92,7 @@ public class ManageurDeTour
 			// remplir age suivant
 			++age;
 			
+			
 		}
 		if(j.getJoueurDroit().equals(joueurs.get(0)))
 		{
