@@ -171,6 +171,7 @@ public class ManageurDeTour
 		afficherTerrain(j);
 		afficherMain(j);
 		j.calculJouabilite();
+		//j.peutConstruireEtape();
 		joueur = j;
 		/*Scanner sc = new Scanner(System.in);
 		

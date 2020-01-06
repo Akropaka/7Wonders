@@ -6,11 +6,16 @@ import java.util.List;
 public class Etape 
 {
 	private int age;
-	private List<Ressource> coutsRessource;
-	private List<Ressource> gainsRessource;
+	private ArrayList<Ressource> coutsRessource;
+	private ArrayList<Ressource> gainsRessource;
 	boolean construite = false;
 	
-	public Etape(int age, List<Ressource> coutsRessource, List<Ressource> gainsRessource) 
+	public Etape()
+	{
+		age = -1;
+	}
+	
+	public Etape(int age, ArrayList<Ressource> coutsRessource, ArrayList<Ressource> gainsRessource) 
 	{
 		this.age = age;
 		this.coutsRessource = new ArrayList<Ressource>(coutsRessource);
@@ -37,11 +42,11 @@ public class Etape
 		this.age = age;
 	}
 
-	public List<Ressource> getCoutsRessource() {
+	public ArrayList<Ressource> getCoutsRessource() {
 		return coutsRessource;
 	}
 
-	public List<Ressource> getGainsRessource() {
+	public ArrayList<Ressource> getGainsRessource() {
 		return gainsRessource;
 	}
 
