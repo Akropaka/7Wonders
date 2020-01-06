@@ -20,7 +20,7 @@ public class Joueur
 	private Joueur joueurDroit;
 	private Joueur joueurGauche;
 	
-	private boolean etapeConstructible;
+	private boolean etapeConstructible = false;
 	private ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>> etapeAchetable;
 	
 	public Joueur getJoueurDroit() {
@@ -123,7 +123,20 @@ public class Joueur
 		prixRessource.put(RessourceEnum.TISSU,2);
 	}
 	
-	public void peutConstruireEtape() 
+	public void construireEtape() 
+	{
+		if(etapeConstructible)
+		{
+			
+		}
+	}
+	
+	public void achatEtape()
+	{
+		
+	}
+	
+	public void calculEtape() 
 	{
 		etapeConstructible = false;
 		etapeAchetable.clear();
@@ -137,23 +150,23 @@ public class Joueur
 				i = this.getPlateau().getEtapes().size();
 			}
 		}
-		if(e.getAge()<1)
+		if(!(e.getAge()<1))
 		{
-			
-		}
-		else
-		{
-			ArrayList<Ressource> coutsRessource = e.getCoutsRessource();
-			
+			ArrayList<Ressource> coutsRessource = new ArrayList<Ressource>();
+			for(Ressource rCouts : e.getCoutsRessource())
+			{
+				coutsRessource.add(new Ressource(rCouts));
+			}
 			if(!coutsRessource.isEmpty())
 			{
 				for(Ressource r : new ArrayList<Ressource>(coutsRessource)) 
 				{
+					Ressource copieR = new Ressource(r);
 					if(plateau.getBonusPassif().getNom().equals(r.getNom())) 	// Regarder d'abord si le terrain aide !
 					{
 						if(r.getNumber()-plateau.getBonusPassif().getNumber() > 0) 
 						{
-							r.setNumber(r.getNumber()-plateau.getBonusPassif().getNumber());
+							coutsRessource.get(coutsRessource.indexOf(r)).setNumber(r.getNumber()-plateau.getBonusPassif().getNumber());
 						}
 						else
 						{
@@ -237,7 +250,7 @@ public class Joueur
 			for(ArrayList<Ressource> lr : posibilites) 
 			{
 				ArrayList<Ressource> copieCoutsRessource = new ArrayList<Ressource>(coutsRessource);
-				for(Ressource r : new ArrayList<Ressource>(lr)) 
+				for(Ressource r : lr) 
 				{
 					for(Ressource rBesoin : new ArrayList<Ressource>(copieCoutsRessource)) 
 					{
@@ -266,10 +279,12 @@ public class Joueur
 			if(coutsRessource.isEmpty()) 
 			{
 				etapeConstructible = true;	// Poss�de les ressources
-				System.out.println("Je possède les ressources pour ETAPE : "+e);
+				System.out.println("Je possède les ressources pour "+e);
 			}
 			else
 			{
+				ArrayList<Triplet<Ressource,Joueur,Integer>> toutCombinaison = new ArrayList<Triplet<Ressource,Joueur,Integer>>();
+				
 				for(ArrayList<Ressource> lr : restes) 
 				{
 					ArrayList<Ressource> achatsPossibleDroite = new ArrayList<Ressource>();
@@ -277,7 +292,7 @@ public class Joueur
 					
 					ArrayList<Ressource> copieLr = new ArrayList<Ressource>(lr);
 					
-					for(Ressource rBesoin : new ArrayList<Ressource>(lr))
+					for(Ressource rBesoin : lr)
 					{
 						if(this.getJoueurDroit().getTerrain().isEmpty())
 						{
@@ -321,14 +336,14 @@ public class Joueur
 					
 					copieLr = new ArrayList<Ressource>(lr);
 					
-					for(Ressource rBesoin : new ArrayList<Ressource>(lr))
+					for(Ressource rBesoin : lr)
 					{
 						int nombre = rBesoin.getNumber();
 						if(this.getJoueurDroit().getTerrain().isEmpty())
 						{
 							copieLr.clear();
 						}
-						for(Carte cTerrainGauche : new ArrayList<Carte>(this.getJoueurGauche().getTerrain()))
+						for(Carte cTerrainGauche : this.getJoueurGauche().getTerrain())
 						{
 							if(cTerrainGauche instanceof CarteMarron || cTerrainGauche instanceof CarteGrise)
 							{
@@ -365,8 +380,6 @@ public class Joueur
 						
 					}
 					
-					ArrayList<Triplet<Ressource,Joueur,Integer>> toutCombinaison = new ArrayList<Triplet<Ressource,Joueur,Integer>>();
-					
 					for(Ressource r : achatsPossibleDroite)
 					{
 						toutCombinaison.add(new Triplet<Ressource,Joueur,Integer>(r,this.getJoueurDroit(),prixRessource.get(r.getNom())*r.getNumber()));
@@ -375,46 +388,48 @@ public class Joueur
 					{
 						toutCombinaison.add(new Triplet<Ressource,Joueur,Integer>(r,this.getJoueurGauche(),prixRessource.get(r.getNom())*r.getNumber()));
 					}
+					
+				}
+				
 					ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>> choixAchat = new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>();
 					
 					recursiveAddCombinaison(toutCombinaison,choixAchat,0,null);
+					
+					System.out.println(choixAchat.size());
 					
 					for(ArrayList<Triplet<Ressource,Joueur,Integer>> arrayTriplet : new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>(choixAchat))
 					{
 						int coutOr = 0;
 						boolean impossible = false;
-						for(Triplet<Ressource,Joueur,Integer> triplet : arrayTriplet)
+						for(Triplet<Ressource,Joueur,Integer> tripletTest : arrayTriplet)
 						{
-							for(Triplet<Ressource,Joueur,Integer> tripletTest : arrayTriplet)
+							if(arrayTriplet.lastIndexOf(tripletTest) != arrayTriplet.indexOf(tripletTest))
 							{
-								if(!(triplet.equals(tripletTest)) && triplet.getFirst().getNom().equals(tripletTest.getFirst().getNom()))
-								{
-									impossible = true;	// impossibilit� par l'exc�s.
-								}
+								System.out.println("Exc�s");
+								impossible = true;	// impossibilit� par l'exc�s.
 							}
-							coutOr+=triplet.getThird();
+							coutOr+=tripletTest.getThird();
 							if(coutOr>or)
 							{
 								impossible = true; 	// impossibilit� par l'or.
+								System.out.println("Exc�s Or");
 							}
-						}
-						if(impossible)
-						{
-							choixAchat.remove(arrayTriplet);
+							if(impossible)
+							{
+								choixAchat.remove(arrayTriplet);
+							}
 						}
 					}
 					if(!choixAchat.isEmpty())
 					{
-						System.out.println(choixAchat.size());
-						etapeAchetable.addAll(new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>(choixAchat));
+						etapeAchetable = new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>(choixAchat);
 						System.out.println("Je PEUX acheter ETAPE "+e);
 					}
 					else
 					{
-						etapeConstructible = false;// Pas les ressources
+						etapeConstructible = false;	// Pas les ressources
 						System.out.println("Je NE poss�de PAS les ressources pour ETAPE "+e);
 					}
-				}
 			}
 		}
 	}
@@ -458,7 +473,12 @@ public class Joueur
 				if(constructible) 
 				{
 					constructible = true;
-					ArrayList<Ressource> coutsRessource = new ArrayList<Ressource>(c.getCoutsRessource()); // La liste des couts � remplir | Le but r�ussir � la vider ! Le reste permettra de v�rifier l'achat.
+					ArrayList<Ressource> coutsRessource = new ArrayList<Ressource>();
+					for(Ressource rCouts : c.getCoutsRessource())
+					{
+						coutsRessource.add(new Ressource(rCouts));
+					}
+					//ArrayList<Ressource> coutsRessource = new ArrayList<Ressource>(c.getCoutsRessource()); // La liste des couts � remplir | Le but r�ussir � la vider ! Le reste permettra de v�rifier l'achat.
 					int tempOr = or;
 					for(Ressource r : new ArrayList<Ressource>(coutsRessource)) 
 					{
