@@ -29,7 +29,7 @@ public class CarteJouerView extends FlowPane {
 	public void setCarteListe(List<Carte> list) {
 		getChildren().clear();
 		for(Carte c:list) {
-			CardView cv = new CardView(c,false);
+			CardView cv = new CardView(c);
 			setMargin(cv,new Insets(-200,0,0,0));
 			getChildren().add(cv);
 		}

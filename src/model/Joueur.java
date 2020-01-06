@@ -60,7 +60,9 @@ public class Joueur
 	}
 
 	private ArrayList<Carte> jouable;
+	
 	private ArrayList<Tuplet<Carte,ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>>> achetable;
+	
 	private ArrayList<Carte> nonjouable;
 	
 	public String getNom() 
@@ -387,13 +389,13 @@ public class Joueur
 							{
 								if(!(triplet.equals(tripletTest)) && triplet.getFirst().getNom().equals(tripletTest.getFirst().getNom()))
 								{
-									impossible = true;	// impossibilité par l'excès.
+									impossible = true;	// impossibilitï¿½ par l'excï¿½s.
 								}
 							}
 							coutOr+=triplet.getThird();
 							if(coutOr>or)
 							{
-								impossible = true; 	// impossibilité par l'or.
+								impossible = true; 	// impossibilitï¿½ par l'or.
 							}
 						}
 						if(impossible)
@@ -722,14 +724,14 @@ public class Joueur
 									{
 										if(arrayTriplet.lastIndexOf(tripletTest) != arrayTriplet.indexOf(tripletTest))
 										{
-											System.out.println("Excès");
-											impossible = true;	// impossibilité par l'excès.
+											System.out.println("Excï¿½s");
+											impossible = true;	// impossibilitï¿½ par l'excï¿½s.
 										}
 										coutOr+=tripletTest.getThird();
 										if(coutOr>or)
 										{
-											impossible = true; 	// impossibilité par l'or.
-											System.out.println("Excès Or");
+											impossible = true; 	// impossibilitï¿½ par l'or.
+											System.out.println("Excï¿½s Or");
 										}
 										if(impossible)
 										{
@@ -842,10 +844,24 @@ public class Joueur
 				return true;
 			}
 		}
+		
 		return false;
 	}
+	
 
 	public Plateau getPlateau() {
 		return plateau;
+	}
+
+	public ArrayList<Carte> getJouable() {
+		return jouable;
+	}
+
+	public ArrayList<Carte> getNonjouable() {
+		return nonjouable;
+	}
+
+	public ArrayList<Tuplet<Carte, ArrayList<ArrayList<Triplet<Ressource, Joueur, Integer>>>>> getAchetable() {
+		return achetable;
 	}
 }

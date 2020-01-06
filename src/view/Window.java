@@ -24,6 +24,8 @@ public class Window extends Application {
 	public HandView hand ;
 	public CarteJouerView terrain;
 	public ChoiceView choice;
+	public TradeView trade;
+
 	private MainMenu menu;
 	private Label nomJoueur;
 	private Label nomJoueurTerrain;
@@ -58,10 +60,11 @@ public class Window extends Application {
 		root.getChildren().remove(menu);
 		
 		board = new BoardView();
-		hand = new HandView();
+		hand = new HandView(this);
 		terrain = new CarteJouerView();
 		choice = new ChoiceView(this);
-		
+		trade = new TradeView();
+
 		nomJoueur = new Label();
 		nomJoueur.setFont(new Font("Arial", 25));
 		nomJoueur.setTranslateY(-360);
@@ -76,6 +79,7 @@ public class Window extends Application {
 		info.setFont(new Font("Arial", 25));
 		info.setTranslateY(-410);
 	    info.setTextFill(Color.web("#e67e22"));
+	    
 		next = new ImageView(Images.get("next").getImage());
 		next.setTranslateX(800);
 		next.setTranslateY(0);
@@ -83,28 +87,32 @@ public class Window extends Application {
 
         root.getChildren().add(info);
         root.getChildren().add(nomJoueur);
-
         root.getChildren().add(terrain);
         root.getChildren().add(hand);
         root.getChildren().add(board);
         root.getChildren().add(next);
-
         root.getChildren().add(choice);	
+        root.getChildren().add(trade);
+        root.getChildren().add(nomJoueurTerrain);
+
 		manager.lancerJeu();
+		
 		voir = manager.getJoueur();
+		
+		trade.setVisible(false);
+		
 		next.setOnMouseClicked(e -> {
 			voir = voir.getJoueurDroit();
 			setNomTerrain(voir.getNom());
 			changerVue();
 		});
-        root.getChildren().add(nomJoueurTerrain);
+		
 
 	}
 	
 	public void changerVue() {
 		terrain.setCarteListe(voir.getTerrain());
 		board.setBoard(voir.getPlateau());
-		//setNom(voir.getNom());
 	}
 	
 	public void setNom(String s) {

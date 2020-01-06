@@ -29,13 +29,14 @@ public class CardView extends Pane{
 	
 	private FlowPane cout_panel;
 	private FlowPane gain_panel;
-	private String style;
+	private String style = "";
 	private String name;
 	private int x=0;
 	private int y=0;
-
+	private Carte c;
 	
-	CardView(Carte c, boolean main) {
+	CardView(Carte c, boolean main, int jouable) {
+		
 		setMaxSize(WIDTH,HEIGHT);
 		setTranslateX(x);
 		setTranslateY(y);
@@ -46,9 +47,8 @@ public class CardView extends Pane{
 		getChildren().add(cout_panel);
 		getChildren().add(gain_panel);
 
-        if(main == true) {
-            setOnMouseClicked(event -> {((HandView) getParent()).setSelected(this);drawSelected();});
-        }
+
+        
         setOnMouseEntered(event -> {setTranslateY(y-20);});
         setOnMouseExited(event -> {setTranslateY(y);});
         addCarte(c);
@@ -56,15 +56,47 @@ public class CardView extends Pane{
 		ImageView rect = new ImageView(Images.get("carte_base").getImage());
 		rect.setFitHeight( HEIGHT);
 		rect.setFitWidth(WIDTH);
+		
+        if(main == true) {
+            setOnMouseClicked(event -> {((HandView) getParent()).setSelected(this,jouable,c);drawSelected();});
+            if(jouable == 0) {
+            	drawJouable();
+            }else if(jouable ==1){
+            	drawNonJouable();
+            }else if(jouable == 2){
+            	drawAchetable();
+            }
+        }
+        
 		getChildren().add(rect);
     }
 	
+	CardView(Carte c) {
+		this(c, false, 0);
+	}
+	
+
 	void drawSelected() {
 		setStyle(style + "-fx-effect: dropshadow( one-pass-box , #2c3e50 , 80 , 0.5 , 0.5 , 0.5 );");
 	}
 	
+	void drawJouable() {
+		style += "-fx-effect: dropshadow( one-pass-box , #f1c40f , 40 , 0.6 , 0.6 , 0.6 );";
+		setStyle(style);
+	}
+	
+	void drawAchetable() {
+		style += "-fx-effect: dropshadow( one-pass-box , #2980b9 , 40 , 0.6 , 0.6 , 0.6 );";
+		setStyle(style);
+	}
+	
+	void drawNonJouable() {
+		style += "-fx-effect: dropshadow( one-pass-box , #e74c3c , 40 , 0.6 , 0.6 , 0.6 );";
+		setStyle(style);
+	}
+	
 	void drawUnSelected() {
-		setStyle(style + "-fx-effect: dropshadow( one-pass-box , black , 0 , 0.0 , 0 , 0 );;");
+		setStyle(style);
 	}
 	
 	void addCarte(Carte carte) {
