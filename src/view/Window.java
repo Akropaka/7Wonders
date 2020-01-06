@@ -2,13 +2,16 @@ package view;
 
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.Joueur;
 import model.ManageurDeTour;
 
 public class Window extends Application {
@@ -23,7 +26,11 @@ public class Window extends Application {
 	public ChoiceView choice;
 	private MainMenu menu;
 	private Label nomJoueur;
+	private Label nomJoueurTerrain;
+
 	private Label info;
+	private ImageView next;
+	private Joueur voir;
 	
 	StackPane root;
 	
@@ -59,22 +66,53 @@ public class Window extends Application {
 		nomJoueur.setFont(new Font("Arial", 25));
 		nomJoueur.setTranslateY(-360);
 		
-		info = new Label("");
+		nomJoueurTerrain = new Label();
+		nomJoueurTerrain.setFont(new Font("Arial", 25));
+		nomJoueurTerrain.setTranslateY(-HEIGHT/2+20);
+		nomJoueurTerrain.setTranslateX(-WIDTH/2+90);
+		nomJoueurTerrain.setTextFill(Color.web("#fff"));
+
+		info = new Label();
 		info.setFont(new Font("Arial", 25));
 		info.setTranslateY(-410);
 	    info.setTextFill(Color.web("#e67e22"));
-	    
+		next = new ImageView(Images.get("next").getImage());
+		next.setTranslateX(800);
+		next.setTranslateY(0);
+
+
         root.getChildren().add(info);
         root.getChildren().add(nomJoueur);
+
         root.getChildren().add(terrain);
         root.getChildren().add(hand);
         root.getChildren().add(board);
+        root.getChildren().add(next);
+
         root.getChildren().add(choice);	
 		manager.lancerJeu();
+		voir = manager.getJoueur();
+		next.setOnMouseClicked(e -> {
+			voir = voir.getJoueurDroit();
+			setNomTerrain(voir.getNom());
+			changerVue();
+		});
+        root.getChildren().add(nomJoueurTerrain);
+
+	}
+	
+	public void changerVue() {
+		terrain.setCarteListe(voir.getTerrain());
+		board.setBoard(voir.getPlateau());
+		//setNom(voir.getNom());
 	}
 	
 	public void setNom(String s) {
 		nomJoueur.setText("Joueur: " + s);
+	}
+	
+	public void setNomTerrain(String s) {
+		nomJoueurTerrain.setText(s);
 	}
 	
 	public void setInfo(String s) {

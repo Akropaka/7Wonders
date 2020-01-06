@@ -11,12 +11,14 @@ public class Images {
 	private static HashMap<String, ImagePattern> map = new HashMap<String, ImagePattern>();
 
 	public static ImagePattern get(String key) {
-		return map.get(key);
+		if(map.containsKey(key)) {
+			return map.get(key);
+		}else {
+			return map.get("no");
+		}
 	}
 	
-	public static void buildImageList() {
-		add("carte_base", "/image/carte/carte_base.png");
-		
+	public static void buildImageList() {		
 		add("TABLETTE","/image/carte/energie.png");
 		add("ENGRENAGE","/image/carte/informatique.png");
 		add("COMPAS","/image/carte/mecanique.png");
@@ -35,10 +37,15 @@ public class Images {
 		add("POINTVICTOIRE","/image/carte/victoire.png");
 		
 		add("JETONCOMBAT","/image/carte/combat.png");
-
+		
+		add("carte_base", "/image/carte/carte_base.png");
 		add("prof0","/image/carte/prof0.png");
+		
+		add("no","/image/no.jpg");
+		add("next","/image/fleche_droit.png");
+		add("Le Colosse de Rhodes","/image/plateau/rhodes.png");
 
-		System.out.println(map.size() + " images charg�es !");
+		System.out.println(map.size() + " images chargées !");
 	}
 	
 	private static void add(String name, String path) {

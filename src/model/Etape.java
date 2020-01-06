@@ -21,11 +21,35 @@ public class Etape
 	{
 		if(construite) 
 		{
-			return "V | Etape n°"+age;
+			return "V | Etape nÂ°"+age;
 		}
 		else 
 		{
-			return "X | Etape n°"+age;
+			return "X | Etape nÂ°"+age;
 		}
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public List<Ressource> getCoutsRessource() {
+		return coutsRessource;
+	}
+
+	public List<Ressource> getGainsRessource() {
+		return gainsRessource;
+	}
+
+	public boolean isConstruite() {
+		return construite;
+	}
+
+	public void setConstruite(boolean construite) {
+		this.construite = construite;
 	}
 }
