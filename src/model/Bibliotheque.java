@@ -1485,7 +1485,7 @@ public class Bibliotheque {
 		resetAll();
 		etapes.add(etape3);
 		
-		Plateau leTempleDartemis = new Plateau("Le Temple d'Art�mis"
+		Plateau leTempleDartemis = new Plateau("Le Temple d'Artémis"
 											,new Ressource(RessourceEnum.PARCHEMIN,1)
 											,etapes);
 		etapes.clear();

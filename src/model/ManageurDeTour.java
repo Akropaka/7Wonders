@@ -17,6 +17,7 @@ public class ManageurDeTour
 	private List<Carte> defausse;
 	private List<Plateau> plateaux;
 	private int tour = 0;
+	
 	private Joueur joueur;
 	
 	public ManageurDeTour(Window w) 
@@ -121,6 +122,7 @@ public class ManageurDeTour
 			}
 		}
 	}
+	
 	public void jouer(String carte) {
 		for(Carte c : new ArrayList<Carte>(joueur.getMain())) 
 		{
@@ -163,6 +165,7 @@ public class ManageurDeTour
 	public void doitJouer(Joueur j) 
 	{
 		w.setNom(j.getNom());
+		w.setNomTerrain(j.getNom());
 		System.out.println("C'est à votre tour " + j.getNom());
 		afficherPlateau(j);
 		afficherTerrain(j);
@@ -261,6 +264,7 @@ public class ManageurDeTour
 	{
 		System.out.print("Plateau : "+j.getPlateau());
 		System.out.println();
+		w.board.setBoard(j.getPlateau());
 		for(Etape e : j.getPlateau().getEtapes()) 
 		{
 			System.out.println(e);

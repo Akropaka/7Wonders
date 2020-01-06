@@ -292,12 +292,12 @@ public class Joueur
 						if(coutsRessource.isEmpty()) 
 						{
 							jouable.add(c);	// Poss�de les ressources
-							System.out.println("Je poss�de les ressources pour "+c);
+							System.out.println("Je possède les ressources pour "+c);
 						}
 						else
 						{
 							nonjouable.add(c);	// Pas les ressources
-							System.out.println("Je NE poss�de PAS les ressources pour "+c);
+							System.out.println("Je NE possède PAS les ressources pour "+c);
 							for(ArrayList<Ressource> lr : restes) 
 							{
 								// ArrayList<ArrayList<Ressource>> copieRestes = new ArrayList<ArrayList<Ressource>>(restes);
@@ -408,20 +408,20 @@ public class Joueur
 					}
 					else
 					{
-						System.out.println("Je NE poss�de PAS assez d'or pour "+c);
+						System.out.println("Je NE possède PAS assez d'or pour "+c);
 						nonjouable.add(c);	// Pas assez d'or
 					}
 				}
 				else
 				{
-					jouable.add(c);	// Poss�de les cartes pr�c�dentes
-					System.out.println("Je poss�de la carte pr�c�dente pour "+c);
+					jouable.add(c);	// Possède les cartes précédentes
+					System.out.println("Je possède la carte précédente pour "+c);
 				}
 			}
 			else
 			{
-				nonjouable.add(c);	// Carte d�j� sur le Terrain
-				System.out.println("Cette carte est d�j� sur le terrain "+c);
+				nonjouable.add(c);	// Carte déjà sur le Terrain
+				System.out.println("Cette carte est déjà sur le terrain "+c);
 			}
 		}
 	}

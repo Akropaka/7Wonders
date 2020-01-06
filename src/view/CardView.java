@@ -78,7 +78,7 @@ public class CardView extends Pane{
 	}
 	
 	void setNbrJoueur(List<Integer> list) {
-		Label label_nom = new Label(String.valueOf(list));
+		Label label_nom = new Label(String.valueOf(list).replace("[", "").replace("]", "") + "+");
 		label_nom.setFont(Font.font("Arial",FontWeight.BOLD,17));
 		label_nom.setAlignment(Pos.CENTER);
 		label_nom.setTextFill(Color.web("#fff"));

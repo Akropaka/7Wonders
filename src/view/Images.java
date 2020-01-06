@@ -43,8 +43,9 @@ public class Images {
 		
 		add("no","/image/no.jpg");
 		add("next","/image/fleche_droit.png");
+		add("Le Colosse de Rhodes","/image/plateau/rhodes.png");
 
-		System.out.println(map.size() + " images charg�es !");
+		System.out.println(map.size() + " images chargées !");
 	}
 	
 	private static void add(String name, String path) {
