@@ -135,7 +135,7 @@ public class ManageurDeTour
 				}
 				else if(joueur.peutAcheter(c)) 
 				{
-					//TODO : proposeAchat()
+					
 				}
 				else
 				{
