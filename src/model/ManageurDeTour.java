@@ -131,6 +131,7 @@ public class ManageurDeTour
 			{
 				if(joueur.peutJouer(c))
 				{
+					
 					joueur.joue(c);
 					System.out.println("J'ai joué "+c);
 					aJoue(joueur);
