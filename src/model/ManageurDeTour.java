@@ -2,7 +2,9 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import model.carte.Carte;
@@ -17,6 +19,7 @@ public class ManageurDeTour
 	private List<Carte> defausse;
 	private List<Plateau> plateaux;
 	private int tour = 0;
+	private int age = 1;
 	
 	private Joueur joueur;
 	
@@ -32,11 +35,67 @@ public class ManageurDeTour
 		defausse = new ArrayList<Carte>();
 	}
 	
+	public void faireGuerre()
+	{
+		Map<Joueur,Integer> scoresCombat = new HashMap<Joueur,Integer>();
+		for(Joueur js : joueurs)
+		{
+			int score = 0;
+			for(Carte c : js.getTerrain())
+			{
+				for(Ressource res : c.getGainsRessource())
+				{
+					if(res.getNom().equals(RessourceEnum.JETONCOMBAT))
+					{
+						score+=res.getNumber();
+					}
+				}
+			}
+			for(Etape e : js.getPlateau().getEtapes())
+			{
+				for(Ressource res : e.getGainsRessource())
+				{
+					if(res.getNom().equals(RessourceEnum.JETONCOMBAT))
+					{
+						score+=res.getNumber();
+					}
+				}
+			}
+			scoresCombat.put(js,score);
+		}
+		scoresCombat.forEach((key,value) -> 
+		{
+			if(scoresCombat.get(key.getJoueurDroit())>scoresCombat.get(key)) 
+			{
+				((Joueur)key).pointsVictoire-=1;
+			}
+			else if(scoresCombat.get(key.getJoueurDroit())<scoresCombat.get(key))
+			{
+				((Joueur)key).pointsVictoire+=age+(age-1);
+			}
+			
+			if(scoresCombat.get(key.getJoueurGauche())>scoresCombat.get(key)) 
+			{
+				((Joueur)key).pointsVictoire-=1;
+			}
+			else if(scoresCombat.get(key.getJoueurGauche())<scoresCombat.get(key))
+			{
+				((Joueur)key).pointsVictoire+=age+(age-1);
+			}
+		});
+	}
 	
 	public void aJoue(Joueur j){
+		if(tour==6)
+		{
+			faireGuerre();
+			// remplir age suivant
+			++age;
+			
+		}
 		if(j.getJoueurDroit().equals(joueurs.get(0)))
 		{
-			for(int i = 0; i<joueurs.size() ;++i)
+			for(int i = 0; i<joueurs.size()-1;++i)
 			{
 				echangerMain(joueurs.get(i),joueurs.get(i).getJoueurDroit());
 			}

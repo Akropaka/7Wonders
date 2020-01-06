@@ -20,6 +20,8 @@ public class Joueur
 	private Joueur joueurDroit;
 	private Joueur joueurGauche;
 	
+	public int pointsVictoire = 0;
+	
 	private boolean etapeConstructible = false;
 	private ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>> etapeAchetable;
 	
@@ -834,6 +836,10 @@ public class Joueur
 			{
 				or-=r.getNumber();
 			}
+		}
+		if(c instanceof Effectable) 
+		{
+			((Effectable) c).faitEffet();
 		}
 		terrain.add(c);
 		main.remove(c);
