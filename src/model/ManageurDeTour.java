@@ -225,7 +225,7 @@ public class ManageurDeTour
 	
 	public void doitJouer(Joueur j) 
 	{
-		w.setNom(j.getNom());
+		w.setNom("Joueur: " + j.getNom() + " \nOr: " + j.getOr() + " \nAge: " + age);
 		w.setNomTerrain(j.getNom());
 		System.out.println("C'est à votre tour " + j.getNom());
 		j.calculJouabilite();
@@ -303,7 +303,6 @@ public class ManageurDeTour
 	{
 		System.out.print("Main : ");
 		w.hand.setCarteListe(j);
-		//w.cjv.setCarteListe(j.getMain());
 
 		for(Carte c : j.getMain())
 		{

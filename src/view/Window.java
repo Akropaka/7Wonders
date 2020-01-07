@@ -67,7 +67,9 @@ public class Window extends Application {
 
 		nomJoueur = new Label();
 		nomJoueur.setFont(new Font("Arial", 25));
-		nomJoueur.setTranslateY(-360);
+		nomJoueur.setTranslateY(260);
+		nomJoueur.setTranslateX(-530);
+
 		
 		nomJoueurTerrain = new Label();
 		nomJoueurTerrain.setFont(new Font("Arial", 25));
@@ -116,7 +118,7 @@ public class Window extends Application {
 	}
 	
 	public void setNom(String s) {
-		nomJoueur.setText("Joueur: " + s);
+		nomJoueur.setText(s);
 	}
 	
 	public void setNomTerrain(String s) {

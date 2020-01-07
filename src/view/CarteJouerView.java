@@ -19,7 +19,7 @@ public class CarteJouerView extends FlowPane {
 	
 	public CarteJouerView() {
 		super(Orientation.VERTICAL);
-		setPadding(new Insets(150,0,0,0));
+		setPadding(new Insets(200,0,0,0));
 		setMaxSize(WIDTH,HEIGHT);
 		setTranslateX(-Window.WIDTH/2+WIDTH/2);
 		setAlignment(Pos.CENTER);
@@ -30,7 +30,7 @@ public class CarteJouerView extends FlowPane {
 		getChildren().clear();
 		for(Carte c:list) {
 			CardView cv = new CardView(c);
-			setMargin(cv,new Insets(-200,0,0,0));
+			setMargin(cv,new Insets(-230,0,0,0));
 			getChildren().add(cv);
 		}
 		setWidth((CardView.WIDTH+10)*list.size()+20);
