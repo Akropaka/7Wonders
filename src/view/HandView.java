@@ -25,6 +25,7 @@ public class HandView extends FlowPane {
 		this.w = w;
 		setMaxSize(WIDTH,HEIGHT);
 		setTranslateY(-150);
+		setTranslateX(150);
 		setAlignment(Pos.CENTER);
 		setStyle("-fx-background-color: #b2bec3;" + "-fx-background-radius: 6;");
 	}

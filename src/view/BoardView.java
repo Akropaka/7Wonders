@@ -40,7 +40,7 @@ public class BoardView extends Pane{
 		bonus.setTranslateY(10);
 
 		setMaxSize(WIDTH, HEIGHT);
-		setTranslateX(0);
+		setTranslateX(100);
 		setTranslateY(Window.HEIGHT/2 - HEIGHT/2);
 
 		getChildren().add(label_nom);
@@ -74,7 +74,7 @@ public class BoardView extends Pane{
 	public void setNom(String s)
 	{
 		label_nom.setText(s);
-		label_nom.setFont(Font.font("Arial",FontWeight.BOLD,17));
+		label_nom.setFont(Font.font("Arial",FontWeight.BOLD,20));
 		label_nom.setTextFill(Color.web("#fff"));
 		label_nom.setTranslateX(10);
 		label_nom.setTranslateY(10);

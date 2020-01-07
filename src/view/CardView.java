@@ -34,8 +34,10 @@ public class CardView extends Pane{
 	private String name;
 	private int x=0;
 	private int y=0;
+	private Carte c;
 	
 	CardView(Carte c, boolean main, int jouable) {
+		this.c = c;
 		
 		setMaxSize(WIDTH,HEIGHT);
 		setTranslateX(x);
@@ -116,6 +118,9 @@ public class CardView extends Pane{
 	}
 	
 	void setNbrJoueur(List<Integer> list) {
+		if(c instanceof CarteViolette) {
+			return;
+		}
 		Label label_nom = new Label(String.valueOf(list).replace("[", "").replace("]", "") + "+");
 		label_nom.setFont(Font.font("Arial",FontWeight.BOLD,17));
 		label_nom.setAlignment(Pos.CENTER);
@@ -191,7 +196,12 @@ public class CardView extends Pane{
 	void setNom(String nom) {
 		name = nom;
 		Label label_nom = new Label(nom);
-		label_nom.setFont(Font.font("Arial",FontWeight.BOLD,17));
+		int txtsize = 17;
+		if(nom.length()>20) txtsize = 15;
+		label_nom.setFont(Font.font("Arial",FontWeight.BOLD,txtsize));
+		if(c instanceof CarteMarron) {
+			label_nom.setTextFill(Color.web("#fff"));
+		}
 		label_nom.setAlignment(Pos.CENTER);
 		label_nom.setTranslateY(10);
 		label_nom.layoutXProperty().bind(widthProperty().subtract(label_nom.widthProperty()).divide(2));

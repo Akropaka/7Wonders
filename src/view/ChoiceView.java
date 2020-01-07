@@ -11,12 +11,12 @@ import javafx.scene.text.FontWeight;
 public class ChoiceView extends FlowPane {
 	
 	private Window w;
-	
 	ChoiceView(Window w){
 		Button poser = new CustomButton("Poser");
 		Button constuire_etape = new CustomButton("Constuire etape");
 		Button vendre = new CustomButton("Vendre");
 		this.w = w;
+		setTranslateX(100);
 		getChildren().add(poser);
 		getChildren().add(constuire_etape);
 		getChildren().add(vendre);
@@ -31,22 +31,35 @@ public class ChoiceView extends FlowPane {
 				}else {
 					 w.manager.jouer(w.hand.getSelected());
 				}
-			}	
+			}else {
+				showError();
+			}
 			;});
 		constuire_etape.setOnMouseClicked(event -> {
-			w.manager.construireEtape(w.hand.getSelected());
+			if(w.hand.getSelected() != null) {
+				w.manager.construireEtape(w.hand.getSelected());
+			}else {
+				showError();
+			}
 			;});
 		vendre.setOnMouseClicked(event -> {
 			if(w.hand.getSelected() != null) {
 				 w.manager.vendre(w.hand.getSelected());
+			}else {
+				showError();
+
 			}
 			;});
 
 		setTranslateY(50);
 		
 	}
-
+	
+	public void showError() {
+		w.setInfo("Vous devez selectionner une carte !");
+	}
 }
+
 
 class CustomButton extends Button{
 	

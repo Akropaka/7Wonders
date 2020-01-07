@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -20,8 +21,8 @@ import model.ManageurDeTour;
 
 public class Window extends Application {
 
-	public static final int WIDTH = 1800;
-	public static final int HEIGHT = 890;
+	public static final int WIDTH = 1900;
+	public static final int HEIGHT = 1000;
 	
 	public ManageurDeTour manager;
 	public BoardView board;
@@ -72,7 +73,7 @@ public class Window extends Application {
 		nomJoueur = new Label();
 		nomJoueur.setFont(new Font("Arial", 25));
 		nomJoueur.setTranslateY(260);
-		nomJoueur.setTranslateX(-530);
+		nomJoueur.setTranslateX(-530+100);
 		nomJoueur.setTextAlignment(TextAlignment.CENTER);
 
 		
@@ -83,16 +84,16 @@ public class Window extends Application {
 		nomJoueurTerrain.setTextFill(Color.web("#fff"));
 
 		info = new Label();
-		info.setFont(new Font("Arial", 25));
-		info.setTranslateY(-410);
+		info.setFont(Font.font("Arial",FontWeight.BOLD, 25));
+		info.setTranslateY(-380);
 	    info.setTextFill(Color.web("#e67e22"));
 	    
 		next = new ImageView(Images.get("next").getImage());
 		next.setFitHeight(100);
 		next.setFitWidth(100);
 		next.setCursor(Cursor.HAND);
-		next.setTranslateX(800);
-		next.setTranslateY(0);
+		next.setTranslateX(770);
+		next.setTranslateY(100);
 
         root.getChildren().add(info);
         root.getChildren().add(nomJoueur);
