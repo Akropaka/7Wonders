@@ -55,7 +55,7 @@ public class ManageurDeTour
 			{
 				for(Ressource res : e.getGainsRessource())
 				{
-					if(res.getNom().equals(RessourceEnum.JETONCOMBAT))
+					if(res.getNom().equals(RessourceEnum.JETONCOMBAT) && e.construite)
 					{
 						score+=res.getNumber();
 					}
@@ -86,22 +86,27 @@ public class ManageurDeTour
 	}
 	
 	public void aJoue(Joueur j){
-		if(tour==6)
-		{
-			faireGuerre();
-			// remplir age suivant
-			++age;
-			
-			
-		}
 		if(j.getJoueurDroit().equals(joueurs.get(0)))
 		{
 			for(int i = 0; i<joueurs.size()-1;++i)
 			{
 				echangerMain(joueurs.get(i),joueurs.get(i).getJoueurDroit());
 			}
-			doitJouer(j.getJoueurDroit());
 			tour++;
+			if(tour==6)
+			{
+				faireGuerre();
+				// remplir age suivant
+				++age;
+				for(Joueur jr : joueurs)
+				{
+					jr.getMain().clear();
+				}
+				remplirPile(age);
+				tour=0;
+				
+			}
+			doitJouer(j.getJoueurDroit());
 		}
 		else
 		{
@@ -152,7 +157,7 @@ public class ManageurDeTour
 	
 	public void remplirPile(int age) 
 	{
-
+		pile.clear();
 		for(Carte c : bibliotheque.getListeCarte()) 
 		{
 			if(c.getAge() == age) 
