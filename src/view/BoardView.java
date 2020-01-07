@@ -22,6 +22,7 @@ public class BoardView extends Pane{
 	Label label_nom;
 	
 	BoardView() {
+		setStyle("-fx-background-color: #95a5a6;");
 		label_nom = new Label();
 		etape1 = new EtapeView();
 		etape2 = new EtapeView();
@@ -40,7 +41,6 @@ public class BoardView extends Pane{
 		bonus.setTranslateY(10);
 
 		setMaxSize(WIDTH, HEIGHT);
-		setStyle("-fx-background-color: #95a5a6;");
 		setTranslateX(0);
 		setTranslateY(Window.HEIGHT/2 - HEIGHT/2);
 

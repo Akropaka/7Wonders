@@ -1042,6 +1042,16 @@ public class Joueur
 		return plateau;
 	}
 
+	public void retirerCarte(String carte) {
+		Carte a_retirer = null;
+		for(Carte c: main) {
+			if(c.getNom().equals(carte)) {
+				a_retirer = c;
+			}
+		}
+		main.remove(a_retirer);
+	}
+	
 	public ArrayList<Carte> getJouable() {
 		return jouable;
 	}
@@ -1052,5 +1062,9 @@ public class Joueur
 
 	public ArrayList<Tuplet<Carte, ArrayList<ArrayList<Triplet<Ressource, Joueur, Integer>>>>> getAchetable() {
 		return achetable;
+	}
+
+	public void setEtapeConstructible(boolean etapeConstructible) {
+		this.etapeConstructible = etapeConstructible;
 	}
 }

@@ -210,9 +210,7 @@ public class ManageurDeTour
 		}
 
 	}
-	
-	public void etape() {} //TODO
-	
+		
 	public void vendre(String carte) {
 		for(Carte c : new ArrayList<Carte>(joueur.getMain())) 
 		{
@@ -237,49 +235,6 @@ public class ManageurDeTour
 		j.calculJouabilite();
 		j.calculEtape();
 		joueur = j;
-		/*Scanner sc = new Scanner(System.in);
-		
-		boolean aJouer = false;
-		
-		while(aJouer == false)
-		{
-			String commande = sc.nextLine();
-			String arguments[] = commande.split("\\s+");
-			if(arguments[0].equals("jouer")) 
-			{
-				
-			}
-			if(arguments[0].equals("info")) 
-			{
-				for(Carte c : j.getMain()) 
-				{
-					if(arguments[1].equals(c.getNom())) 
-					{
-						//TO DO : c.afficherInfo() | Polymorphisme
-					}
-				}
-			}
-			if(arguments[0].equals("vendre")) 
-			{
-				for(Carte c : new ArrayList<Carte>(j.getMain())) 
-				{
-					String nom = "";
-					for(int i=1;i<arguments.length;++i)
-					{
-						nom += arguments[i];
-						if(i!=arguments.length-1) 
-						{
-							nom += " ";
-						}
-					}
-					if(nom.equals(c.getNom())) 
-					{
-						j.vend(c);
-						aJouer = true;
-					}
-				}
-			}
-		}*/
 	}
 	
 	public void donnerOr(Joueur j, int montant)
@@ -301,10 +256,11 @@ public class ManageurDeTour
 		doitJouer(joueurs.get(0));
 	}
 	
-	public void construireEtape(Carte c) 
+	public void construireEtape(String c) 
 	{
 		if(joueur.isEtapeConstructible())
 		{
+			joueur.setEtapeConstructible(false);
 			boolean construite = false;
 			for(Etape e : joueur.getPlateau().getEtapes())
 			{
@@ -312,9 +268,14 @@ public class ManageurDeTour
 				{
 					e.construite = true;
 					construite = true;
-					joueur.getMain().remove(c);
+					joueur.retirerCarte(c);
 				}
 			}
+			if(construite == true) {
+				aJoue(joueur);
+			}
+		}else {
+			w.setInfo("L'étape n'est pas constructible !");
 		}
 	}
 	
