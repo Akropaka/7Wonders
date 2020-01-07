@@ -26,15 +26,17 @@ public class CarteJouerView extends FlowPane {
 		setStyle("-fx-background-color: #34495e;");
 	}
 	
+	//Le Manageur de Tour nous passe la liste des Cartes à afficher
 	public void setCarteListe(List<Carte> list) {
+		//On supprime les anciennes cartes
 		getChildren().clear();
 		for(Carte c:list) {
+			//On crée une nouvelle carte qui sera généré automatiquement
 			CardView cv = new CardView(c);
 			setMargin(cv,new Insets(-230,0,0,0));
+			//On l'ajoute à la vue
 			getChildren().add(cv);
 		}
-		setWidth((CardView.WIDTH+10)*list.size()+20);
-
 	}
 
 }
