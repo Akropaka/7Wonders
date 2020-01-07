@@ -25,6 +25,14 @@ public class Joueur
 	private boolean etapeConstructible = false;
 	private ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>> etapeAchetable;
 	
+	public boolean isEtapeConstructible() {
+		return etapeConstructible;
+	}
+
+	public ArrayList<ArrayList<Triplet<Ressource, Joueur, Integer>>> getEtapeAchetable() {
+		return etapeAchetable;
+	}
+
 	public Joueur getJoueurDroit() {
 		return joueurDroit;
 	}
@@ -130,22 +138,6 @@ public class Joueur
 		prixRessource.put(RessourceEnum.TISSU,2);
 	}
 	
-	public void construireEtape() 
-	{
-		if(etapeConstructible)
-		{
-			boolean construite = false;
-			for(Etape e : this.getPlateau().getEtapes())
-			{
-				if(!(e.construite) && !(construite))
-				{
-					e.construite = true;
-					construite = true;
-				}
-			}
-		}
-	}
-	
 	public void achatEtape()
 	{
 		
@@ -186,6 +178,23 @@ public class Joueur
 						else
 						{
 							coutsRessource.remove(r);
+						}
+					}
+					for(Etape et : this.getPlateau().getEtapes())
+					{
+						for(Ressource rBesoin : et.getGainsRessource())
+						{
+							if(et.construite)
+							{
+								if(r.getNumber()-rBesoin.getNumber() > 0) 
+								{
+									r.setNumber(r.getNumber()-rBesoin.getNumber());
+								}
+								else
+								{
+									coutsRessource.remove(r);
+								}
+							}
 						}
 					}
 				}
@@ -555,7 +564,20 @@ public class Joueur
 								}
 								for(Etape e : this.getPlateau().getEtapes())
 								{
-									
+									for(Ressource rBesoin : e.getGainsRessource())
+									{
+										if(e.construite)
+										{
+											if(r.getNumber()-rBesoin.getNumber() > 0) 
+											{
+												r.setNumber(r.getNumber()-rBesoin.getNumber());
+											}
+											else
+											{
+												coutsRessource.remove(r);
+											}
+										}
+									}
 								}
 							}
 						}
@@ -675,8 +697,8 @@ public class Joueur
 								ArrayList<Ressource> achatsPossibleGauche = new ArrayList<Ressource>();
 								
 								ArrayList<Ressource> copieLr = new ArrayList<Ressource>(lr);
-								
-								for(Ressource rBesoin : lr)
+
+								for(Ressource rBesoin : new ArrayList<Ressource>(copieLr))
 								{
 									if(this.getJoueurDroit().getTerrain().isEmpty())
 									{
@@ -720,7 +742,7 @@ public class Joueur
 								
 								copieLr = new ArrayList<Ressource>(lr);
 								
-								for(Ressource rBesoin : lr)
+								for(Ressource rBesoin : new ArrayList<Ressource>(copieLr))
 								{
 									int nombre = rBesoin.getNumber();
 									if(this.getJoueurGauche().getTerrain().isEmpty())
@@ -908,7 +930,7 @@ public class Joueur
 				}
 			}
 		}
-		if(reference.size()==compteur && !reference.isEmpty())
+		if(arrayTriplet.size()==compteur && !reference.isEmpty())
 		{
 			System.out.println("EXISTE DEJA");
 			return true;

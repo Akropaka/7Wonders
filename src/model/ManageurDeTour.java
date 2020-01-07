@@ -301,6 +301,23 @@ public class ManageurDeTour
 		doitJouer(joueurs.get(0));
 	}
 	
+	public void construireEtape(Carte c) 
+	{
+		if(joueur.isEtapeConstructible())
+		{
+			boolean construite = false;
+			for(Etape e : joueur.getPlateau().getEtapes())
+			{
+				if(!(e.construite) && !(construite))
+				{
+					e.construite = true;
+					construite = true;
+					joueur.getMain().remove(c);
+				}
+			}
+		}
+	}
+	
 	public void afficherMain(Joueur j)
 	{
 		System.out.print("Main : ");
