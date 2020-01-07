@@ -20,17 +20,21 @@ public class ChoiceView extends FlowPane {
 		setAlignment(Pos.CENTER);
 		
 		poser.setOnMouseClicked(event -> {
-			if (w.hand.isSelectedAchetable()) {
-				 w.manager.acheter(w.hand.getSelected(),w.trade.getSelected());
-			}else {
-				 w.manager.jouer(w.hand.getSelected());
-			}
+			if(w.hand.getSelected() != null) {
+				if (w.hand.isSelectedAchetable()) {
+					 w.manager.acheter(w.hand.getSelected(),w.trade.getSelected());
+				}else {
+					 w.manager.jouer(w.hand.getSelected());
+				}
+			}	
 			;});
 		constuire_etape.setOnMouseClicked(event -> {
-			//TODO w.mdt.etape(w.hv.getSelected());
+			w.manager.construireEtape(w.hand.getSelected());
 			;});
 		vendre.setOnMouseClicked(event -> {
-			 w.manager.vendre(w.hand.getSelected());
+			if(w.hand.getSelected() != null) {
+				 w.manager.vendre(w.hand.getSelected());
+			}
 			;});
 
 		setTranslateY(50);

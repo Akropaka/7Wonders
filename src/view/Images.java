@@ -30,9 +30,9 @@ public class Images {
 		
 		add("OR","/image/carte/or.png");
 		
-		add("TISSU","/image/carte/cg.png");
-		add("VERRE","/image/carte/cg.png");
-		add("PARCHEMIN","/image/carte/cg.png");
+		add("TISSU","/image/carte/alcool.png");
+		add("VERRE","/image/carte/chimie.png");
+		add("PARCHEMIN","/image/carte/electronic.png");
 
 		add("POINTVICTOIRE","/image/carte/victoire.png");
 		

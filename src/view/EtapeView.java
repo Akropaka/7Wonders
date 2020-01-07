@@ -60,6 +60,8 @@ public class EtapeView extends Pane {
 	public void setConstruite(boolean etat) {
 		if(etat == true) {
 			setStyle("-fx-background-color: #1abc9c;");
+		}else {
+			setStyle("-fx-background-color: #ecf0f1;");
 		}
 	}
 	
