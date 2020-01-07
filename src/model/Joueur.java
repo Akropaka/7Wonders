@@ -96,6 +96,11 @@ public class Joueur
 		main.add(c);
 	}
 	
+	public void donneOr(int number)
+	{
+		or+=number;
+	}
+	
 	public Joueur(String nom) 
 	{
 		main = new ArrayList<Carte>();
@@ -129,7 +134,15 @@ public class Joueur
 	{
 		if(etapeConstructible)
 		{
-			
+			boolean construite = false;
+			for(Etape e : this.getPlateau().getEtapes())
+			{
+				if(!(e.construite) && !(construite))
+				{
+					e.construite = true;
+					construite = true;
+				}
+			}
 		}
 	}
 	
@@ -341,7 +354,7 @@ public class Joueur
 					for(Ressource rBesoin : lr)
 					{
 						int nombre = rBesoin.getNumber();
-						if(this.getJoueurDroit().getTerrain().isEmpty())
+						if(this.getJoueurGauche().getTerrain().isEmpty())
 						{
 							copieLr.clear();
 						}
@@ -394,11 +407,12 @@ public class Joueur
 				}
 				
 					ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>> choixAchat = new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>();
+					ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>> possibleAchat = new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>();
 					
 					recursiveAddCombinaison(toutCombinaison,choixAchat,0,null);
 					
 					System.out.println(choixAchat.size());
-					
+					/*
 					for(ArrayList<Triplet<Ressource,Joueur,Integer>> arrayTriplet : new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>(choixAchat))
 					{
 						int coutOr = 0;
@@ -431,6 +445,31 @@ public class Joueur
 					{
 						etapeConstructible = false;	// Pas les ressources
 						System.out.println("Je NE poss�de PAS les ressources pour ETAPE "+e);
+					}
+					*/
+					for(ArrayList<Triplet<Ressource,Joueur,Integer>> arrayTriplet : choixAchat)
+					{
+						if(coutOr(arrayTriplet)<=or) 
+						{
+							if(!existDeja(arrayTriplet,possibleAchat))
+							{
+								if(estNecessaire(arrayTriplet,e.getCoutsRessource()))
+								{
+									System.out.println("Element Added");
+									possibleAchat.add(arrayTriplet);
+								}
+							}
+						}
+					}
+					if(!possibleAchat.isEmpty())
+					{
+						etapeAchetable = new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>(possibleAchat);
+						System.out.println("Je PEUX acheter "+e);
+					}
+					else
+					{
+						etapeConstructible = false;	// Pas les ressources
+						System.out.println("Je NE poss�de PAS les ressources pour "+e);
 					}
 			}
 		}
@@ -513,6 +552,10 @@ public class Joueur
 									{
 										coutsRessource.remove(r);
 									}
+								}
+								for(Etape e : this.getPlateau().getEtapes())
+								{
+									
 								}
 							}
 						}
@@ -970,7 +1013,6 @@ public class Joueur
 		return false;
 	}
 	
-
 	public Plateau getPlateau() {
 		return plateau;
 	}

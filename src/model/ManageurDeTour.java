@@ -334,6 +334,16 @@ public class ManageurDeTour
 		System.out.println();
 	}
 	
+	public void acheter(Carte c, ArrayList<Triplet<Ressource,Joueur,Integer>> possibilite)
+	{
+		jouer(c.getNom());
+		for(Triplet<Ressource,Joueur,Integer> triplet : possibilite)
+		{
+			triplet.getSecond().donneOr(triplet.getThird());
+			joueur.donneOr(-triplet.getThird());
+		}
+	}
+	
 	public void echangerMain(Joueur j1, Joueur j2) 
 	{
 		Joueur temp = new Joueur("temp");
