@@ -4,6 +4,7 @@ package view;
 import java.util.List;
 
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -39,10 +40,16 @@ public class CardView extends Pane{
 		setMaxSize(WIDTH,HEIGHT);
 		setTranslateX(x);
 		setTranslateY(y);
+		setCursor(Cursor.HAND);
+
 		cout_panel = new FlowPane();
 		gain_panel = new FlowPane();
+		
 		cout_panel.setMaxHeight(COUT_SIZE);
 		gain_panel.setMaxHeight(COUT_SIZE);
+		gain_panel.setMaxWidth(WIDTH);
+		cout_panel.setMaxWidth(WIDTH);
+
 		getChildren().add(cout_panel);
 		getChildren().add(gain_panel);
         
@@ -100,7 +107,7 @@ public class CardView extends Pane{
 	
 	void addCarte(Carte carte) {
 		setCouleur(carte);
-		setImage("prof0");
+		setImage("logo");
 		setNom(carte.getNom());
 		setNbrJoueur(carte.getAjoutParNbrJoueur());		
 		addCoutList(carte.getCoutsRessource());

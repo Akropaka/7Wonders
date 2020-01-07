@@ -39,11 +39,10 @@ public class Images {
 		add("JETONCOMBAT","/image/carte/combat.png");
 		
 		add("carte_base", "/image/carte/carte_base.png");
-		add("prof0","/image/carte/prof0.png");
+		add("logo","/image/carte/logo.png");
 		
 		add("no","/image/no.jpg");
 		add("next","/image/fleche_droit.png");
-		add("Le Colosse de Rhodes","/image/plateau/rhodes.png");
 
 		System.out.println(map.size() + " images chargées !");
 	}

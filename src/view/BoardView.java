@@ -18,17 +18,16 @@ public class BoardView extends Pane{
 	private EtapeView etape2;
 	private EtapeView etape3;
 	private ImageView bonus;
-	
-	Label label_nom;
+	private Label label_nom;
 	
 	BoardView() {
-		setStyle("-fx-background-color: #95a5a6;");
+		setStyle("-fx-background-color: #95a5a6;" + "-fx-background-radius: 10 10 0 0;");
 		label_nom = new Label();
 		etape1 = new EtapeView();
 		etape2 = new EtapeView();
 		etape3 = new EtapeView();
 		bonus = new ImageView();
-				
+		
 		etape1.setTranslateY(HEIGHT - EtapeView.HEIGHT);
 		etape2.setTranslateY(HEIGHT - EtapeView.HEIGHT);
 		etape3.setTranslateY(HEIGHT - EtapeView.HEIGHT);

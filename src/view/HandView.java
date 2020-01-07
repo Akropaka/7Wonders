@@ -18,9 +18,8 @@ public class HandView extends FlowPane {
 	
 	private String selected;
 	private boolean selectedAchetable = false;
-
-	CardView previous;
-	Window w;
+	private CardView previous;
+	private Window w;
 		
 	public HandView(Window w) {
 		this.w = w;

@@ -20,6 +20,8 @@ public class ManageurDeTour
 	private List<Plateau> plateaux;
 	private int tour = 0;
 	private int age = 1;
+	String message = "";
+
 	
 	private Joueur joueur;
 	
@@ -34,7 +36,7 @@ public class ManageurDeTour
 		pile = new ArrayList<Carte>();
 		defausse = new ArrayList<Carte>();
 	}
-	
+		
 	public void faireGuerre()
 	{
 		Map<Joueur,Integer> scoresCombat = new HashMap<Joueur,Integer>();
@@ -63,6 +65,7 @@ public class ManageurDeTour
 			}
 			scoresCombat.put(js,score);
 		}
+		
 		scoresCombat.forEach((key,value) -> 
 		{
 			if(scoresCombat.get(key.getJoueurDroit())>scoresCombat.get(key)) 
@@ -72,8 +75,9 @@ public class ManageurDeTour
 			else if(scoresCombat.get(key.getJoueurDroit())<scoresCombat.get(key))
 			{
 				((Joueur)key).pointsVictoire+=age+(age-1);
+				message += ((Joueur)key).getNom() + " gagne le combat contre " + ((Joueur)key).getJoueurDroit().getNom() + " il gagne " + age+(age-1) + " points" +"\n";
+				
 			}
-			
 			if(scoresCombat.get(key.getJoueurGauche())>scoresCombat.get(key)) 
 			{
 				((Joueur)key).pointsVictoire-=1;
@@ -81,8 +85,12 @@ public class ManageurDeTour
 			else if(scoresCombat.get(key.getJoueurGauche())<scoresCombat.get(key))
 			{
 				((Joueur)key).pointsVictoire+=age+(age-1);
+				message += ((Joueur)key).getNom() + " gagne le combat contre " + ((Joueur)key).getJoueurDroit().getNom() + " il gagne " + age+(age-1) + " points" +"\n";
 			}
 		});
+		
+		w.afficherMessageCombat(message);
+
 	}
 	
 	public void aJoue(Joueur j){
@@ -189,8 +197,6 @@ public class ManageurDeTour
 	}
 	
 	public void jouer(String carte) {
-		System.out.println("J'ai tenté de joué "+carte);
-
 		for(Carte c : new ArrayList<Carte>(joueur.getMain())) 
 		{
 
