@@ -680,7 +680,7 @@ public class Joueur
 								for(Ressource rBesoin : lr)
 								{
 									int nombre = rBesoin.getNumber();
-									if(this.getJoueurDroit().getTerrain().isEmpty())
+									if(this.getJoueurGauche().getTerrain().isEmpty())
 									{
 										copieLr.clear();
 									}
@@ -733,16 +733,17 @@ public class Joueur
 							}
 							
 								ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>> choixAchat = new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>();
+								ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>> possibleAchat = new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>();
 								
 								recursiveAddCombinaison(toutCombinaison,choixAchat,0,null);
 								
 								System.out.println(choixAchat.size());
-								
+								/*
 								for(ArrayList<Triplet<Ressource,Joueur,Integer>> arrayTriplet : new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>(choixAchat))
 								{
 									int coutOr = 0;
 									boolean impossible = false;
-									for(Triplet<Ressource,Joueur,Integer> tripletTest : arrayTriplet)
+									for(Triplet<Ressource,Joueur,Integer> tripletTest : new ArrayList<Triplet<Ressource,Joueur,Integer>>(arrayTriplet))
 									{
 										if(arrayTriplet.lastIndexOf(tripletTest) != arrayTriplet.indexOf(tripletTest))
 										{
@@ -759,11 +760,37 @@ public class Joueur
 										{
 											choixAchat.remove(arrayTriplet);
 										}
+										//arrayTriplet.remove(tripletTest);
 									}
 								}
 								if(!choixAchat.isEmpty())
 								{
 									achetable.add(new Tuplet<Carte,ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>>(c,choixAchat));
+									System.out.println("Je PEUX acheter "+c);
+								}
+								else
+								{
+									nonjouable.add(c);	// Pas les ressources
+									System.out.println("Je NE poss�de PAS les ressources pour "+c);
+								}
+								*/
+								for(ArrayList<Triplet<Ressource,Joueur,Integer>> arrayTriplet : choixAchat)
+								{
+									if(coutOr(arrayTriplet)<=or) 
+									{
+										if(!existDeja(arrayTriplet,possibleAchat))
+										{
+											if(estNecessaire(arrayTriplet,c.getCoutsRessource()))
+											{
+												System.out.println("Element Added");
+												possibleAchat.add(arrayTriplet);
+											}
+										}
+									}
+								}
+								if(!possibleAchat.isEmpty())
+								{
+									achetable.add(new Tuplet<Carte,ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>>(c,new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>(possibleAchat)));
 									System.out.println("Je PEUX acheter "+c);
 								}
 								else
@@ -793,19 +820,88 @@ public class Joueur
 		}
 	}
 	
+	private boolean estNecessaire(ArrayList<Triplet<Ressource,Joueur,Integer>> arrayTriplet, ArrayList<Ressource> reference)
+	{
+		ArrayList<Ressource> coutsRessource = new ArrayList<Ressource>();
+		for(Ressource r : reference)
+		{
+			coutsRessource.add(new Ressource(r));
+		}
+		for(Triplet<Ressource,Joueur,Integer> triplet : arrayTriplet) 
+		{
+			for(Ressource rBesoin : coutsRessource)
+			{
+				if(rBesoin.getNom().equals(triplet.getFirst().getNom()))
+				{
+					rBesoin.setNumber(rBesoin.getNumber()-triplet.getFirst().getNumber());
+				}
+			}
+		}
+		
+		for(Ressource rBesoin : coutsRessource)
+		{
+			if(rBesoin.getNumber()!=0)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean existDeja(ArrayList<Triplet<Ressource,Joueur,Integer>> arrayTriplet, ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>> reference)
+	{
+		int compteur = 0;
+		for(ArrayList<Triplet<Ressource,Joueur,Integer>> arrayTripletRef : reference)
+		{
+			for(Triplet<Ressource,Joueur,Integer> tripletRef : arrayTripletRef)
+			{
+				for(Triplet<Ressource,Joueur,Integer> triplet : arrayTriplet)
+				{
+					if(triplet.getFirst().getNom().equals(tripletRef.getFirst().getNom()) && triplet.getSecond().getNom().equals(tripletRef.getSecond().getNom()) && triplet.getThird().equals(tripletRef.getThird())) 
+					{
+						System.out.println(triplet.getSecond().getNom()+" | "+ tripletRef.getSecond().getNom());
+						compteur++;
+					}
+				}
+			}
+		}
+		if(reference.size()==compteur && !reference.isEmpty())
+		{
+			System.out.println("EXISTE DEJA");
+			return true;
+		}
+		else
+		{
+			System.out.println("N'EXISTE PAS DEJA");
+			return false;
+		}
+	}
+	
+	private int coutOr(ArrayList<Triplet<Ressource,Joueur,Integer>> arrayTriplet) 
+	{
+		int tempOr = 0;
+		for(Triplet<Ressource,Joueur,Integer> triplet : arrayTriplet)
+		{
+			tempOr+=triplet.getThird();
+		}
+		System.out.println("COUT OR : "+tempOr);
+		return tempOr;
+	}
+	
 	private void recursiveAddCombinaison(ArrayList<Triplet<Ressource,Joueur,Integer>> from, ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>> to, int i,ArrayList<Triplet<Ressource,Joueur,Integer>> aAjouter) 
 	{
 		if(i<from.size())
 		{
 			if(aAjouter==null)	
 			{
-				System.out.println("Nulified");
 				aAjouter = new ArrayList<Triplet<Ressource,Joueur,Integer>>();
 			}
 			aAjouter.add(from.get(i));
 			to.add(new ArrayList<Triplet<Ressource,Joueur,Integer>>(aAjouter));
 			recursiveAddCombinaison(from,to,i+1,aAjouter);
-			recursiveAddCombinaison(from,to,i+1,null);
+			ArrayList<Triplet<Ressource,Joueur,Integer>> sec = new ArrayList<Triplet<Ressource,Joueur,Integer>>(aAjouter);
+			sec.remove(sec.size()-1);
+			recursiveAddCombinaison(from,to,i+1,sec);
 		}
 	}
 	
