@@ -184,6 +184,8 @@ public class ManageurDeTour
 	}
 	
 	public void jouer(String carte) {
+		System.out.println("J'ai tenté de joué "+carte);
+
 		for(Carte c : new ArrayList<Carte>(joueur.getMain())) 
 		{
 
@@ -225,7 +227,7 @@ public class ManageurDeTour
 	
 	public void doitJouer(Joueur j) 
 	{
-		w.setNom("Joueur: " + j.getNom() + " \nOr: " + j.getOr() + " \nAge: " + age);
+		w.setNom("Joueur: " + j.getNom() + " \nOr: " + j.getOr() + " \nAge: " + age + "\nPoint de victoire: " + j.pointsVictoire);
 		w.setNomTerrain(j.getNom());
 		System.out.println("C'est à votre tour " + j.getNom());
 		j.calculJouabilite();
@@ -334,14 +336,14 @@ public class ManageurDeTour
 		System.out.println();
 	}
 	
-	public void acheter(Carte c, ArrayList<Triplet<Ressource,Joueur,Integer>> possibilite)
+	public void acheter(String name, ArrayList<Triplet<Ressource,Joueur,Integer>> possibilite)
 	{
-		jouer(c.getNom());
 		for(Triplet<Ressource,Joueur,Integer> triplet : possibilite)
 		{
 			triplet.getSecond().donneOr(triplet.getThird());
 			joueur.donneOr(-triplet.getThird());
 		}
+		jouer(name);
 	}
 	
 	public void echangerMain(Joueur j1, Joueur j2) 

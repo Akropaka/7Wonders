@@ -33,7 +33,6 @@ public class CardView extends Pane{
 	private String name;
 	private int x=0;
 	private int y=0;
-	private Carte c;
 	
 	CardView(Carte c, boolean main, int jouable) {
 		
@@ -47,8 +46,7 @@ public class CardView extends Pane{
 		getChildren().add(cout_panel);
 		getChildren().add(gain_panel);
         
-        setOnMouseEntered(event -> {setTranslateY(y-20);});
-        setOnMouseExited(event -> {setTranslateY(y);});
+
         addCarte(c);
         
 		ImageView rect = new ImageView(Images.get("carte_base").getImage());
@@ -65,12 +63,15 @@ public class CardView extends Pane{
             	drawAchetable();
             }
         }
-        
+        setOnMouseEntered(event -> {setTranslateY(y-20);});
+        setOnMouseExited(event -> {setTranslateY(y);});
 		getChildren().add(rect);
     }
 	
 	CardView(Carte c) {
 		this(c, false, 0);
+		y=200;
+		setTranslateY(200);
 	}
 	
 

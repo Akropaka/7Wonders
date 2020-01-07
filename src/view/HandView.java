@@ -1,8 +1,6 @@
 package view;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.FlowPane;
@@ -19,7 +17,7 @@ public class HandView extends FlowPane {
 	public static final int HEIGHT = CardView.HEIGHT + 20;
 	
 	private String selected;
-	private boolean selectedAchetable;
+	private boolean selectedAchetable = false;
 
 	CardView previous;
 	Window w;
@@ -34,9 +32,7 @@ public class HandView extends FlowPane {
 	
 	public void setCarteListe(Joueur j) {
 		getChildren().clear();
-		
-		int position = 0;
-		
+				
 		for(Carte c:j.getJouable()) {
 			CardView cv = new CardView(c,true,0);
 			setMargin(cv,new Insets(0,5,0,5));
@@ -57,7 +53,6 @@ public class HandView extends FlowPane {
 			setMargin(cv,new Insets(0,5,0,5));
 			previous = cv;
 			getChildren().add(cv);
-			int i=0;
 			w.trade.addTrade(ca.getFirst(),ca.getSecond());
 		}
 	}
@@ -68,9 +63,12 @@ public class HandView extends FlowPane {
 		previous.drawUnSelected();
 		previous = s;
 		if(type == 2) {
+			selectedAchetable = true;
 			w.trade.setVisible(true);
 			w.trade.drawTrade(c);
 		}else {
+			selectedAchetable = false;
+
 			w.trade.setVisible(false);
 		}
 		

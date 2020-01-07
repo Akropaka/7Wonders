@@ -22,7 +22,8 @@ public class CarteJouerView extends FlowPane {
 		setPadding(new Insets(200,0,0,0));
 		setMaxSize(WIDTH,HEIGHT);
 		setTranslateX(-Window.WIDTH/2+WIDTH/2);
-		setAlignment(Pos.CENTER);
+
+		setAlignment(Pos.BOTTOM_CENTER);
 		setStyle("-fx-background-color: #34495e;");
 	}
 	

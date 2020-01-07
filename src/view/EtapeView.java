@@ -57,6 +57,12 @@ public class EtapeView extends Pane {
 		cout_panel.getChildren().add(rect);
 	}
 	
+	public void setConstruite(boolean etat) {
+		if(etat == true) {
+			setStyle("-fx-background-color: #1abc9c;");
+		}
+	}
+	
 	void addGain(String nom) {
 		ImageView rect = new ImageView(Images.get(nom).getImage());
 		rect.setTranslateX(10);

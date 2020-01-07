@@ -1,6 +1,5 @@
 package view;
 
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -28,7 +27,7 @@ public class BoardView extends Pane{
 		etape2 = new EtapeView();
 		etape3 = new EtapeView();
 		bonus = new ImageView();
-		
+				
 		etape1.setTranslateY(HEIGHT - EtapeView.HEIGHT);
 		etape2.setTranslateY(HEIGHT - EtapeView.HEIGHT);
 		etape3.setTranslateY(HEIGHT - EtapeView.HEIGHT);
@@ -64,6 +63,10 @@ public class BoardView extends Pane{
 		etape3.addCoutList(p.getEtapes().get(2).getCoutsRessource());
 		etape3.addGainList(p.getEtapes().get(2).getGainsRessource());
 		
+		etape1.setConstruite(p.getEtapes().get(0).isConstruite());
+		etape2.setConstruite(p.getEtapes().get(1).isConstruite());
+		etape3.setConstruite(p.getEtapes().get(2).isConstruite());
+
 		bonus.setImage(Images.get(p.getBonusPassif().getNom().name()).getImage());
 		bonus.setFitHeight( 50);
 		bonus.setFitWidth(50);

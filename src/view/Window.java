@@ -2,13 +2,13 @@ package view;
 
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Joueur;
@@ -69,6 +69,7 @@ public class Window extends Application {
 		nomJoueur.setFont(new Font("Arial", 25));
 		nomJoueur.setTranslateY(260);
 		nomJoueur.setTranslateX(-530);
+		nomJoueur.setTextAlignment(TextAlignment.CENTER);
 
 		
 		nomJoueurTerrain = new Label();
@@ -85,7 +86,6 @@ public class Window extends Application {
 		next = new ImageView(Images.get("next").getImage());
 		next.setTranslateX(800);
 		next.setTranslateY(0);
-
 
         root.getChildren().add(info);
         root.getChildren().add(nomJoueur);
@@ -119,6 +119,9 @@ public class Window extends Application {
 	
 	public void setNom(String s) {
 		nomJoueur.setText(s);
+		trade.setVisible(false);
+
+		
 	}
 	
 	public void setNomTerrain(String s) {

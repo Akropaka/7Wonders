@@ -3,9 +3,9 @@ package view;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.FlowPane;
@@ -29,7 +29,7 @@ public class TradeView extends FlowPane{
 		super(Orientation.VERTICAL);
 		group = new ToggleGroup();
 		trades = new HashMap<Carte, ArrayList<ArrayList<Triplet<Ressource, Joueur, Integer>>>>();
-		
+		setPadding(new Insets(0, 0, 10, 0));
 		setMinSize(WIDTH,HEIGHT);
 		setMaxSize(WIDTH,HEIGHT);
 		setTranslateX(Window.WIDTH/2 - WIDTH/2 - 55 );
@@ -45,25 +45,26 @@ public class TradeView extends FlowPane{
 	public void drawTrade(Carte c) {
 		ArrayList<ArrayList<Triplet<Ressource, Joueur, Integer>>> trades_lst = trades.get(c);
 		getChildren().clear();
-		
+		selected = c;
 		int i=0;
 			for(ArrayList<Triplet<Ressource, Joueur, Integer>> possibilites : trades_lst) {
 				String possibilite_string = "";
 				for(Triplet<Ressource, Joueur, Integer> possibilite : possibilites) {
 					possibilite_string += possibilite.getFirst().getNumber() + " " + possibilite.getFirst().getNom() + " de " + possibilite.getSecond().getNom() + " pour " + possibilite.getThird()+ " OR " + "\n";
 				}
-				i++;
 			    RadioButton button1 = new RadioButton(possibilite_string);
 			    button1.setToggleGroup(group);
 			    button1.setFont(Font.font("Arial",FontWeight.BOLD,15));
 			    button1.setId(i + "");
 			    button1.setSelected(true);
 				getChildren().add(button1);
+				i++;
 		}
 		
 	}
 	
 	public ArrayList<Triplet<Ressource, Joueur, Integer>> getSelected() {
+		//System.out.println(selected.getNom());
 		return trades.get(selected).get(Integer.valueOf(((RadioButton) group.getSelectedToggle()).getId()));
 	}
 	

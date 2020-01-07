@@ -966,6 +966,9 @@ public class Joueur
 				return true;
 			}
 		}
+		if(peutAcheter(c)) {
+			return true;
+		}
 		return false;
 	}
 	
