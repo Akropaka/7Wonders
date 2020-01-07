@@ -17,7 +17,10 @@ public class HandView extends FlowPane {
 	
 	public static final int WIDTH = (CardView.WIDTH+10)*7+20;
 	public static final int HEIGHT = CardView.HEIGHT + 20;
-	String selected;
+	
+	private String selected;
+	private boolean selectedAchetable;
+
 	CardView previous;
 	Window w;
 		
@@ -75,6 +78,10 @@ public class HandView extends FlowPane {
 	
 	public String getSelected() {
 		return selected;
+	}
+
+	public boolean isSelectedAchetable() {
+		return selectedAchetable;
 	}
 	
 }

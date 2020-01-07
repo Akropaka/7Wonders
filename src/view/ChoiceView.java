@@ -20,7 +20,11 @@ public class ChoiceView extends FlowPane {
 		setAlignment(Pos.CENTER);
 		
 		poser.setOnMouseClicked(event -> {
-			 w.manager.jouer(w.hand.getSelected());
+			if (w.hand.isSelectedAchetable()) {
+				 w.manager.acheter(w.hand.getSelected(),w.trade.getSelected());
+			}else {
+				 w.manager.jouer(w.hand.getSelected());
+			}
 			;});
 		constuire_etape.setOnMouseClicked(event -> {
 			//TODO w.mdt.etape(w.hv.getSelected());

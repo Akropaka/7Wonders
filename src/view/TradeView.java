@@ -22,12 +22,12 @@ public class TradeView extends FlowPane{
 	public static final int HEIGHT = 300;
 	
 	private HashMap<Carte, ArrayList<ArrayList<Triplet<Ressource, Joueur, Integer>>>> trades;
-	
-	private int selected;
+	private ToggleGroup group;
+	private Carte selected;
 	
 	public TradeView() {
 		super(Orientation.VERTICAL);
-		
+		group = new ToggleGroup();
 		trades = new HashMap<Carte, ArrayList<ArrayList<Triplet<Ressource, Joueur, Integer>>>>();
 		
 		setMinSize(WIDTH,HEIGHT);
@@ -37,6 +37,7 @@ public class TradeView extends FlowPane{
 		setAlignment(Pos.CENTER);
 		setStyle("-fx-background-color: #b2bec3;" + "-fx-background-radius: 6;");
 	}
+	
 	public void addTrade(Carte c, ArrayList<ArrayList<Triplet<Ressource, Joueur, Integer>>> trades_lst) {
 		trades.put(c, trades_lst);
 	}
@@ -45,24 +46,26 @@ public class TradeView extends FlowPane{
 		ArrayList<ArrayList<Triplet<Ressource, Joueur, Integer>>> trades_lst = trades.get(c);
 		getChildren().clear();
 		
-		ToggleGroup group = new ToggleGroup();
-
+		int i=0;
 			for(ArrayList<Triplet<Ressource, Joueur, Integer>> possibilites : trades_lst) {
 				String possibilite_string = "";
 				for(Triplet<Ressource, Joueur, Integer> possibilite : possibilites) {
 					possibilite_string += possibilite.getFirst().getNumber() + " " + possibilite.getFirst().getNom() + " de " + possibilite.getSecond().getNom() + " pour " + possibilite.getThird()+ " OR " + "\n";
 				}
+				i++;
 			    RadioButton button1 = new RadioButton(possibilite_string);
 			    button1.setToggleGroup(group);
 			    button1.setFont(Font.font("Arial",FontWeight.BOLD,15));
-
+			    button1.setId(i + "");
 			    button1.setSelected(true);
 				getChildren().add(button1);
-
-			
 		}
+		
 	}
-
+	
+	public ArrayList<Triplet<Ressource, Joueur, Integer>> getSelected() {
+		return trades.get(selected).get(Integer.valueOf(((RadioButton) group.getSelectedToggle()).getId()));
+	}
 	
 	
 }

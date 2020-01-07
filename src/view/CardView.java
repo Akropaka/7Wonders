@@ -46,8 +46,6 @@ public class CardView extends Pane{
 		gain_panel.setMaxHeight(COUT_SIZE);
 		getChildren().add(cout_panel);
 		getChildren().add(gain_panel);
-
-
         
         setOnMouseEntered(event -> {setTranslateY(y-20);});
         setOnMouseExited(event -> {setTranslateY(y);});
@@ -77,16 +75,16 @@ public class CardView extends Pane{
 	
 
 	void drawSelected() {
-		setStyle(style + "-fx-effect: dropshadow( one-pass-box , #2c3e50 , 80 , 0.5 , 0.5 , 0.5 );");
+		setStyle(style + "-fx-effect: dropshadow( one-pass-box , #000 , 80 , 0.5 , 0.5 , 0.5 );");
 	}
 	
 	void drawJouable() {
-		style += "-fx-effect: dropshadow( one-pass-box , #f1c40f , 40 , 0.6 , 0.6 , 0.6 );";
+		style += "-fx-effect: dropshadow( one-pass-box , #2ecc71 , 40 , 0.6 , 0.6 , 0.6 );";
 		setStyle(style);
 	}
 	
 	void drawAchetable() {
-		style += "-fx-effect: dropshadow( one-pass-box , #2980b9 , 40 , 0.6 , 0.6 , 0.6 );";
+		style += "-fx-effect: dropshadow( one-pass-box , #f1c40f , 40 , 0.6 , 0.6 , 0.6 );";
 		setStyle(style);
 	}
 	
