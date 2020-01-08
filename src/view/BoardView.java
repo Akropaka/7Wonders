@@ -18,17 +18,16 @@ public class BoardView extends Pane{
 	private EtapeView etape2;
 	private EtapeView etape3;
 	private ImageView bonus;
-	
-	Label label_nom;
+	private Label label_nom;
 	
 	BoardView() {
-		setStyle("-fx-background-color: #95a5a6;");
+		setStyle("-fx-background-color: #95a5a6;" + "-fx-background-radius: 10 10 0 0;");
 		label_nom = new Label();
 		etape1 = new EtapeView();
 		etape2 = new EtapeView();
 		etape3 = new EtapeView();
 		bonus = new ImageView();
-				
+		
 		etape1.setTranslateY(HEIGHT - EtapeView.HEIGHT);
 		etape2.setTranslateY(HEIGHT - EtapeView.HEIGHT);
 		etape3.setTranslateY(HEIGHT - EtapeView.HEIGHT);
@@ -41,7 +40,7 @@ public class BoardView extends Pane{
 		bonus.setTranslateY(10);
 
 		setMaxSize(WIDTH, HEIGHT);
-		setTranslateX(0);
+		setTranslateX(100);
 		setTranslateY(Window.HEIGHT/2 - HEIGHT/2);
 
 		getChildren().add(label_nom);
@@ -75,7 +74,7 @@ public class BoardView extends Pane{
 	public void setNom(String s)
 	{
 		label_nom.setText(s);
-		label_nom.setFont(Font.font("Arial",FontWeight.BOLD,17));
+		label_nom.setFont(Font.font("Arial",FontWeight.BOLD,20));
 		label_nom.setTextFill(Color.web("#fff"));
 		label_nom.setTranslateX(10);
 		label_nom.setTranslateY(10);

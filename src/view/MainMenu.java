@@ -18,8 +18,8 @@ import javafx.scene.layout.Pane;
 public class MainMenu extends Pane {
 
 	
-	List<String> joueurs = new ArrayList<String>();
-	Window w;
+	private List<String> joueurs = new ArrayList<String>();
+	private Window w;
 	
 	MainMenu(Window w) {
 		this.w = w;

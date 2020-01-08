@@ -19,10 +19,9 @@ public class CarteJouerView extends FlowPane {
 	
 	public CarteJouerView() {
 		super(Orientation.VERTICAL);
-		setPadding(new Insets(200,0,0,0));
 		setMaxSize(WIDTH,HEIGHT);
 		setTranslateX(-Window.WIDTH/2+WIDTH/2);
-
+		setPadding(new Insets(100, 0, 0, 0));
 		setAlignment(Pos.BOTTOM_CENTER);
 		setStyle("-fx-background-color: #34495e;");
 	}
@@ -30,6 +29,7 @@ public class CarteJouerView extends FlowPane {
 	//Le Manageur de Tour nous passe la liste des Cartes à afficher
 	public void setCarteListe(List<Carte> list) {
 		//On supprime les anciennes cartes
+		if(list.size()>=13)	setTranslateX(-Window.WIDTH/2+WIDTH-20);
 		getChildren().clear();
 		for(Carte c:list) {
 			//On crée une nouvelle carte qui sera généré automatiquement

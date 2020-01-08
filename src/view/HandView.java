@@ -9,6 +9,7 @@ import model.Ressource;
 import model.Triplet;
 import model.Tuplet;
 import model.carte.Carte;
+import model.carte.CarteJaune;
 
 
 public class HandView extends FlowPane {
@@ -18,21 +19,21 @@ public class HandView extends FlowPane {
 	
 	private String selected;
 	private boolean selectedAchetable = false;
-
-	CardView previous;
-	Window w;
+	private CardView previous;
+	private Window w;
 		
 	public HandView(Window w) {
 		this.w = w;
 		setMaxSize(WIDTH,HEIGHT);
 		setTranslateY(-150);
+		setTranslateX(150);
 		setAlignment(Pos.CENTER);
 		setStyle("-fx-background-color: #b2bec3;" + "-fx-background-radius: 6;");
 	}
 	
 	public void setCarteListe(Joueur j) {
 		getChildren().clear();
-				
+
 		for(Carte c:j.getJouable()) {
 			CardView cv = new CardView(c,true,0);
 			setMargin(cv,new Insets(0,5,0,5));
