@@ -1441,7 +1441,7 @@ public class Bibliotheque {
 		resetAll();
 		etapes.add(etape3);
 		
-		Plateau leColosseDeRhodes = new Plateau("Le Colosse de Rhodes"
+		Plateau leColosseDeRhodes = new Plateau("Institut National des Sciences Appliquées"
 											,new Ressource(RessourceEnum.MATHS,1)
 											,etapes);
 		etapes.clear();
@@ -1464,7 +1464,7 @@ public class Bibliotheque {
 		resetAll();
 		etapes.add(etape3);
 		
-		Plateau laGrandePyramideDeGizeh = new Plateau("La Grande Pyramide De Gizeh"
+		Plateau laGrandePyramideDeGizeh = new Plateau("Université Technologique de Belfort-Montbéliard"
 											,new Ressource(RessourceEnum.PHYSIQUE,1)
 											,etapes);
 		etapes.clear();
@@ -1487,7 +1487,7 @@ public class Bibliotheque {
 		resetAll();
 		etapes.add(etape3);
 		
-		Plateau leTempleDartemis = new Plateau("Le Temple d'Artémis"
+		Plateau leTempleDartemis = new Plateau("Université Technologique de Compiègne"
 											,new Ressource(RessourceEnum.ELEC,1)
 											,etapes);
 		etapes.clear();
@@ -1510,8 +1510,80 @@ public class Bibliotheque {
 		resetAll();
 		etapes.add(etape3);
 		
-		Plateau lePhareDalexandrie = new Plateau("Le Phare d'Alexandrie"
+		Plateau lePhareDalexandrie = new Plateau("Université Technologique de Troyes"
 											,new Ressource(RessourceEnum.CHIMIE,1)
+											,etapes);
+		etapes.clear();
+		
+		coutsRessource.add(new Ressource(RessourceEnum.MATHS,2));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,1));
+		etape1 = new Etape(1,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape1);
+		
+		coutsRessource.add(new Ressource(RessourceEnum.INFO,1));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,5));
+		etape2 = new Etape(2,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape2);
+		
+		coutsRessource.add(new Ressource(RessourceEnum.ELEC,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,7));
+		etape3 = new Etape(3,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape3);
+		
+		Plateau laStatueDeZeus = new Plateau("Institut Universitaire de Technologie"
+											,new Ressource(RessourceEnum.MATHS,1)
+											,etapes);
+		etapes.clear();
+		
+		coutsRessource.add(new Ressource(RessourceEnum.MATHS,2));
+		coutsRessource.add(new Ressource(RessourceEnum.ELEC,1));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,2));
+		etape1 = new Etape(1,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape1);
+		
+		coutsRessource.add(new Ressource(RessourceEnum.MECA,1));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,4));
+		etape2 = new Etape(2,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape2);
+		
+		coutsRessource.add(new Ressource(RessourceEnum.INFO,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,8));
+		etape3 = new Etape(3,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape3);
+		
+		Plateau lesJadrinsSuspendus = new Plateau("Ecole Polytechnique Fédérale de Lausanne"
+											,new Ressource(RessourceEnum.MECA,1)
+											,etapes);
+		etapes.clear();
+		
+		coutsRessource.add(new Ressource(RessourceEnum.MATHS,2));
+		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,2));
+		etape1 = new Etape(1,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape1);
+		
+		coutsRessource.add(new Ressource(RessourceEnum.MECA,1));
+		coutsRessource.add(new Ressource(RessourceEnum.MATHS,3));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,6));
+		etape2 = new Etape(2,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape2);
+		
+		coutsRessource.add(new Ressource(RessourceEnum.INFO,1));
+		coutsRessource.add(new Ressource(RessourceEnum.MECA,2));
+		gainsRessource.add(new Ressource(RessourceEnum.POINTVICTOIRE,9));
+		etape3 = new Etape(3,coutsRessource,gainsRessource);
+		resetAll();
+		etapes.add(etape3);
+		
+		Plateau leMausolee = new Plateau("Mines ParisTech"
+											,new Ressource(RessourceEnum.MATHS,1)
 											,etapes);
 		etapes.clear();
 		
@@ -1519,5 +1591,8 @@ public class Bibliotheque {
 		plateaux.add(laGrandePyramideDeGizeh);
 		plateaux.add(leTempleDartemis);
 		plateaux.add(lePhareDalexandrie);
+		plateaux.add(laStatueDeZeus);
+		plateaux.add(lesJadrinsSuspendus);
+		plateaux.add(leMausolee);
 	}
 }

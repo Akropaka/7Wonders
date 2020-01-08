@@ -442,41 +442,7 @@ public class Joueur
 					recursiveAddCombinaison(toutCombinaison,choixAchat,0,null);
 					
 					System.out.println(choixAchat.size());
-					/*
-					for(ArrayList<Triplet<Ressource,Joueur,Integer>> arrayTriplet : new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>(choixAchat))
-					{
-						int coutOr = 0;
-						boolean impossible = false;
-						for(Triplet<Ressource,Joueur,Integer> tripletTest : arrayTriplet)
-						{
-							if(arrayTriplet.lastIndexOf(tripletTest) != arrayTriplet.indexOf(tripletTest))
-							{
-								System.out.println("Exc�s");
-								impossible = true;	// impossibilit� par l'exc�s.
-							}
-							coutOr+=tripletTest.getThird();
-							if(coutOr>or)
-							{
-								impossible = true; 	// impossibilit� par l'or.
-								System.out.println("Exc�s Or");
-							}
-							if(impossible)
-							{
-								choixAchat.remove(arrayTriplet);
-							}
-						}
-					}
-					if(!choixAchat.isEmpty())
-					{
-						etapeAchetable = new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>(choixAchat);
-						System.out.println("Je PEUX acheter ETAPE "+e);
-					}
-					else
-					{
-						etapeConstructible = false;	// Pas les ressources
-						System.out.println("Je NE poss�de PAS les ressources pour ETAPE "+e);
-					}
-					*/
+					
 					for(ArrayList<Triplet<Ressource,Joueur,Integer>> arrayTriplet : choixAchat)
 					{
 						if(coutOr(arrayTriplet)<=or) 
@@ -710,7 +676,145 @@ public class Joueur
 						}
 						else
 						{
-							nonjouable.add(c);
+							ArrayList<Triplet<Ressource,Joueur,Integer>> toutCombinaison = new ArrayList<Triplet<Ressource,Joueur,Integer>>();
+							
+							for(ArrayList<Ressource> lr : new ArrayList<ArrayList<Ressource>>(restes))
+							{
+								ArrayList<Ressource> achatsPossibleDroite = new ArrayList<Ressource>();
+								ArrayList<Ressource> achatsPossibleGauche = new ArrayList<Ressource>();
+								
+								ArrayList<Ressource> copieLr = new ArrayList<Ressource>(lr);
+								
+								for(Ressource rBesoin : lr)
+								{
+									if(this.getJoueurDroit().getTerrain().isEmpty())
+									{
+										copieLr.clear();
+									}
+									for(Carte cTerrainDroite : this.getJoueurDroit().getTerrain())
+									{
+										if(!cTerrainDroite.getGainsRessource().contains(rBesoin))
+										{
+											copieLr.remove(rBesoin);
+										}
+										if(cTerrainDroite instanceof CarteMarron || cTerrainDroite instanceof CarteGrise)
+										{
+											for(Ressource r : cTerrainDroite.getGainsRessource()) 
+											{
+												if(r.getNom().equals(rBesoin.getNom())) 
+												{
+													if(rBesoin.getNumber()-r.getNumber() > 0)
+													{
+														rBesoin.setNumber(rBesoin.getNumber()-r.getNumber());
+													}
+													else
+													{
+														copieLr.remove(rBesoin);
+														achatsPossibleDroite.add(rBesoin);
+													}
+												}
+											}
+										}
+									}
+									boolean exist = false;
+									for(Ressource r : copieLr)
+									{
+										if(r.getNom().equals(rBesoin.getNom()))
+										{
+											exist = true;
+											achatsPossibleDroite.add(new Ressource(r.getNom(),rBesoin.getNumber() - r.getNumber()));
+										}
+									}
+								}
+								
+								copieLr = new ArrayList<Ressource>(lr);
+								
+								for(Ressource rBesoin : lr)
+								{
+									int nombre = rBesoin.getNumber();
+									if(this.getJoueurGauche().getTerrain().isEmpty())
+									{
+										copieLr.clear();
+									}
+									for(Carte cTerrainGauche : this.getJoueurGauche().getTerrain())
+									{
+										if(cTerrainGauche instanceof CarteMarron || cTerrainGauche instanceof CarteGrise)
+										{
+											if(!cTerrainGauche.getGainsRessource().contains(rBesoin))
+											{
+												copieLr.remove(rBesoin);
+											}
+											for(Ressource r : cTerrainGauche.getGainsRessource()) 
+											{
+												if(r.getNom().equals(rBesoin.getNom())) 
+												{
+													if(rBesoin.getNumber()-r.getNumber() > 0)
+													{
+														rBesoin.setNumber(rBesoin.getNumber()-r.getNumber());
+													}
+													else
+													{
+														copieLr.remove(rBesoin);
+														achatsPossibleGauche.add(rBesoin);
+													}
+												}
+											}
+										}
+									}
+									boolean exist = false;
+									for(Ressource r : copieLr)
+									{
+										if(r.getNom().equals(rBesoin.getNom()))
+										{
+											exist = true;
+											achatsPossibleGauche.add(new Ressource(r.getNom(),rBesoin.getNumber() - r.getNumber()));
+										}
+									}
+									
+								}
+								
+								for(Ressource r : achatsPossibleDroite)
+								{
+									toutCombinaison.add(new Triplet<Ressource,Joueur,Integer>(r,this.getJoueurDroit(),prixRessourceDroite.get(r.getNom())*r.getNumber()));
+								}
+								for(Ressource r : achatsPossibleGauche)
+								{
+									toutCombinaison.add(new Triplet<Ressource,Joueur,Integer>(r,this.getJoueurGauche(),prixRessourceGauche.get(r.getNom())*r.getNumber()));
+								}
+								
+							}
+							
+								ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>> choixAchat = new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>();
+								ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>> possibleAchat = new ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>();
+								
+								recursiveAddCombinaison(toutCombinaison,choixAchat,0,null);
+								
+								System.out.println(choixAchat.size());
+								
+								for(ArrayList<Triplet<Ressource,Joueur,Integer>> arrayTriplet : choixAchat)
+								{
+									if(coutOr(arrayTriplet)<=or) 
+									{
+										if(!existDeja(arrayTriplet,possibleAchat))
+										{
+											if(estNecessaire(arrayTriplet,c.getCoutsRessource()))
+											{
+												System.out.println("Element Added");
+												possibleAchat.add(arrayTriplet);
+											}
+										}
+									}
+								}
+								if(!possibleAchat.isEmpty())
+								{
+									achetable.add(new Tuplet<Carte,ArrayList<ArrayList<Triplet<Ressource,Joueur,Integer>>>>(c,possibleAchat));
+									System.out.println("Je PEUX acheter "+c);
+								}
+								else
+								{
+									nonjouable.add(c);	// Pas les ressources
+									System.out.println("Je NE poss�de PAS les ressources pour "+c);
+								}
 							
 						}
 					}
