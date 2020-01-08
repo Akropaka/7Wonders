@@ -38,9 +38,9 @@ public class CardView extends Pane{
 	private FlowPane gain_panel;
 	private FlowPane bonus_panel;
 	private Label effet;
-
 	private Label nbr;
-
+	private Label carteAvantLabel;
+	
 	private String style = "";
 	private String name;
 	private int victPOintCount = 0;
@@ -61,6 +61,12 @@ public class CardView extends Pane{
 		cout_panel = new FlowPane();
 		gain_panel = new FlowPane();
 		bonus_panel = new FlowPane();
+		
+		carteAvantLabel = new Label();
+		carteAvantLabel.layoutXProperty().bind(widthProperty().subtract(carteAvantLabel.widthProperty()).divide(2));
+		carteAvantLabel.setTranslateY(HEIGHT - 75);
+		carteAvantLabel.setFont(Font.font("Arial",FontWeight.BOLD,15));
+		
 		effet = new Label("Effet:");
 		effet.setFont(Font.font("Arial",FontWeight.BOLD,14));
 		effet.setTranslateX(11);
@@ -83,6 +89,7 @@ public class CardView extends Pane{
 		
 		getChildren().add(effet);
 		getChildren().add(cout_panel);
+		getChildren().add(carteAvantLabel);
 		getChildren().add(gain_panel);
 		getChildren().add(bonus_panel);
 
@@ -147,6 +154,7 @@ public class CardView extends Pane{
 		addGainList(c.getGainsRessource());
 		gain_panel.getChildren().add(nbr);
 		setBase();
+		setNomCarteAvant();
 	}
 	
 	void setBase() {
@@ -170,7 +178,7 @@ public class CardView extends Pane{
 	
 	void setImage(String nom) {
 		ImageView rect = new ImageView(Images.get(nom).getImage());
-		rect.setLayoutY(HEIGHT-WIDTH);
+		rect.setLayoutY(HEIGHT-WIDTH-30);
 		rect.setFitHeight(WIDTH);
 		rect.setFitWidth(WIDTH);
 		getChildren().add(rect);
@@ -212,6 +220,14 @@ public class CardView extends Pane{
 		rect.setFitHeight(COUT_SIZE);
 		rect.setFitWidth(COUT_SIZE);
 		cout_panel.getChildren().add(rect);
+	}
+	
+	void setNomCarteAvant() {
+		String nomCartAvant = "";
+		for(Carte c: c.getCoutsCarte()) {
+			nomCartAvant += c.getNom() + "\n";
+		}
+		carteAvantLabel.setText(nomCartAvant);
 	}
 	
 	void setBonus() {
