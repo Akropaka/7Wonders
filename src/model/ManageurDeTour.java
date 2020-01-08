@@ -120,6 +120,7 @@ public class ManageurDeTour
 		}
 
 		w.afficherMessageCombat(message);
+		w.getPrimary().close();
 	}
 	
 	public void faireGuerre()
@@ -347,9 +348,10 @@ public class ManageurDeTour
 			age_txt = "Tronc Commun";
 		}else if (age == 2){
 			age_txt = "Branche";
-		}else if (age == 30) {
+		}else if (age == 3) {
 			age_txt = "Fillière";
 		}
+		
 		w.setNom("Joueur: " + j.getNom() + " \nIzly Money: " + j.getOr() + " \nAge: " + age_txt + "\nCredit  ECTS: " + j.pointsVictoire);
 		w.setNomTerrain(j.getNom());
 		System.out.println("C'est à votre tour " + j.getNom());
