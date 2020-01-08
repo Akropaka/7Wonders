@@ -76,11 +76,11 @@ public class MainMenu extends Pane {
 		getChildren().add(nom_joueurs);
 
 		//TODO DEBUG ONLY
-		w.manager.ajoutJoueur("Thomas");
+		/*w.manager.ajoutJoueur("Thomas");
 		w.manager.ajoutJoueur("Louis");
-		w.manager.ajoutJoueur("Ryan");
+		w.manager.ajoutJoueur("Ryan");*/
 
-		w.lancerJeu();
+		//w.lancerJeu();
 	}
 
 	void errorExist() {

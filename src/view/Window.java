@@ -34,7 +34,7 @@ public class Window extends Application {
 	private MainMenu menu;
 	private Label nomJoueur;
 	private Label nomJoueurTerrain;
-
+	public Stage primary;
 	private Label info;
 	private ImageView next;
 	private Joueur voir;
@@ -55,9 +55,8 @@ public class Window extends Application {
 		primaryStage.show();
 		primaryStage.setTitle("7 Wonders - UTBM");
 		primaryStage.setResizable(false);
-		
-		//TODO DEBUG ONLY
-        //root.getChildren().add(menu);
+		primary = primaryStage;
+        root.getChildren().add(menu);
 
 	}
 	
@@ -128,8 +127,6 @@ public class Window extends Application {
 	public void setNom(String s) {
 		nomJoueur.setText(s);
 		trade.setVisible(false);
-
-		
 	}
 	
 	public void setNomTerrain(String s) {
@@ -146,6 +143,10 @@ public class Window extends Application {
 		PauseTransition delay = new PauseTransition(Duration.seconds(2));
 		delay.setOnFinished( event -> info.setText("") );
 		delay.play();
+	}
+
+	public Stage getPrimary() {
+		return primary;
 	}
 	
 }
