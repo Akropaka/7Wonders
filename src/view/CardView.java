@@ -220,11 +220,18 @@ public class CardView extends Pane{
 			for(Bonus b: jaune.getBonus()) {
 				if(b.getEt() == EffetType.REDUCTIONPRIX){
 					addBonusList(b.getRessourceBonus());
-					for(JoueurAffecter ja: jaune.getBonus().get(0).getJoueurAffecter()) {
+				
+				}else if(b.getEt() == EffetType.ORPARCARTE){
+					for(Class<? extends Carte> ca: b.getCarteAffecter()) {
+						addBonus(ca.getSimpleName());
+					}
+					for(Ressource r: b.getRessourceBonus()) {
+						addBonus(r.getNom().name());
+					}
+					for(JoueurAffecter ja: b.getJoueurAffecter()) {
 						addBonus(ja.name());
 					}
-				}else if(b.getEt() == EffetType.DONNEOR){
-					b.getCarteAffecter().get(0).getName();
+					//TODO
 				}
 			}
 
@@ -232,7 +239,21 @@ public class CardView extends Pane{
 		}else if(c instanceof CarteJaune) {
 			CarteViolette violette = (CarteViolette) c;
 			for(Bonus b: violette.getBonus()) {
-				//b.getEt()
+				if(b.getEt() == EffetType.REDUCTIONPRIX){
+					addBonusList(b.getRessourceBonus());
+				
+				}else if(b.getEt() == EffetType.ORPARCARTE){
+					for(Class<? extends Carte> ca: b.getCarteAffecter()) {
+						addBonus(ca.getSimpleName());
+					}
+					for(Ressource r: b.getRessourceBonus()) {
+						addBonus(r.getNom().name());
+					}
+					for(JoueurAffecter ja: b.getJoueurAffecter()) {
+						addBonus(ja.name());
+					}
+					//TODO
+				}
 			}
 		}
 	}
