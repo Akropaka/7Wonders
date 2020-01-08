@@ -13,7 +13,8 @@ public abstract class Carte implements Cloneable
 	public String getNom() {
 		return nom;
 	}
-
+	
+	protected String couleur;
 	private int age;
 	private ArrayList<Ressource> coutsRessource;
 	private ArrayList<Ressource> gainsRessource;
@@ -65,5 +66,13 @@ public abstract class Carte implements Cloneable
 	public List<Carte> getCoutsCarte() 
 	{
 		return coutsCarte;
+	}
+
+	public String getCouleur() {
+		return couleur;
+	}
+
+	public void setCouleur(String couleur) {
+		this.couleur = couleur;
 	}
 }

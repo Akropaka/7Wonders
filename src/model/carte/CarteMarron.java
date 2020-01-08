@@ -11,6 +11,8 @@ public class CarteMarron extends Carte implements Choisisable{
 	
 	boolean possedeChoix = false;
 	
+	public static String COULEUR = "#6D4C41";
+	
 	public boolean possedeChoix() 
 	{
 		return possedeChoix;
@@ -20,6 +22,8 @@ public class CarteMarron extends Carte implements Choisisable{
 			ArrayList<Carte> coutsCarte, List<Integer> ajoutParNbrJoueur, boolean possedeChoix) 
 	{
 		super(nom, age, coutsRessource, gainsRessource, coutsCarte, ajoutParNbrJoueur);
+		setCouleur(COULEUR);
+
 		this.possedeChoix = possedeChoix;
 	}
 	

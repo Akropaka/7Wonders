@@ -9,6 +9,7 @@ import model.Ressource;
 import model.Triplet;
 import model.Tuplet;
 import model.carte.Carte;
+import model.carte.CarteJaune;
 
 
 public class HandView extends FlowPane {
@@ -32,7 +33,7 @@ public class HandView extends FlowPane {
 	
 	public void setCarteListe(Joueur j) {
 		getChildren().clear();
-				
+
 		for(Carte c:j.getJouable()) {
 			CardView cv = new CardView(c,true,0);
 			setMargin(cv,new Insets(0,5,0,5));

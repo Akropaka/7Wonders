@@ -14,13 +14,15 @@ public class CarteViolette extends Carte implements Effectable,Choisisable {
 
 	private List<Bonus> bonus;
 	boolean possedeChoix = false;
-	
+	public static String COULEUR = "#9b59b6";
+
 	public CarteViolette(String nom, int age, ArrayList<Ressource> coutsRessource, ArrayList<Ressource> gainsRessource,
 			ArrayList<Carte> coutsCarte, List<Integer> ajoutParNbrJoueur, boolean possedeChoix)
 	{
 		super(nom, age, coutsRessource, gainsRessource, coutsCarte, ajoutParNbrJoueur);
 		this.possedeChoix = possedeChoix;
 		bonus = new ArrayList<Bonus>();
+		setCouleur(COULEUR);
 	}
 	
 	public void addBonus(Bonus b)
@@ -41,5 +43,9 @@ public class CarteViolette extends Carte implements Effectable,Choisisable {
 	public boolean possedeChoix() 
 	{
 		return possedeChoix;
+	}
+
+	public List<Bonus> getBonus() {
+		return bonus;
 	}
 }

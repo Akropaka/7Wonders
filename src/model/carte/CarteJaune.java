@@ -14,12 +14,14 @@ import model.Ressource;
 public class CarteJaune extends Carte implements Effectable,Choisisable {
 
 	private List<Bonus> bonus;
-	boolean possedeChoix = false;
+	private boolean possedeChoix = false;
+	public static String COULEUR = "#f1c40f";
 	
 	public CarteJaune(String nom, int age, ArrayList<Ressource> coutsRessource, ArrayList<Ressource> gainsRessource,
 			ArrayList<Carte> coutsCarte, List<Integer> ajoutParNbrJoueur, boolean possedeChoix) 
 	{
 		super(nom, age, coutsRessource, gainsRessource, coutsCarte, ajoutParNbrJoueur);
+		setCouleur(COULEUR);
 		this.possedeChoix = possedeChoix;
 		bonus = new ArrayList<Bonus>();
 	}
@@ -43,5 +45,9 @@ public class CarteJaune extends Carte implements Effectable,Choisisable {
 	public boolean possedeChoix() 
 	{
 		return possedeChoix;
+	}
+
+	public List<Bonus> getBonus() {
+		return bonus;
 	}
 }

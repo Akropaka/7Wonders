@@ -40,7 +40,12 @@ public class Images {
 		
 		add("carte_base", "/image/carte/carte_base.png");
 		add("logo","/image/carte/logo.png");
+		add("slash","/image/carte/slash.png");
 		
+		add("MOI","/image/carte/fleche_bas.png");
+		add("DROITE","/image/carte/fleche_droite.png");
+		add("GAUCHE","/image/carte/fleche_gauche.png");
+
 		add("no","/image/no.jpg");
 		add("next","/image/fleche_droit.png");
 

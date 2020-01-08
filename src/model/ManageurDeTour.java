@@ -236,7 +236,15 @@ public class ManageurDeTour
 	
 	public void doitJouer(Joueur j) 
 	{
-		w.setNom("Joueur: " + j.getNom() + " \nOr: " + j.getOr() + " \nAge: " + age + "\nPoint de victoire: " + j.pointsVictoire);
+		String age_txt = null;	
+		if(age == 1) {
+			age_txt = "Tronc Commun";
+		}else if (age == 2){
+			age_txt = "Branche";
+		}else if (age == 30) {
+			age_txt = "Fillière";
+		}
+		w.setNom("Joueur: " + j.getNom() + " \nIzly Money: " + j.getOr() + " \nAge: " + age_txt + "\nCredit  ECTS: " + j.pointsVictoire);
 		w.setNomTerrain(j.getNom());
 		System.out.println("C'est à votre tour " + j.getNom());
 		j.calculJouabilite();
