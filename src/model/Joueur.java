@@ -16,7 +16,9 @@ import model.carte.CarteViolette;
 public class Joueur 
 {
 	private String nom;
-
+	
+	public int jetonDefaite = 0;
+	
 	private Joueur joueurDroit;
 	private Joueur joueurGauche;
 	
@@ -41,7 +43,17 @@ public class Joueur
 		return joueurGauche;
 	}
 	
-	private Map<RessourceEnum,Integer> prixRessource;
+	private Map<RessourceEnum,Integer> prixRessourceDroite;
+	
+	private Map<RessourceEnum,Integer> prixRessourceGauche;
+	
+	public Map<RessourceEnum, Integer> getPrixRessourceDroite() {
+		return prixRessourceDroite;
+	}
+
+	public Map<RessourceEnum, Integer> getPrixRessourceGauche() {
+		return prixRessourceGauche;
+	}
 	
 	public void setJoueurDroit(Joueur joueurDroit) 
 	{
@@ -122,20 +134,29 @@ public class Joueur
 		
 		this.nom = nom;
 		
-		prixRessource = new HashMap<RessourceEnum,Integer>();
+		prixRessourceDroite = new HashMap<RessourceEnum,Integer>();
+		prixRessourceGauche = new HashMap<RessourceEnum,Integer>();
 		
 		prixDefaut();
 	}
 	
 	public void prixDefaut() 
 	{
-		prixRessource.put(RessourceEnum.ARGILE,2);
-		prixRessource.put(RessourceEnum.BOIS,2);
-		prixRessource.put(RessourceEnum.FER,2);
-		prixRessource.put(RessourceEnum.PIERRE,2);
-		prixRessource.put(RessourceEnum.PARCHEMIN,2);
-		prixRessource.put(RessourceEnum.VERRE,2);
-		prixRessource.put(RessourceEnum.TISSU,2);
+		prixRessourceDroite.put(RessourceEnum.ARGILE,2);
+		prixRessourceDroite.put(RessourceEnum.BOIS,2);
+		prixRessourceDroite.put(RessourceEnum.FER,2);
+		prixRessourceDroite.put(RessourceEnum.PIERRE,2);
+		prixRessourceDroite.put(RessourceEnum.PARCHEMIN,2);
+		prixRessourceDroite.put(RessourceEnum.VERRE,2);
+		prixRessourceDroite.put(RessourceEnum.TISSU,2);
+		
+		prixRessourceGauche.put(RessourceEnum.ARGILE,2);
+		prixRessourceGauche.put(RessourceEnum.BOIS,2);
+		prixRessourceGauche.put(RessourceEnum.FER,2);
+		prixRessourceGauche.put(RessourceEnum.PIERRE,2);
+		prixRessourceGauche.put(RessourceEnum.PARCHEMIN,2);
+		prixRessourceGauche.put(RessourceEnum.VERRE,2);
+		prixRessourceGauche.put(RessourceEnum.TISSU,2);
 	}
 	
 	public void achatEtape()
@@ -406,11 +427,11 @@ public class Joueur
 					
 					for(Ressource r : achatsPossibleDroite)
 					{
-						toutCombinaison.add(new Triplet<Ressource,Joueur,Integer>(r,this.getJoueurDroit(),prixRessource.get(r.getNom())*r.getNumber()));
+						toutCombinaison.add(new Triplet<Ressource,Joueur,Integer>(r,this.getJoueurDroit(),prixRessourceDroite.get(r.getNom())*r.getNumber()));
 					}
 					for(Ressource r : achatsPossibleGauche)
 					{
-						toutCombinaison.add(new Triplet<Ressource,Joueur,Integer>(r,this.getJoueurGauche(),prixRessource.get(r.getNom())*r.getNumber()));
+						toutCombinaison.add(new Triplet<Ressource,Joueur,Integer>(r,this.getJoueurGauche(),prixRessourceGauche.get(r.getNom())*r.getNumber()));
 					}
 					
 				}
@@ -690,6 +711,7 @@ public class Joueur
 						else
 						{
 							nonjouable.add(c);
+							
 						}
 					}
 					else
@@ -708,6 +730,29 @@ public class Joueur
 			{
 				nonjouable.add(c);	// Carte déjà sur le Terrain
 				System.out.println("Cette carte est déjà sur le terrain "+c);
+			}
+		}
+	}
+	
+	private void packRessource(ArrayList<Ressource> ressources , ArrayList<ArrayList<Ressource>> listeRessources) 
+	{
+		for(ArrayList<Ressource> res : listeRessources) 
+		{
+			for(Ressource r : ressources)
+			{
+				boolean aPacker = false;
+				for(Ressource rb : res) 
+				{
+					if(r.getNom().equals(rb.getNom()))
+					{
+						aPacker = true;
+						ressources.get(ressources.indexOf(r)).setNumber(ressources.get(ressources.indexOf(r)).getNumber()+rb.getNumber());
+					}
+				}
+				if(!aPacker)
+				{
+					ressources.add(r);
+				}
 			}
 		}
 	}
@@ -832,7 +877,7 @@ public class Joueur
 		}
 		if(c instanceof Effectable) 
 		{
-			((Effectable) c).faitEffet();
+			((Effectable) c).faitEffet(this);
 		}
 		terrain.add(c);
 		main.remove(c);
@@ -840,7 +885,7 @@ public class Joueur
 	
 	public void vend(Carte c)
 	{
-		or+=2;
+		or+=3;
 		main.remove(c);
 	}
 	

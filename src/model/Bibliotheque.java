@@ -826,7 +826,7 @@ public class Bibliotheque {
 		coutsRessource.add(new Ressource(RessourceEnum.FER,1));
 		gainsRessource.add(new Ressource(RessourceEnum.JETONCOMBAT,3));
 		coutsCarte.add(placeDarmes);
-		ajoutParNbrJoueur.add(3);
+		ajoutParNbrJoueur.add(4);
 		ajoutParNbrJoueur.add(5);
 		ajoutParNbrJoueur.add(6);
 		CarteRouge cirque = new CarteRouge("Cirque"
@@ -1297,8 +1297,10 @@ public class Bibliotheque {
 											,coutsCarte
 											,ajoutParNbrJoueur
 											,true);
-		
+		et = EffetType.SCIENCE;
+		guildeDesScientifiques.addBonus(new Bonus(et,joueurAffecter,carteAffecter,ressourceBonus));
 		resetAll();
+		
 		
 		coutsRessource.add(new Ressource(RessourceEnum.BOIS,3));
 		coutsRessource.add(new Ressource(RessourceEnum.PIERRE,1));
