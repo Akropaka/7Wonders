@@ -42,6 +42,7 @@ public class ManageurDeTour
 
 	public void finDeJeu()
 	{
+		message = "";
 		for(Joueur j : joueurs)
 		{
 			int engrenage = 0;
@@ -61,15 +62,15 @@ public class ManageurDeTour
 				{
 					for(Ressource r : c.getGainsRessource())
 					{
-						if(r.getNom().equals(RessourceEnum.ENGRENAGE))
+						if(r.getNom().equals(RessourceEnum.INFO))
 						{
 							engrenage+=r.getNumber();
 						}
-						if(r.getNom().equals(RessourceEnum.COMPAS))
+						if(r.getNom().equals(RessourceEnum.MECA))
 						{
 							compas+=r.getNumber();
 						}
-						if(r.getNom().equals(RessourceEnum.TABLETTE))
+						if(r.getNom().equals(RessourceEnum.ENERGIE))
 						{
 							tablette+=r.getNumber();
 						}
@@ -87,15 +88,15 @@ public class ManageurDeTour
 				{
 					for(Ressource r : e.getGainsRessource())
 					{
-						if(r.getNom().equals(RessourceEnum.ENGRENAGE))
+						if(r.getNom().equals(RessourceEnum.INFO))
 						{
 							engrenage+=r.getNumber();
 						}
-						if(r.getNom().equals(RessourceEnum.COMPAS))
+						if(r.getNom().equals(RessourceEnum.MECA))
 						{
 							compas+=r.getNumber();
 						}
-						if(r.getNom().equals(RessourceEnum.TABLETTE))
+						if(r.getNom().equals(RessourceEnum.ENERGIE))
 						{
 							engrenage+=r.getNumber();
 						}
@@ -115,11 +116,15 @@ public class ManageurDeTour
 			int orFinDePartie = j.getOr();
 			orFinDePartie = (orFinDePartie-(orFinDePartie % 3))/3;
 			j.pointsVictoire+=orFinDePartie;
+			message += j.getNom() + " fini la partie avec : " + j.pointsVictoire + " Crédits ECTS" + "\n";
 		}
+
+		w.afficherMessageCombat(message);
 	}
 	
 	public void faireGuerre()
 	{
+		message = "";
 		Map<Joueur,Integer> scoresCombat = new HashMap<Joueur,Integer>();
 		for(Joueur js : joueurs)
 		{
@@ -153,22 +158,27 @@ public class ManageurDeTour
 			{
 				((Joueur)key).pointsVictoire-=1;
 				((Joueur)key).jetonDefaite += 1;
+				
 			}
 			else if(scoresCombat.get(key.getJoueurDroit())<scoresCombat.get(key))
 			{
 				((Joueur)key).pointsVictoire+=age+(age-1);
-				message += ((Joueur)key).getNom() + " gagne le combat contre " + ((Joueur)key).getJoueurDroit().getNom() + " il gagne " + age+(age-1) + " points" +"\n";
+				int points = age+(age-1);
+				message += ((Joueur)key).getNom() + " gagne le combat contre " + ((Joueur)key).getJoueurDroit().getNom() + " il gagne " + points + " points" +"\n";
 				
+			}
+			else
+			{
+				message += ((Joueur)key).getNom() + " et " + ((Joueur)key).getJoueurDroit().getNom() + " font une égalités ils ne gagnent pas de points "+ "\n";
 			}
 			if(scoresCombat.get(key.getJoueurGauche())>scoresCombat.get(key)) 
 			{
-				((Joueur)key).pointsVictoire-=1;
+				((Joueur)key).pointsVictoire -= 1;
 				((Joueur)key).jetonDefaite += 1;
 			}
 			else if(scoresCombat.get(key.getJoueurGauche())<scoresCombat.get(key))
 			{
 				((Joueur)key).pointsVictoire+=age+(age-1);
-				message += ((Joueur)key).getNom() + " gagne le combat contre " + ((Joueur)key).getJoueurDroit().getNom() + " il gagne " + age+(age-1) + " points" +"\n";
 			}
 		});
 		
@@ -193,6 +203,12 @@ public class ManageurDeTour
 				{
 					jr.getMain().clear();
 				}
+				
+				if(age==4)
+				{
+					finDeJeu();
+				}
+				
 				remplirPile(age);
 				tour=0;
 				

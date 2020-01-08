@@ -2,21 +2,21 @@ package model;
 
 public enum RessourceEnum
 {
-	BOIS,
-	PIERRE,
-	ARGILE,
-	FER,
-	TISSU,
-	VERRE,
-	PARCHEMIN,
+	LANGUE,
+	PHYSIQUE,
+	CG,
+	MATHS,
+	ALCOOL,
+	CHIMIE,
+	ELEC,
 	
-	OR,
+	IZLY,
 	
 	POINTVICTOIRE,
 	
 	JETONCOMBAT,
 	
-	ENGRENAGE,
-	COMPAS,
-	TABLETTE;
+	INFO,
+	MECA,
+	ENERGIE;
 }

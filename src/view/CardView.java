@@ -256,7 +256,7 @@ public class CardView extends Pane{
 		
 		rescount++;
 		
-		if(c instanceof Choisisable && rescount > 1) {
+		if(c instanceof Choisisable && ((Choisisable)c).possedeChoix() && rescount > 1) {
 			ImageView slash = new ImageView(Images.get("slash").getImage());
 			slash.setFitHeight(COUT_SIZE);
 			slash.setFitWidth(10);

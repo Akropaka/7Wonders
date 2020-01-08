@@ -174,15 +174,15 @@ public class CarteViolette extends Carte implements Effectable,Choisisable {
 						{
 							for(Ressource r : c.getGainsRessource())
 							{
-								if(r.getNom().equals(RessourceEnum.ENGRENAGE))
+								if(r.getNom().equals(RessourceEnum.INFO))
 								{
 									engrenage+=r.getNumber();
 								}
-								if(r.getNom().equals(RessourceEnum.COMPAS))
+								if(r.getNom().equals(RessourceEnum.MECA))
 								{
 									compas+=r.getNumber();
 								}
-								if(r.getNom().equals(RessourceEnum.TABLETTE))
+								if(r.getNom().equals(RessourceEnum.ENERGIE))
 								{
 									tablette+=r.getNumber();
 								}
@@ -195,15 +195,15 @@ public class CarteViolette extends Carte implements Effectable,Choisisable {
 						{
 							for(Ressource r : e.getGainsRessource())
 							{
-								if(r.getNom().equals(RessourceEnum.ENGRENAGE))
+								if(r.getNom().equals(RessourceEnum.INFO))
 								{
 									engrenage+=r.getNumber();
 								}
-								if(r.getNom().equals(RessourceEnum.COMPAS))
+								if(r.getNom().equals(RessourceEnum.MECA))
 								{
 									compas+=r.getNumber();
 								}
-								if(r.getNom().equals(RessourceEnum.TABLETTE))
+								if(r.getNom().equals(RessourceEnum.ENERGIE))
 								{
 									engrenage+=r.getNumber();
 								}

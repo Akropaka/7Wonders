@@ -142,21 +142,21 @@ public class Joueur
 	
 	public void prixDefaut() 
 	{
-		prixRessourceDroite.put(RessourceEnum.ARGILE,2);
-		prixRessourceDroite.put(RessourceEnum.BOIS,2);
-		prixRessourceDroite.put(RessourceEnum.FER,2);
-		prixRessourceDroite.put(RessourceEnum.PIERRE,2);
-		prixRessourceDroite.put(RessourceEnum.PARCHEMIN,2);
-		prixRessourceDroite.put(RessourceEnum.VERRE,2);
-		prixRessourceDroite.put(RessourceEnum.TISSU,2);
+		prixRessourceDroite.put(RessourceEnum.CG,2);
+		prixRessourceDroite.put(RessourceEnum.LANGUE,2);
+		prixRessourceDroite.put(RessourceEnum.MATHS,2);
+		prixRessourceDroite.put(RessourceEnum.PHYSIQUE,2);
+		prixRessourceDroite.put(RessourceEnum.ELEC,2);
+		prixRessourceDroite.put(RessourceEnum.CHIMIE,2);
+		prixRessourceDroite.put(RessourceEnum.ALCOOL,2);
 		
-		prixRessourceGauche.put(RessourceEnum.ARGILE,2);
-		prixRessourceGauche.put(RessourceEnum.BOIS,2);
-		prixRessourceGauche.put(RessourceEnum.FER,2);
-		prixRessourceGauche.put(RessourceEnum.PIERRE,2);
-		prixRessourceGauche.put(RessourceEnum.PARCHEMIN,2);
-		prixRessourceGauche.put(RessourceEnum.VERRE,2);
-		prixRessourceGauche.put(RessourceEnum.TISSU,2);
+		prixRessourceGauche.put(RessourceEnum.CG,2);
+		prixRessourceGauche.put(RessourceEnum.LANGUE,2);
+		prixRessourceGauche.put(RessourceEnum.MATHS,2);
+		prixRessourceGauche.put(RessourceEnum.PHYSIQUE,2);
+		prixRessourceGauche.put(RessourceEnum.ELEC,2);
+		prixRessourceGauche.put(RessourceEnum.CHIMIE,2);
+		prixRessourceGauche.put(RessourceEnum.ALCOOL,2);
 	}
 	
 	public void achatEtape()
@@ -530,14 +530,14 @@ public class Joueur
 				{
 					for(Carte ce : terrain) 
 					{
-						if(ce.equals(cc)) 
+						if(ce.getNom().equals(cc.getNom())) 
 						{
-							trouver = true;
+							trouver = false;
 						}
 					}
 					if(!trouver) 
 					{
-						constructible = false;
+						constructible = true;
 					}
 					trouver = false;
 				}
@@ -553,7 +553,7 @@ public class Joueur
 					int tempOr = or;
 					for(Ressource r : new ArrayList<Ressource>(coutsRessource)) 
 					{
-						if(r.getNom().equals(RessourceEnum.OR))
+						if(r.getNom().equals(RessourceEnum.IZLY))
 						{
 							tempOr -= r.getNumber();
 							if(tempOr < 0) 
@@ -585,7 +585,7 @@ public class Joueur
 								}
 								for(Etape e : this.getPlateau().getEtapes())
 								{
-									for(Ressource rBesoin : e.getGainsRessource())
+									for(Ressource rBesoin : new ArrayList<Ressource>(e.getGainsRessource()))
 									{
 										if(e.construite)
 										{
@@ -870,7 +870,7 @@ public class Joueur
 	{
 		for(Ressource r : c.getCoutsRessource())
 		{
-			if(r.getNom().equals(RessourceEnum.OR)) 
+			if(r.getNom().equals(RessourceEnum.IZLY)) 
 			{
 				or-=r.getNumber();
 			}
