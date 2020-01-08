@@ -1,5 +1,6 @@
 package model;
 
 public interface Effectable {
-	void faitEffet();
+	void faitEffet(Joueur j);
+	void faitEffetFin(Joueur j);
 }

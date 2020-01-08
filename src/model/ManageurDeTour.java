@@ -8,6 +8,9 @@ import java.util.Map;
 import java.util.Scanner;
 
 import model.carte.Carte;
+import model.carte.CarteBleue;
+import model.carte.CarteVerte;
+import model.carte.CarteViolette;
 import view.Window;
 
 public class ManageurDeTour 
@@ -36,7 +39,85 @@ public class ManageurDeTour
 		pile = new ArrayList<Carte>();
 		defausse = new ArrayList<Carte>();
 	}
-		
+
+	public void finDeJeu()
+	{
+		for(Joueur j : joueurs)
+		{
+			int engrenage = 0;
+			int compas = 0;
+			int tablette = 0;
+			for(Carte c : j.getTerrain())
+			{
+				if(c instanceof CarteBleue)
+				{
+					for(Ressource r : c.getGainsRessource())
+					{
+						j.pointsVictoire+=r.getNumber();
+					}
+				}
+				
+				if(c instanceof CarteVerte)
+				{
+					for(Ressource r : c.getGainsRessource())
+					{
+						if(r.getNom().equals(RessourceEnum.ENGRENAGE))
+						{
+							engrenage+=r.getNumber();
+						}
+						if(r.getNom().equals(RessourceEnum.COMPAS))
+						{
+							compas+=r.getNumber();
+						}
+						if(r.getNom().equals(RessourceEnum.TABLETTE))
+						{
+							tablette+=r.getNumber();
+						}
+					}
+				}
+				
+				if(c instanceof Effectable)
+				{
+					((Effectable) c).faitEffetFin(j);
+				}
+			}
+			for(Etape e : j.getPlateau().getEtapes())
+			{
+				if(e.isConstruite())
+				{
+					for(Ressource r : e.getGainsRessource())
+					{
+						if(r.getNom().equals(RessourceEnum.ENGRENAGE))
+						{
+							engrenage+=r.getNumber();
+						}
+						if(r.getNom().equals(RessourceEnum.COMPAS))
+						{
+							compas+=r.getNumber();
+						}
+						if(r.getNom().equals(RessourceEnum.TABLETTE))
+						{
+							engrenage+=r.getNumber();
+						}
+						if(r.getNom().equals(RessourceEnum.POINTVICTOIRE))
+						{
+							j.pointsVictoire+=r.getNumber();
+						}
+					}
+				}
+			}
+			int total = engrenage*engrenage + compas*compas + tablette*tablette;
+			if(engrenage>0 && compas>0 && tablette>0)
+			{
+				total += 7;
+			}
+			j.pointsVictoire+=total;
+			int orFinDePartie = j.getOr();
+			orFinDePartie = (orFinDePartie-(orFinDePartie % 3))/3;
+			j.pointsVictoire+=orFinDePartie;
+		}
+	}
+	
 	public void faireGuerre()
 	{
 		Map<Joueur,Integer> scoresCombat = new HashMap<Joueur,Integer>();
@@ -71,6 +152,7 @@ public class ManageurDeTour
 			if(scoresCombat.get(key.getJoueurDroit())>scoresCombat.get(key)) 
 			{
 				((Joueur)key).pointsVictoire-=1;
+				((Joueur)key).jetonDefaite += 1;
 			}
 			else if(scoresCombat.get(key.getJoueurDroit())<scoresCombat.get(key))
 			{
@@ -81,6 +163,7 @@ public class ManageurDeTour
 			if(scoresCombat.get(key.getJoueurGauche())>scoresCombat.get(key)) 
 			{
 				((Joueur)key).pointsVictoire-=1;
+				((Joueur)key).jetonDefaite += 1;
 			}
 			else if(scoresCombat.get(key.getJoueurGauche())<scoresCombat.get(key))
 			{
@@ -166,6 +249,8 @@ public class ManageurDeTour
 	public void remplirPile(int age) 
 	{
 		pile.clear();
+		int intGuildeMax = joueurs.size()+2;
+		int intGuilde=0;
 		for(Carte c : bibliotheque.getListeCarte()) 
 		{
 			if(c.getAge() == age) 
@@ -177,6 +262,11 @@ public class ManageurDeTour
 						pile.add(c);
 					}
 				}
+			}
+			if(age==3 && c instanceof CarteViolette && intGuilde < intGuildeMax)
+			{
+				pile.add(c);
+				intGuilde++;
 			}
 		}
 		Collections.shuffle(pile);
@@ -266,7 +356,7 @@ public class ManageurDeTour
 		
 		ordreJoueur();
 		attribuePlateauAleatoirement();
-		remplirPile(1);
+		remplirPile(age);
 		
 		for(Joueur j : joueurs) 
 		{
